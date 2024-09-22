@@ -1,0 +1,24 @@
+.footer {
+  background-color: #282c34;
+  padding: 1rem;
+  color: white;
+  text-align: center;
+}
+
+.footer nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.footer nav ul li a {
+  color: white;
+  text-decoration: none;
+}
+
+@media only screen and (max-width: 780px) {
+  .footer nav ul {
+    flex-direction: column;
+  }
+}

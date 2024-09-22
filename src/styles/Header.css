@@ -1,0 +1,36 @@
+.header {
+  max-width: 100vw;
+  background-color: #757585;
+  padding: 20px;
+}
+
+.nav-items {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.nav-items a {
+  color: #ffffff;
+  text-decoration: none;
+  padding: 10px;
+  font-size: 20px;
+  margin: 0 20px;
+  font-weight: bold;
+}
+
+.nav-items a:hover {
+  color: #dfc7e7;
+}
+
+@media only screen and (max-width: 480px) {
+  .header {
+    padding: inherit 10px;
+  }
+  .nav-items {
+    flex-direction: column;
+  }
+  .nav-items a {
+    font-size: 16px;
+  }
+}
