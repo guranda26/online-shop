@@ -30,26 +30,24 @@ const MainContent = () => {
           something for everyone.
         </p>
         <div className="product-list">
-          <div className="product">
-            <img src={FirstProduct} alt="Product 1" width="200px" />
-            <p>Product 1 - A great gadget that enhances your daily life.</p>
-          </div>
           <Product
-            heading="Product 1"
+            heading="Apple iPhone 15 (128 GB)"
             src={FirstProduct}
-            alt="Product 1"
-            description="Product 1 - A great gadget that enhances your daily life."
+            alt="iPhone 15"
+            description="A great gadget that enhances your daily life."
           />
-          <div className="product">
-            <img src={SecondProduct} alt="Product 2" width="200px" />
-            <p>
-              Product 2 - Innovative and reliable, perfect for work and play.
-            </p>
-          </div>
-          <div className="product">
-            <img src={ThirdProduct} alt="Product 3" width="200px" />
-            <p>Product 3 - Stylish and functional for any occasion.</p>
-          </div>
+          <Product
+            heading="MacBook Air (M1, 2020)"
+            src={SecondProduct}
+            alt="MacBook Air"
+            description="Innovative and reliable, perfect for work and play."
+          />
+          <Product
+            heading="Galaxy Z Flip5"
+            src={ThirdProduct}
+            alt="Galaxy Z Flip5"
+            description=" Charmingly compact, stylish and functional for any occasion."
+          />
         </div>
       </section>
       <section id="contact" className="section contact">
