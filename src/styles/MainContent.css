@@ -40,16 +40,25 @@ html {
   background-color: #9ab3c3;
 }
 
-.product-list {
+/* .product-list {
   display: flex;
   justify-content: space-around;
   width: 100%;
   max-width: 1000px;
+} */
+
+.product-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding: 20px;
 }
 
 .product {
-  text-align: center;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   padding: 10px;
+  text-align: center;
+  background-color: #ffffff;
 }
 
 ul {
@@ -63,16 +72,26 @@ ul li {
 
 @media only screen and (max-width: 780px) {
   .product-list {
-    flex-direction: column;
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .section {
     padding: inherit 5px;
   }
-  /* h1,
-  h2 {
-    font-size: 20px;
-  } */
+
+  .main-content.contact span {
+    display: block;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .product-list {
+    grid-template-columns: 1fr;
+  }
+
+  .section {
+    padding: 80px 5px;
+  }
 
   .main-content.contact span {
     display: block;

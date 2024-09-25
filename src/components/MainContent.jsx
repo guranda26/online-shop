@@ -48,6 +48,24 @@ const MainContent = () => {
             alt="Galaxy Z Flip5"
             description=" Charmingly compact, stylish and functional for any occasion."
           />
+          <Product
+            heading="Apple iPhone 15 (128 GB)"
+            src={FirstProduct}
+            alt="iPhone 15"
+            description="A great gadget that enhances your daily life."
+          />
+          <Product
+            heading="MacBook Air (M1, 2020)"
+            src={SecondProduct}
+            alt="MacBook Air"
+            description="Innovative and reliable, perfect for work and play."
+          />
+          <Product
+            heading="Galaxy Z Flip5"
+            src={ThirdProduct}
+            alt="Galaxy Z Flip5"
+            description=" Charmingly compact, stylish and functional for any occasion."
+          />
         </div>
       </section>
       <section id="contact" className="section contact">
