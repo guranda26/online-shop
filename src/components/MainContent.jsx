@@ -3,6 +3,7 @@ import "../styles/MainContent.css";
 import FirstProduct from "../assets/product-1.jpg";
 import SecondProduct from "../assets/product-2.jpeg";
 import ThirdProduct from "../assets/product-3.jpg";
+import Product from "./Product";
 
 const MainContent = () => {
   return (
@@ -33,6 +34,12 @@ const MainContent = () => {
             <img src={FirstProduct} alt="Product 1" width="200px" />
             <p>Product 1 - A great gadget that enhances your daily life.</p>
           </div>
+          <Product
+            heading="Product 1"
+            src={FirstProduct}
+            alt="Product 1"
+            description="Product 1 - A great gadget that enhances your daily life."
+          />
           <div className="product">
             <img src={SecondProduct} alt="Product 2" width="200px" />
             <p>
