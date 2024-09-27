@@ -8,12 +8,6 @@ import Product from "./Product";
 const MainContent = () => {
   return (
     <main className="main-content">
-      <section id="home" className="section home">
-        <h1>Welcome to the Home Page</h1>
-        <p>
-          We are dedicated to providing the best services for our customers.
-        </p>
-      </section>
       <section id="about" className="section about">
         <h2>About Us</h2>
         <p>
