@@ -1,5 +1,6 @@
 .about {
   justify-content: initial;
+  min-height: 100vh;
 }
 
 .about div {

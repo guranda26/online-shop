@@ -1,37 +1,50 @@
-body,
-html {
+body {
   margin: 0;
   padding: 0;
-  font-family: Arial, sans-serif;
-  scroll-behavior: smooth;
 }
 
-.App {
-  text-align: center;
+body.homepage-content {
+  overflow: hidden;
 }
 
 .section {
-  padding: 100px 20px;
-  min-height: 90vh;
-}
-
-.section img {
-  margin-top: 20px;
-  max-width: 80%;
-}
-
-.section,
-.home-content {
+  min-height: 100vh;
+  padding: 30px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  font-size: 20px;
+}
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 97vh;
+  overflow-y: hidden;
+}
+
+main {
+  flex: 1;
+  overflow-y: hidden;
   height: 100%;
 }
 
-.home {
+.homepage-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow: hidden;
+}
+
+.home-section {
+  flex: 1;
   background-color: #f4f4f9;
-  max-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.home-content {
+  text-align: center;
 }
 
 .about {
@@ -74,11 +87,11 @@ ul li {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .section {
-    padding: inherit 5px;
+  .homepage-content {
+    padding: inherit 5px; /* Adjust for smaller screens */
   }
 
-  .main-content.contact span {
+  .homepage-content.contact span {
     display: block;
   }
 }
@@ -88,11 +101,11 @@ ul li {
     grid-template-columns: 1fr;
   }
 
-  .section {
+  .homepage-content {
     padding: 80px 5px;
   }
 
-  .main-content.contact span {
+  .homepage-content.contact span {
     display: block;
   }
 }

@@ -2,11 +2,7 @@
   max-width: 100vw;
   background-color: #757585;
   padding: 20px;
-  height: 10vh;
-}
-
-.home-section {
-  height: 90vh;
+  max-height: 10vh;
 }
 
 .nav-items {

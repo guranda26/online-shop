@@ -17,9 +17,9 @@ const About = () => {
           of products to meet all your tech needs.
         </p>
         <p>
-          At [Your Shop Name], we are passionate about innovation and quality.
-          We carefully select each item in our inventory to ensure it reflects
-          the best in technology and design. Whether you’re a tech enthusiast, a
+          At our shop, we are passionate about innovation and quality. We
+          carefully select each item in our inventory to ensure it reflects the
+          best in technology and design. Whether you’re a tech enthusiast, a
           professional, or simply looking for the perfect gadget, our extensive
           collection has something for everyone.
         </p>

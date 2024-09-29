@@ -3,6 +3,7 @@
   padding: 1rem;
   color: white;
   text-align: center;
+  max-height: 10vh;
 }
 
 .footer nav ul {
