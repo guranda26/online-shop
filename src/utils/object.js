@@ -12,5 +12,7 @@ export function obj() {
 
     imageURL: "https://example.com/images/product-10002.jpg",
   };
-  return obj;
+  const entries = Object.entries(obj);
+
+  return entries;
 }
