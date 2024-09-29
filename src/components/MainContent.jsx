@@ -4,10 +4,13 @@ import FirstProduct from "../assets/product-1.jpg";
 import SecondProduct from "../assets/product-2.jpeg";
 import ThirdProduct from "../assets/product-3.jpg";
 import Product from "./Product";
+import Header from "./Homepage";
+import Homepage from "./Homepage";
 
 const MainContent = () => {
   return (
     <main className="main-content">
+      <Homepage />
       <section id="products" className="section products">
         <h2>Our Products</h2>
         <p>
