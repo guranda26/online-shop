@@ -1,7 +1,5 @@
 import "./App.css";
-import Header from "./components/Homepage";
 import MainContent from "./components/MainContent";
-import Footer from "./components/Footer";
 import { Route, Routes } from "react-router-dom";
 import About from "./components/About";
 import Layout from "./Layout";
@@ -20,8 +18,6 @@ function App() {
           <Route path="/products" element={<Products />} />
         </Route>
       </Routes>
-      {/* <Header /> */}
-      {/* <MainContent /> */}
     </div>
   );
 }
