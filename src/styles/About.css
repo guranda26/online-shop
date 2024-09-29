@@ -1,0 +1,10 @@
+.about {
+  justify-content: initial;
+}
+
+.about div {
+  max-width: 1100px;
+  text-align: left;
+  font-size: 20px;
+  line-height: 1.5;
+}
