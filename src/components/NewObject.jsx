@@ -16,16 +16,17 @@ const NewObject = () => {
         </tr>
       </thead>
       <tbody>
-        {parsedObj.reduce((acc, cur, index) => {
-          acc.push(
+        {parsedObj.reduce(
+          (acc, cur, index) => [
+            ...acc,
             <tr key={index} className="body-row">
               <td className="body-cell">{cur[0]}</td>
               <td className="body-cell">{cur[1]}</td>
               <td className="body-cell">{index}</td>
-            </tr>
-          );
-          return acc;
-        }, [])}
+            </tr>,
+          ],
+          []
+        )}
         <tr className="body-row"></tr>
       </tbody>
     </table>
