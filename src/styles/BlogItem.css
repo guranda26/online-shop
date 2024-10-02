@@ -6,16 +6,40 @@
   margin: 20px auto;
 }
 
+.blog-item-page {
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+  font-family: Arial, sans-serif;
+}
+
 .blog-item-title {
-  font-size: 2rem;
-  color: #333;
+  font-size: 2em;
   margin-bottom: 10px;
 }
 
 .blog-item-content {
-  font-size: 1.2rem;
-  color: #555;
-  line-height: 1.5;
+  margin-bottom: 20px;
+  font-size: 1.1em;
+}
+
+.specs-title,
+.reviews-title {
+  margin-top: 20px;
+  font-size: 1.5em;
+  border-bottom: 2px solid #ccc;
+  padding-bottom: 5px;
+}
+
+.specs-list,
+.reviews-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.specs-item,
+.review-item {
+  margin: 10px 0;
 }
 
 .return-link {

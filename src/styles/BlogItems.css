@@ -41,3 +41,15 @@
   text-decoration: underline;
   color: #0056b3;
 }
+
+.blog-item-page {
+  padding: 20px;
+  text-align: center;
+}
+
+.blog-item-image {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  margin: 20px 0;
+}

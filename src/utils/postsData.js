@@ -1,19 +1,105 @@
+import samsungGalaxyS23 from "../assets/samsung-galaxy-s23.jpeg";
+import iphone15Pro from "../assets/iphone-15-pro.jpg";
+import googlePixel7Pro from "../assets/google-pixel7-pro.jpg";
+
 export function postsData() {
   const posts = [
     {
       id: 1,
-      title: "First Post",
-      content: "This is the content of the first post.",
+      title: "Samsung Galaxy S23 Ultra",
+      content: `
+      The Apple iPhone 15 Pro features a stunning 6.1-inch Super Retina XDR display 
+      and is powered by the A17 Pro chip. The device showcases a triple-camera 
+      system with improved low-light performance and ProRAW capabilities. 
+      It is available in various finishes, including Space Black, Silver, Gold, 
+      and Deep Purple.
+    `,
+      imageUrl: samsungGalaxyS23,
+      specs: {
+        processor: "A17 Pro",
+        display: "6.1-inch Super Retina XDR",
+        ram: "8GB",
+        storageOptions: ["128GB", "256GB", "512GB", "1TB"],
+        camera: "48MP Triple-Camera System",
+        battery: "3200mAh",
+        os: "iOS 17",
+      },
+      reviews: [
+        {
+          user: "TechGuru",
+          rating: 5,
+          comment: "Best iPhone yet, the camera is a game-changer.",
+        },
+        {
+          user: "AppleFan",
+          rating: 4,
+          comment: "Love the design, but would prefer a larger battery.",
+        },
+      ],
     },
     {
       id: 2,
-      title: "Second Post",
-      content: "This is the content of the second post.",
+      title: "Apple iPhone 15 Pro",
+      content: `
+      The Apple iPhone 15 Pro features a stunning 6.1-inch Super Retina XDR display 
+      and is powered by the A17 Pro chip. The device showcases a triple-camera 
+      system with improved low-light performance and ProRAW capabilities. 
+      It is available in several finishes, including Space Black, Silver, Gold, 
+      and Deep Purple.
+    `,
+      imageUrl: iphone15Pro,
+      specs: {
+        processor: "A17 Pro",
+        display: "6.1-inch Super Retina XDR",
+        ram: "8GB",
+        storageOptions: ["128GB", "256GB", "512GB", "1TB"],
+        camera: "48MP Triple-Camera System",
+        battery: "3200mAh",
+        os: "iOS 17",
+      },
+      reviews: [
+        {
+          user: "TechGuru",
+          rating: 5,
+          comment: "Best iPhone yet, the camera is a game-changer.",
+        },
+        {
+          user: "AppleFan",
+          rating: 4,
+          comment: "Love the design, but would prefer a larger battery.",
+        },
+      ],
     },
     {
       id: 3,
-      title: "Third Post",
-      content: "This is the content of the third post.",
+      title: "Google Pixel 7 Pro",
+      content: `
+        The Google Pixel 7 Pro offers a 6.7-inch LTPO OLED display with a 120Hz refresh rate. 
+        Powered by Google’s Tensor G2 chip, it excels in AI-driven photography. 
+        The device includes a 50MP main camera and supports 5G connectivity.
+      `,
+      imageUrl: googlePixel7Pro,
+      specs: {
+        processor: "Tensor G2",
+        display: "6.7-inch LTPO OLED",
+        ram: "12GB",
+        storageOptions: ["128GB", "256GB", "512GB"],
+        camera: "50MP Triple-Camera System",
+        battery: "5000mAh",
+        os: "Android 13",
+      },
+      reviews: [
+        {
+          user: "PhotoLover",
+          rating: 5,
+          comment: "The best camera on a smartphone!",
+        },
+        {
+          user: "DailyUser",
+          rating: 4,
+          comment: "Great phone, but sometimes slow with updates.",
+        },
+      ],
     },
   ];
   return posts;
