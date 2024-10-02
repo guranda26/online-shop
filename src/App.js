@@ -1,14 +1,14 @@
 import "./App.css";
 import MainContent from "./components/MainContent";
 import { Route, Routes } from "react-router-dom";
-import About from "./components/About";
+import About from "./pages/About";
 import Layout from "./Layout";
-import Contact from "./components/Contact";
+import Contact from "./pages/Contact";
 import Products from "./components/Products";
 import NewObject from "./components/NewObject";
 import BlogItems from "./components/BlogItems";
 import BlogItem from "./components/BlogItem";
-import Profile from "./components/Profile";
+import Profile from "./pages/Profile";
 
 function App() {
   return (
