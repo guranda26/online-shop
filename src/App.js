@@ -6,7 +6,6 @@ import Layout from "./Layout";
 import Contact from "./components/Contact";
 import Products from "./components/Products";
 import NewObject from "./components/NewObject";
-import Blog from "./components/BlogItems";
 import BlogItems from "./components/BlogItems";
 import BlogItem from "./components/BlogItem";
 
