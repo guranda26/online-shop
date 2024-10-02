@@ -6,6 +6,7 @@ import Layout from "./Layout";
 import Contact from "./components/Contact";
 import Products from "./components/Products";
 import NewObject from "./components/NewObject";
+import Blog from "./components/Blog";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/products" element={<Products />} />
+          <Route path="/blogs" element={<Blog />} />
           <Route path="/assignment-3" element={<NewObject />} />
         </Route>
       </Routes>
