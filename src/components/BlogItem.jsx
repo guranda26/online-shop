@@ -1,6 +1,7 @@
 import React from "react";
 import { postsData } from "../utils/postsData";
 import { Link, useParams } from "react-router-dom";
+import "../styles/BlogItem.css";
 
 const posts = postsData();
 
@@ -10,10 +11,12 @@ const BlogItem = () => {
   if (!post) return <h2>No post found on this route.</h2>;
 
   return (
-    <section>
-      <h2>{post.title}</h2>
-      <p>{post.content}</p>
-      <Link to={"/blogs"}>Return back</Link>
+    <section className="blog-item-page">
+      <h2 className="blog-item-title">{post.title}</h2>
+      <p className="blog-item-content">{post.content}</p>
+      <Link className="return-link" to="/blogs">
+        Return back
+      </Link>
     </section>
   );
 };

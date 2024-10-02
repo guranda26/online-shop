@@ -12,8 +12,10 @@ const BlogItems = () => {
       <ul>
         {posts.map((post) => {
           return (
-            <li key={post.id} className="blog-items">
-              <Link to={`posts/${post.id}`}>{post.title}</Link>
+            <li key={post.id} className="blog-item">
+              <Link to={`posts/${post.id}`} className="blog-link">
+                {post.title}
+              </Link>
             </li>
           );
         })}
