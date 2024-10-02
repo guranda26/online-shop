@@ -6,7 +6,9 @@ import Layout from "./Layout";
 import Contact from "./components/Contact";
 import Products from "./components/Products";
 import NewObject from "./components/NewObject";
-import Blog from "./components/Blog";
+import Blog from "./components/BlogItems";
+import BlogItems from "./components/BlogItems";
+import BlogItem from "./components/BlogItem";
 
 function App() {
   return (
@@ -18,7 +20,8 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/products" element={<Products />} />
-          <Route path="/blogs" element={<Blog />} />
+          <Route path="/blogs" element={<BlogItems />} />
+          <Route path="/blogs/posts/:id" element={<BlogItem />} />
           <Route path="/assignment-3" element={<NewObject />} />
         </Route>
       </Routes>
