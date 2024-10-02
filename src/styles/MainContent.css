@@ -18,7 +18,7 @@ body.homepage-content {
 .layout {
   display: flex;
   flex-direction: column;
-  min-height: 97vh;
+  min-height: 100vh;
   overflow-y: hidden;
 }
 

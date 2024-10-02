@@ -5,7 +5,7 @@
   max-height: 10vh;
 }
 
-.nav-items {
+.navbar ul {
   display: flex;
   align-items: center;
   justify-content: space-evenly;

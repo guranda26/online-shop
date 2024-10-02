@@ -8,6 +8,7 @@ import Products from "./components/Products";
 import NewObject from "./components/NewObject";
 import BlogItems from "./components/BlogItems";
 import BlogItem from "./components/BlogItem";
+import Profile from "./components/Profile";
 
 function App() {
   return (
@@ -22,6 +23,8 @@ function App() {
           <Route path="/blogs" element={<BlogItems />} />
           <Route path="/blogs/posts/:id" element={<BlogItem />} />
           <Route path="/assignment-3" element={<NewObject />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route />
         </Route>
       </Routes>
     </div>
