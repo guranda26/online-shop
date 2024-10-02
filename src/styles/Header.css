@@ -11,7 +11,7 @@
   justify-content: space-evenly;
 }
 
-.nav-items a {
+.nav-item a {
   color: #ffffff;
   text-decoration: none;
   padding: 10px;
@@ -20,18 +20,23 @@
   font-weight: bold;
 }
 
-.nav-items a:hover {
+.nav-item a:hover {
   color: #dfc7e7;
+}
+
+.profile {
+  width: 25px;
+  height: 25px;
 }
 
 @media only screen and (max-width: 480px) {
   .header {
     padding: inherit 10px;
   }
-  .nav-items {
+  .nav-item {
     flex-direction: column;
   }
-  .nav-items a {
+  .nav-item a {
     font-size: 16px;
   }
 }
