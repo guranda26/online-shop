@@ -8,6 +8,15 @@ const Profile = () => {
   return (
     <section className="profile-page">
       <h1 className="profile-title">About User</h1>
+      <div className="profile-card">
+        <div className="profile-image-container">
+          <img
+            src={user.profileImage}
+            alt={`${user.name}`}
+            className="profile-image"
+          />
+        </div>
+      </div>
       <form className="profile-form">
         <div className="form-group">
           <label htmlFor="name">Name</label>
