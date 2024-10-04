@@ -23,7 +23,7 @@ const Profile = () => {
           <input
             type="text"
             id="name"
-            value={user.name}
+            value={user.firstName}
             readOnly
             className="form-input"
           />
@@ -59,15 +59,19 @@ const Profile = () => {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="hobbies">Hobbies</label>
-          <input
-            type="text"
-            id="hobbies"
-            value={user.hobbies}
-            readOnly
-            className="form-input"
-          />
+          <label htmlFor="gender">Hobbies</label>
+          {user.hobbies.map((hobby, index) => (
+            <input
+              type="text"
+              id={`hobbies-${index}`}
+              value={hobby}
+              readOnly
+              className="form-input"
+              key={index}
+            />
+          ))}
         </div>
+
         <div className="form-group">
           <label htmlFor="phone">Phone Number</label>
           <input
