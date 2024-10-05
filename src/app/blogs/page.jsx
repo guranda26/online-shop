@@ -1,7 +1,9 @@
+"use client";
+
 import React from "react";
-import { postsData } from "../utils/postsData";
-import { Link } from "react-router-dom";
-import "../styles/BlogItems.css";
+import Link from "next/link";
+import "../../styles/BlogItems.css";
+import { postsData } from "../../utils/postsData";
 
 const posts = postsData();
 
@@ -13,7 +15,7 @@ const BlogItems = () => {
         {posts.map((post) => {
           return (
             <li key={post.id} className="blog-item">
-              <Link to={`posts/${post.id}`} className="blog-link">
+              <Link href={`blogs/post/${post.id}`} className="blog-Link">
                 {post.title}
               </Link>
             </li>

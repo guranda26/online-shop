@@ -1,6 +1,7 @@
-import samsungGalaxyS23 from "../assets/samsung-galaxy-s23.jpeg";
-import iphone15Pro from "../assets/iphone-15-pro.jpg";
-import googlePixel7Pro from "../assets/google-pixel7-pro.jpg";
+import Image from "next/image"; // Import next/image for optimized image loading
+import samsungGalaxyS23 from "../../public/assets/samsung-galaxy-s23.jpeg";
+import iphone15Pro from "../../public/assets/iphone-15-pro.jpg";
+import googlePixel7Pro from "../../public/assets/google-pixel7-pro.jpg";
 
 export function postsData() {
   const posts = [
@@ -8,32 +9,29 @@ export function postsData() {
       id: 1,
       title: "Samsung Galaxy S23 Ultra",
       content: `
-      The Apple iPhone 15 Pro features a stunning 6.1-inch Super Retina XDR display 
-      and is powered by the A17 Pro chip. The device showcases a triple-camera 
-      system with improved low-light performance and ProRAW capabilities. 
-      It is available in various finishes, including Space Black, Silver, Gold, 
-      and Deep Purple.
-    `,
+        The Samsung Galaxy S23 Ultra features a stunning display and is powered by the Snapdragon 8 Gen 2 processor. 
+        The device showcases a quad-camera system with a 200MP main sensor and is available in various finishes.
+      `,
       imageUrl: samsungGalaxyS23,
       specs: {
-        processor: "A17 Pro",
-        display: "6.1-inch Super Retina XDR",
-        ram: "8GB",
-        storageOptions: ["128GB", "256GB", "512GB", "1TB"],
-        camera: "48MP Triple-Camera System",
-        battery: "3200mAh",
-        os: "iOS 17",
+        processor: "Snapdragon 8 Gen 2",
+        display: "6.8-inch Dynamic AMOLED 2X",
+        ram: "8GB / 12GB",
+        storageOptions: ["256GB", "512GB", "1TB"],
+        camera: "200MP Quad-Camera System",
+        battery: "5000mAh",
+        os: "Android 13",
       },
       reviews: [
         {
           user: "TechGuru",
           rating: 5,
-          comment: "Best iPhone yet, the camera is a game-changer.",
+          comment: "Best Samsung device yet with an incredible camera.",
         },
         {
-          user: "AppleFan",
+          user: "AndroidFan",
           rating: 4,
-          comment: "Love the design, but would prefer a larger battery.",
+          comment: "Love the performance, but the price is high.",
         },
       ],
     },
@@ -41,12 +39,12 @@ export function postsData() {
       id: 2,
       title: "Apple iPhone 15 Pro",
       content: `
-      The Apple iPhone 15 Pro features a stunning 6.1-inch Super Retina XDR display 
-      and is powered by the A17 Pro chip. The device showcases a triple-camera 
-      system with improved low-light performance and ProRAW capabilities. 
-      It is available in several finishes, including Space Black, Silver, Gold, 
-      and Deep Purple.
-    `,
+        The Apple iPhone 15 Pro features a stunning 6.1-inch Super Retina XDR display 
+        and is powered by the A17 Pro chip. The device showcases a triple-camera 
+        system with improved low-light performance and ProRAW capabilities. 
+        It is available in various finishes, including Space Black, Silver, Gold, 
+        and Deep Purple.
+      `,
       imageUrl: iphone15Pro,
       specs: {
         processor: "A17 Pro",
@@ -102,5 +100,6 @@ export function postsData() {
       ],
     },
   ];
+
   return posts;
 }

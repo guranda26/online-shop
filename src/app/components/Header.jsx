@@ -1,6 +1,6 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import "../styles/Header.css";
+import Link from "next/link";
+import "../../styles/Header.css";
 import { CgProfile } from "react-icons/cg";
 
 const Header = () => {
@@ -9,25 +9,25 @@ const Header = () => {
       <nav className="navbar">
         <ul>
           <li className="nav-item">
-            <Link to={"home"}>Home</Link>
+            <Link href="/home">Home</Link>
           </li>
           <li className="nav-item">
-            <Link to={"about"}>About</Link>
+            <Link href="/about">About</Link>
           </li>
           <li className="nav-item">
-            <Link to={"products"}>Products</Link>
+            <Link href="/products">Products</Link>
           </li>
           <li className="nav-item">
-            <Link to={"contact"}>Contact</Link>
+            <Link href="/contact">Contact</Link>
           </li>
           <li className="nav-item">
-            <Link to={"assignment-3"}>Assignment</Link>
+            <Link href="/assignment-3">Assignment</Link>
           </li>
           <li className="nav-item">
-            <Link to={"blogs"}>Blogs</Link>
+            <Link href="/blogs">Blogs</Link>
           </li>
           <li className="nav-item">
-            <Link to={"profile"}>
+            <Link href="/profile">
               <CgProfile className="profile" />
             </Link>
           </li>

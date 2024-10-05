@@ -1,5 +1,5 @@
-import "../styles/ObjectTable.css";
-import { obj } from "../utils/object";
+import { obj } from "../../utils/object";
+import "../../styles/ObjectTable.css";
 
 const parsedObj = obj();
 
