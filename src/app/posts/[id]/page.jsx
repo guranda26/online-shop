@@ -19,21 +19,21 @@ const PostsPage = ({ params }) => {
   if (!post) return <p>No post found</p>;
 
   return (
-    <div className="product-list_wrapper">
-      <div key={post.id} className="posts">
-        <div className="post-content">
+    <section className="post-item">
+      <div key={post.id} className="posts new-post">
+        <div className="post-content post-content_item">
           <h2>{post.title}</h2>
           <p>{post.body}</p>
           <div className="post-tags">
             {post.tags.map((tag) => (
-              <span key={tag} className="post-tag">
+              <span key={tag} className="post-tag tag">
                 {tag}
               </span>
             ))}
           </div>
         </div>
-        <div className="post-reactions">
-          <span className="reactions">
+        <div className="post-reactions post-reactions">
+          <span className="reactions reaction">
             <AiFillLike /> Likes:{" "}
             <span className="post-reaction">{post.reactions.likes}</span>
           </span>
@@ -50,7 +50,7 @@ const PostsPage = ({ params }) => {
           </span>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 export default PostsPage;

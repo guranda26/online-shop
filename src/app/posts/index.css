@@ -91,3 +91,44 @@ p {
   margin-right: 5px;
   color: #007bff;
 }
+
+.post-item {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.post-item h2 {
+  font-size: 30px;
+}
+
+.new-post {
+  max-width: 1200px;
+  min-height: 350px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.post-content_item {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.new-post p {
+  font-size: 20px;
+}
+
+.post-reactions {
+  gap: 15px;
+}
+
+.post-reactions .reaction {
+  min-width: 90px;
+}
+
+.tag {
+  display: inline-block;
+  padding: 12px 25px;
+  font-size: 16px;
+}
