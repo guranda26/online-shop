@@ -6,6 +6,7 @@ import { FaRegUser } from "react-icons/fa";
 import LoadingSpinner from "../../components/Loader";
 import { useFetchItems } from "../../hooks/useFetchItems";
 import "../index.css";
+import NotFoundPage from "../../not-found";
 
 const PostsPage = ({ params }) => {
   const { id } = params;
@@ -14,9 +15,7 @@ const PostsPage = ({ params }) => {
   console.log("post", post);
 
   if (loading) return <LoadingSpinner />;
-  if (error) return <p>Error: {error.message}</p>;
-
-  if (!post) return <p>No post found</p>;
+  if (!post || error) return <NotFoundPage />;
 
   return (
     <section className="post-item">

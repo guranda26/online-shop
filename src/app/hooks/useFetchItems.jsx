@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { notFound } from "next/navigation";
+import NotFoundPage from "../not-found";
 
 const useFetchItems = (url, itemsKey) => {
   const [items, setItems] = useState([]);
@@ -20,7 +21,6 @@ const useFetchItems = (url, itemsKey) => {
         setItems(result);
         setLoading(false);
       } catch (error) {
-        console.log(error);
         setError(error);
         setLoading(false);
       }

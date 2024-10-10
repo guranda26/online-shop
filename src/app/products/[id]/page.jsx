@@ -11,9 +11,8 @@ const PostsPage = ({ params }) => {
   const { items: product, loading, error } = useFetchItems(url, null);
 
   if (loading) return <LoadingSpinner />;
-  if (error) return <p>Error: {error.message}</p>;
 
-  if (!product) return <NotFoundPage />;
+  if (!product || error) return <NotFoundPage />;
 
   return (
     <section className="products-section product">
