@@ -1,8 +1,13 @@
 "use client";
 import Link from "next/link";
 import { useFetchItems } from "../hooks/useFetchItems";
+import { FaEye } from "react-icons/fa6";
+import { AiFillDislike, AiFillLike } from "react-icons/ai";
+import { FaRegUser } from "react-icons/fa";
 
-const Page = () => {
+import "./index.css";
+
+const PostsPage = () => {
   const url = "https://dummyjson.com/posts";
   const { items: posts, loading, error } = useFetchItems(url, "posts");
 
@@ -14,23 +19,34 @@ const Page = () => {
       {posts.map((post) => (
         <div key={post.id} className="posts">
           <Link href={`posts/${post.id}`} className="post-list">
-            <div className="image-container">
-              <img
-                src={post.thumbnail}
-                alt={post.name}
-                className="product-img"
-              />
-            </div>
             <div className="post-content">
               <h2>{post.title}</h2>
               <p>{post.body}</p>
-              <p>Price: ${post.tags}</p>
+              <div className="post-tags">
+                {post.tags.map((tag) => (
+                  <span key={tag} className="post-tag">
+                    {tag}
+                  </span>
+                ))}
+              </div>
             </div>
             <div className="post-reactions">
-              <span>Likes: {post.reactions.likes}</span>
-              <span>Comments: {post.reactions.dislikes}</span>
-              <span>{post.views}</span>
-              <span>{post.userIr}</span>
+              <span className="reactions">
+                <AiFillLike /> Likes:{" "}
+                <span className="post-reaction">{post.reactions.likes}</span>
+              </span>
+              <span className="reactions">
+                <AiFillDislike /> Dislikes:{" "}
+                <span className="post-reaction">{post.reactions.dislikes}</span>
+              </span>
+              <span className="reactions">
+                <FaEye /> Views:{" "}
+                <span className="post-reaction">{post.views}</span>
+              </span>
+              <span>
+                <FaRegUser /> USER:{" "}
+                <span className="post-reaction">{post.userId}</span>
+              </span>
             </div>
           </Link>
         </div>
@@ -38,5 +54,4 @@ const Page = () => {
     </div>
   );
 };
-
-export default Page;
+export default PostsPage;
