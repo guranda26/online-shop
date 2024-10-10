@@ -1,59 +1,47 @@
-import React from "react";
-import Product from "../components/Product";
-import FirstProduct from "../../../public/assets/product-1.jpg";
-import SecondProduct from "../../../public/assets/product-2.jpeg";
-import ThirdProduct from "../../../public/assets/product-3.jpg";
-import "../../styles/MainContent.css";
+"use client";
+import Link from "next/link";
+import React, { useEffect, useState } from "react";
 
-const Products = () => {
+const page = () => {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const url = "https://dummyjson.com/products";
+      try {
+        const response = await fetch(url);
+        const data = await response.json();
+
+        setProducts(data.products);
+        console.log(data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchProducts();
+  }, []);
+
   return (
-    <section id="products" className="section products">
-      <h2>Our Products</h2>
-      <p>
-        We offer a wide range of products tailored to meet the needs of our
-        diverse customers. From tech gadgets to everyday essentials, we have
-        something for everyone.
-      </p>
-      <div className="product-list">
-        <Product
-          heading="Apple iPhone 15 (128 GB)"
-          src={FirstProduct.src}
-          alt="iPhone 15"
-          description="A great gadget that enhances your daily life."
-        />
-        <Product
-          heading="MacBook Air (M1, 2020)"
-          src={SecondProduct.src}
-          alt="MacBook Air"
-          description="Innovative and reliable, perfect for work and play."
-        />
-        <Product
-          heading="Galaxy Z Flip5"
-          src={ThirdProduct.src}
-          alt="Galaxy Z Flip5"
-          description=" Charmingly compact, stylish and functional for any occasion."
-        />
-        <Product
-          heading="Apple iPhone 15 (128 GB)"
-          src={FirstProduct.src}
-          alt="iPhone 15"
-          description="A great gadget that enhances your daily life."
-        />
-        <Product
-          heading="MacBook Air (M1, 2020)"
-          src={SecondProduct.src}
-          alt="MacBook Air"
-          description="Innovative and reliable, perfect for work and play."
-        />
-        <Product
-          heading="Galaxy Z Flip5"
-          src={ThirdProduct.src}
-          alt="Galaxy Z Flip5"
-          description=" Charmingly compact, stylish and functional for any occasion."
-        />
+    <section className="products-section">
+      <h1>All Products</h1>
+      <div>
+        {products.map((product) => {
+          return (
+            <div key={product.id}>
+              <Link href={`products/${product.id}`}>
+                <img src={product.thumbnail} alt="" className="product-img" />
+                <div className="product-info">
+                  <h2>{product.name}</h2>
+                  <p>{product.description}</p>
+                  <p>Price: ${product.price}</p>
+                </div>
+              </Link>
+            </div>
+          );
+        })}
       </div>
     </section>
   );
 };
 
-export default Products;
+export default page;
