@@ -16,7 +16,7 @@ const PostsPage = ({ params }) => {
   if (!product || error) return <NotFoundPage />;
 
   return (
-    <section className="products-section product">
+    <section className="product">
       <h1>Product</h1>
       <div key={product.id} className="products">
         <Link href={`products/${product.id}`} className="product-list">
