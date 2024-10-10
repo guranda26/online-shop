@@ -7,14 +7,14 @@ import "../../styles/MainContent.css";
 
 const Products = () => {
   return (
-    <section id="products" className="section products">
+    <section id="products" className="section digital-products">
       <h2>Our Products</h2>
       <p>
         We offer a wide range of products tailored to meet the needs of our
         diverse customers. From tech gadgets to everyday essentials, we have
         something for everyone.
       </p>
-      <div className="product-list">
+      <div className="digital-product-list">
         <Product
           heading="Apple iPhone 15 (128 GB)"
           src={FirstProduct.src}
