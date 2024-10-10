@@ -5,6 +5,7 @@ import { AiFillDislike, AiFillLike } from "react-icons/ai";
 import { FaRegUser } from "react-icons/fa";
 import LoadingSpinner from "../../components/Loader";
 import { useFetchItems } from "../../hooks/useFetchItems";
+import ReturnBackButton from "../../components/ReturnBackButton";
 import "../index.css";
 import NotFoundPage from "../../not-found";
 
@@ -47,6 +48,9 @@ const PostsPage = ({ params }) => {
             <FaRegUser /> USER:{" "}
             <span className="post-reaction">{post.userId}</span>
           </span>
+        </div>
+        <div className="return-back">
+          <ReturnBackButton />
         </div>
       </div>
     </section>

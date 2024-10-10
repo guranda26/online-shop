@@ -4,6 +4,7 @@ import LoadingSpinner from "../../components/Loader";
 import { useFetchItems } from "../../hooks/useFetchItems";
 import "../index.css";
 import NotFoundPage from "../../not-found";
+import ReturnBackButton from "../../components/ReturnBackButton";
 
 const PostsPage = ({ params }) => {
   const { id } = params;
@@ -28,6 +29,9 @@ const PostsPage = ({ params }) => {
             <p className="price">Price: ${product.price}</p>
           </div>
         </Link>
+        <div className="return-back">
+          <ReturnBackButton />
+        </div>
       </div>
     </section>
   );
