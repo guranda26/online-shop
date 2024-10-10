@@ -4,9 +4,9 @@ import MainContent from "./app/components/MainContent";
 
 const App = () => {
   return (
-    <div>
+    <>
       <MainContent />
-    </div>
+    </>
   );
 };
 

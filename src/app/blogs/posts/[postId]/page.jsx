@@ -1,6 +1,6 @@
 import React from "react";
 import { postsData } from "../utils/postsData";
-import { Link } from "next/link";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import "../../styles/BlogItem.css";
 
