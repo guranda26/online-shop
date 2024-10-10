@@ -4,6 +4,7 @@ import { useFetchItems } from "../hooks/useFetchItems";
 import { FaEye } from "react-icons/fa6";
 import { AiFillDislike, AiFillLike } from "react-icons/ai";
 import { FaRegUser } from "react-icons/fa";
+import LoadingSpinner from "../components/Loader";
 
 import "./index.css";
 
@@ -11,7 +12,7 @@ const PostsPage = () => {
   const url = "https://dummyjson.com/posts";
   const { items: posts, loading, error } = useFetchItems(url, "posts");
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <LoadingSpinner />;
   if (error) return <p>Error: {error.message}</p>;
 
   return (

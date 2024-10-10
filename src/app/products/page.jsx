@@ -2,12 +2,14 @@
 import Link from "next/link";
 import "./index.css";
 import { useFetchItems } from "../hooks/useFetchItems";
+import LoadingSpinner from "../components/Loader";
+("../index.css");
 
 const ProdictPage = () => {
   const url = "https://dummyjson.com/products";
   const { items: products, loading, error } = useFetchItems(url, "products");
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <LoadingSpinner />;
   if (error) return <p>Error: {error.message}</p>;
 
   return (
