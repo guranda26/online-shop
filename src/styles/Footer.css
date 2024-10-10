@@ -1,7 +1,7 @@
 .footer {
-  background-color: #282c34;
+  background-color: rgb(203, 190, 174);
   padding: 1rem;
-  color: white;
+  color: rgb(101, 80, 80);
   text-align: center;
   max-height: 10vh;
 }
@@ -14,7 +14,7 @@
 }
 
 .footer nav ul li a {
-  color: white;
+  color: rgb(101, 80, 80);
   text-decoration: none;
 }
 

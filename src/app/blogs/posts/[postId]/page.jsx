@@ -1,12 +1,16 @@
 import React from "react";
 import { postsData } from "../utils/postsData";
-import { Link, useParams } from "react-router-dom";
-import "../styles/BlogItem.css";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import "../../styles/BlogItem.css";
 
 const posts = postsData();
 
 const BlogItem = () => {
-  const { id } = useParams();
+  const router = useRouter();
+  const { id } = router.query;
+  if (!id) return <h2>Loading...</h2>;
+
   const post = posts.find((post) => post.id === parseInt(id));
 
   if (!post) return <h2>No post found on this route.</h2>;
@@ -37,7 +41,7 @@ const BlogItem = () => {
         ))}
       </ul>
 
-      <Link className="return-link" to="/blogs">
+      <Link className="return-link" href="/blogs">
         Return back
       </Link>
     </section>
