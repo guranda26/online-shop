@@ -1,26 +1,14 @@
 "use client";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
 import "./index.css";
+import { useFetchItems } from "../hooks/useFetchItems";
 
-const page = () => {
-  const [products, setProducts] = useState([]);
+const ProdictPage = () => {
+  const url = "https://dummyjson.com/products";
+  const { items: products, loading, error } = useFetchItems(url, "products");
 
-  useEffect(() => {
-    const fetchProducts = async () => {
-      const url = "https://dummyjson.com/products";
-      try {
-        const response = await fetch(url);
-        const data = await response.json();
-
-        setProducts(data.products);
-        console.log(data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    fetchProducts();
-  }, []);
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error.message}</p>;
 
   return (
     <section className="products-section">
@@ -47,4 +35,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default ProdictPage;
