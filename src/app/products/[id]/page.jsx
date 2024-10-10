@@ -6,7 +6,7 @@ const PostsPage = ({ params }) => {
   const { id } = params;
 
   return (
-    <section className="products-section product">
+    <section className="product">
       <h1>Product</h1>
       <ProductDetails id={id} />
       <div className="return-back">
