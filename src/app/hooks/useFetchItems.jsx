@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { notFound } from "next/navigation";
 
 const useFetchItems = (url, itemsKey) => {
   const [items, setItems] = useState([]);
@@ -12,10 +13,11 @@ const useFetchItems = (url, itemsKey) => {
       try {
         const response = await fetch(url);
         if (!response.ok) {
-          throw new Error("Network response was not ok");
+          return notFound();
         }
         const data = await response.json();
-        setItems(data[itemsKey]);
+        const result = itemsKey ? data[itemsKey] : data;
+        setItems(result);
         setLoading(false);
       } catch (error) {
         console.log(error);
@@ -30,4 +32,4 @@ const useFetchItems = (url, itemsKey) => {
   return { items, loading, error };
 };
 
-export { useFetchItems }; // Make sure this line is present
+export { useFetchItems };

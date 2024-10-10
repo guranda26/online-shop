@@ -3,6 +3,7 @@ import Link from "next/link";
 import "./index.css";
 import { useFetchItems } from "../hooks/useFetchItems";
 import LoadingSpinner from "../components/Loader";
+import NotFoundPage from "../not-found";
 ("../index.css");
 
 const ProdictPage = () => {
@@ -11,6 +12,9 @@ const ProdictPage = () => {
 
   if (loading) return <LoadingSpinner />;
   if (error) return <p>Error: {error.message}</p>;
+  if (!products) {
+    return <NotFoundPage />;
+  }
 
   return (
     <section className="products-section">
