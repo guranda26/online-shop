@@ -68,6 +68,10 @@
   text-shadow: 0.1px 1px #7e1d1d;
 }
 
+.product .product-list {
+  margin: 0 auto;
+}
+
 @media only screen and (max-width: 1024px) {
   .product-list_wrapper {
     grid-template-columns: repeat(2, 1fr);

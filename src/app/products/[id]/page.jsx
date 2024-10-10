@@ -1,8 +1,5 @@
 "use client";
 import Link from "next/link";
-import { FaEye } from "react-icons/fa6";
-import { AiFillDislike, AiFillLike } from "react-icons/ai";
-import { FaRegUser } from "react-icons/fa";
 import LoadingSpinner from "../../components/Loader";
 import { useFetchItems } from "../../hooks/useFetchItems";
 import "../index.css";
@@ -18,10 +15,9 @@ const PostsPage = ({ params }) => {
 
   if (!product) return <NotFoundPage />;
 
-  <section className="products-section">
-    <h1>All Products</h1>
-    <div className="product-list_wrapper">
-      return (
+  return (
+    <section className="products-section product">
+      <h1>Product</h1>
       <div key={product.id} className="products">
         <Link href={`products/${product.id}`} className="product-list">
           <div className="image-container">
@@ -34,8 +30,7 @@ const PostsPage = ({ params }) => {
           </div>
         </Link>
       </div>
-      );
-    </div>
-  </section>;
+    </section>
+  );
 };
 export default PostsPage;
