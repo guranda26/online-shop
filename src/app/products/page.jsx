@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
+import "./index.css";
 
 const page = () => {
   const [products, setProducts] = useState([]);
@@ -24,16 +25,18 @@ const page = () => {
   return (
     <section className="products-section">
       <h1>All Products</h1>
-      <div>
+      <div className="product-list_wrapper">
         {products.map((product) => {
           return (
-            <div key={product.id}>
-              <Link href={`products/${product.id}`}>
-                <img src={product.thumbnail} alt="" className="product-img" />
+            <div key={product.id} className="products">
+              <Link href={`products/${product.id}`} className="product-list">
+                <div className="image-container">
+                  <img src={product.images[0]} alt="" className="product-img" />
+                </div>
                 <div className="product-info">
-                  <h2>{product.name}</h2>
+                  <h2>{product.title}</h2>
                   <p>{product.description}</p>
-                  <p>Price: ${product.price}</p>
+                  <p className="price">Price: ${product.price}</p>
                 </div>
               </Link>
             </div>
