@@ -50,17 +50,29 @@ const ProductPage = () => {
     <section className="products-section">
       <h1>All Products</h1>
       <div className="sort-container">
-        <div>
-          <label htmlFor="sort-price">Sort by Price:</label>
-          <select id="sort-price" onChange={handlePriceSortChange}>
+        <div className="sort-option">
+          <label htmlFor="sort-price" className="sort-label">
+            Sort by Price:
+          </label>
+          <select
+            id="sort-price"
+            className="sort-select"
+            onChange={handlePriceSortChange}
+          >
             <option value="default">Default</option>
             <option value="asc">Low to High</option>
             <option value="desc">High to Low</option>
           </select>
         </div>
-        <div>
-          <label htmlFor="sort-name">Sort by Name:</label>
-          <select id="sort-name" onChange={handleNameSortChange}>
+        <div className="sort-option">
+          <label htmlFor="sort-name" className="sort-label">
+            Sort by Name:
+          </label>
+          <select
+            id="sort-name"
+            className="sort-select"
+            onChange={handleNameSortChange}
+          >
             <option value="default">Default</option>
             <option value="asc">A-Z</option>
             <option value="desc">Z-A</option>
