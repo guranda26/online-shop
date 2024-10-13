@@ -31,17 +31,23 @@ a {
   margin-top: 15px;
 }
 
-.goBackButton {
+.goBackButton,
+.search-btn {
   background-color: #4a90e2;
   color: white;
   border: none;
-  padding: 10px 20px;
+  padding: 8px 20px;
   font-size: 16px;
   border-radius: 5px;
   cursor: pointer;
   transition:
     background-color 0.3s ease,
     transform 0.2s ease;
+}
+
+.search-btn {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
 }
 
 .goBackButton:hover {
