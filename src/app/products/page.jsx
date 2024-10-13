@@ -9,9 +9,28 @@ import NotFoundPage from "../not-found";
 const ProductPage = () => {
   const url = "https://dummyjson.com/products";
   const { items: products, loading, error } = useFetchItems(url, "products");
-
   const [sortByPrice, setSortByPrice] = useState("default");
   const [sortByName, setSortByName] = useState("default");
+  const [searchQuery, setSearchQuery] = useState("");
+  const [filteredProducts, setFilteredProducts] = useState([]);
+
+  const searchProducts = async () => {
+    const response = await fetch(
+      `https://dummyjson.com/products/search?q=${searchQuery}`
+    );
+    const data = await response.json();
+    setFilteredProducts(data.products);
+  };
+
+  const handleSearchChange = (e) => {
+    setSearchQuery(e.target.value);
+  };
+
+  const handleSearchClick = () => {
+    if (searchQuery.trim() !== "") {
+      searchProducts();
+    }
+  };
 
   const handlePriceSortChange = (e) => {
     setSortByPrice(e.target.value);
@@ -21,17 +40,17 @@ const ProductPage = () => {
     setSortByName(e.target.value);
   };
 
-  // Sorting logic before rendering
-  let sortedProducts = [...(products || [])];
+  // let sortedProducts = [...(products || [])];
+  let sortedProducts = [
+    ...(filteredProducts.length ? filteredProducts : products || []),
+  ];
 
-  // Apply price sorting
   if (sortByPrice !== "default") {
     sortedProducts = sortedProducts.sort((a, b) => {
       return sortByPrice === "asc" ? a.price - b.price : b.price - a.price;
     });
   }
 
-  // Apply name sorting
   if (sortByName !== "default") {
     sortedProducts = sortedProducts.sort((a, b) => {
       return sortByName === "asc"
@@ -49,6 +68,19 @@ const ProductPage = () => {
   return (
     <section className="products-section">
       <h1>All Products</h1>
+      <div className="search-container">
+        <input
+          type="text"
+          placeholder="Search products..."
+          value={searchQuery}
+          onChange={handleSearchChange}
+          className="search-input"
+        />
+        <button onClick={handleSearchClick} className="search-btn">
+          Search
+        </button>
+      </div>
+
       <div className="sort-container">
         <div className="sort-option">
           <label htmlFor="sort-price" className="sort-label">
