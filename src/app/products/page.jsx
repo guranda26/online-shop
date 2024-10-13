@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import "./index.css";
 import { useFetchItems } from "../hooks/useFetchItems";
@@ -15,21 +15,27 @@ const ProductPage = () => {
   const [filteredProducts, setFilteredProducts] = useState([]);
 
   const searchProducts = async () => {
-    const response = await fetch(
-      `https://dummyjson.com/products/search?q=${searchQuery}`
-    );
-    const data = await response.json();
-    setFilteredProducts(data.products);
+    if (searchQuery.trim() === "") {
+      setFilteredProducts([]);
+    } else {
+      const response = await fetch(
+        `https://dummyjson.com/products/search?q=${searchQuery}`
+      );
+      const data = await response.json();
+      setFilteredProducts(data.products);
+    }
   };
+
+  useEffect(() => {
+    searchProducts(searchQuery);
+  }, [searchQuery]);
 
   const handleSearchChange = (e) => {
     setSearchQuery(e.target.value);
   };
 
-  const handleSearchClick = () => {
-    if (searchQuery.trim() !== "") {
-      searchProducts();
-    }
+  const handleSearchClick = (e) => {
+    setSearchQuery(e.target.value);
   };
 
   const handlePriceSortChange = (e) => {
