@@ -106,10 +106,20 @@
 
 .sort-container {
   display: flex;
-  max-width: 1400px;
-  justify-content: space-between;
+  flex-grow: 3;
+  justify-content: space-evenly;
   margin-bottom: 20px;
   margin: 0 auto;
+}
+
+.search-container {
+  flex-grow: 0.5;
+}
+
+.search-sort__wrapper {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
 }
 
 .sort-option {
@@ -124,7 +134,8 @@
   color: #333;
 }
 
-.sort-select {
+.sort-select,
+.search-input {
   padding: 8px 12px;
   font-size: 1rem;
   border: 1px solid #ccc;
@@ -132,6 +143,11 @@
   background-color: #fff;
   cursor: pointer;
   transition: all 0.3s ease;
+}
+
+.search-input {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
 }
 
 .sort-select:hover {

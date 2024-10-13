@@ -74,47 +74,49 @@ const ProductPage = () => {
   return (
     <section className="products-section">
       <h1>All Products</h1>
-      <div className="search-container">
-        <input
-          type="text"
-          placeholder="Search products..."
-          value={searchQuery}
-          onChange={handleSearchChange}
-          className="search-input"
-        />
-        <button onClick={handleSearchClick} className="search-btn">
-          Search
-        </button>
-      </div>
-
-      <div className="sort-container">
-        <div className="sort-option">
-          <label htmlFor="sort-price" className="sort-label">
-            Sort by Price:
-          </label>
-          <select
-            id="sort-price"
-            className="sort-select"
-            onChange={handlePriceSortChange}
-          >
-            <option value="default">Default</option>
-            <option value="asc">Low to High</option>
-            <option value="desc">High to Low</option>
-          </select>
+      <div className="search-sort__wrapper">
+        <div className="search-container">
+          <input
+            type="text"
+            placeholder="Search products..."
+            value={searchQuery}
+            onChange={handleSearchChange}
+            className="search-input"
+          />
+          <button onClick={handleSearchClick} className="search-btn">
+            Search
+          </button>
         </div>
-        <div className="sort-option">
-          <label htmlFor="sort-name" className="sort-label">
-            Sort by Name:
-          </label>
-          <select
-            id="sort-name"
-            className="sort-select"
-            onChange={handleNameSortChange}
-          >
-            <option value="default">Default</option>
-            <option value="asc">A-Z</option>
-            <option value="desc">Z-A</option>
-          </select>
+
+        <div className="sort-container">
+          <div className="sort-option">
+            <label htmlFor="sort-price" className="sort-label">
+              Sort by Price:
+            </label>
+            <select
+              id="sort-price"
+              className="sort-select"
+              onChange={handlePriceSortChange}
+            >
+              <option value="default">Default</option>
+              <option value="asc">Low to High</option>
+              <option value="desc">High to Low</option>
+            </select>
+          </div>
+          <div className="sort-option">
+            <label htmlFor="sort-name" className="sort-label">
+              Sort by Name:
+            </label>
+            <select
+              id="sort-name"
+              className="sort-select"
+              onChange={handleNameSortChange}
+            >
+              <option value="default">Default</option>
+              <option value="asc">A-Z</option>
+              <option value="desc">Z-A</option>
+            </select>
+          </div>
         </div>
       </div>
       <div className="product-list_wrapper">
