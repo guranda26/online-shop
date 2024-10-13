@@ -6,6 +6,18 @@ import { useFetchItems } from "../hooks/useFetchItems";
 import LoadingSpinner from "../components/Loader";
 import NotFoundPage from "../not-found";
 
+const debounce = (func, delay) => {
+  let timeoutId;
+  return (...args) => {
+    if (timeoutId) {
+      clearTimeout(timeoutId);
+    }
+    timeoutId = setTimeout(() => {
+      func(...args);
+    }, delay);
+  };
+};
+
 const ProductPage = () => {
   const url = "https://dummyjson.com/products";
   const { items: products, loading, error } = useFetchItems(url, "products");
@@ -14,27 +26,25 @@ const ProductPage = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredProducts, setFilteredProducts] = useState([]);
 
-  const searchProducts = async () => {
-    if (searchQuery.trim() === "") {
+  const searchProducts = async (query) => {
+    if (query.trim() === "") {
       setFilteredProducts([]);
     } else {
       const response = await fetch(
-        `https://dummyjson.com/products/search?q=${searchQuery}`
+        `https://dummyjson.com/products/search?q=${query}`
       );
       const data = await response.json();
       setFilteredProducts(data.products);
     }
   };
 
+  const debouncedSearchProducts = debounce(searchProducts, 300);
+
   useEffect(() => {
-    searchProducts(searchQuery);
+    debouncedSearchProducts(searchQuery);
   }, [searchQuery]);
 
   const handleSearchChange = (e) => {
-    setSearchQuery(e.target.value);
-  };
-
-  const handleSearchClick = (e) => {
     setSearchQuery(e.target.value);
   };
 
@@ -46,7 +56,6 @@ const ProductPage = () => {
     setSortByName(e.target.value);
   };
 
-  // let sortedProducts = [...(products || [])];
   let sortedProducts = [
     ...(filteredProducts.length ? filteredProducts : products || []),
   ];
@@ -83,9 +92,6 @@ const ProductPage = () => {
             onChange={handleSearchChange}
             className="search-input"
           />
-          <button onClick={handleSearchClick} className="search-btn">
-            Search
-          </button>
         </div>
 
         <div className="sort-container">
