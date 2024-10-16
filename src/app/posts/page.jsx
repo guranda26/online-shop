@@ -8,13 +8,13 @@ import SearchInput from "../components/SearchInput";
 import "./index.css";
 
 const PostsPage = async ({ searchParams }) => {
-  const { search } = searchParams;
+  const { search, sortBy = "title", order = "asc" } = searchParams;
 
   console.log(searchParams);
 
   let posts;
   try {
-    posts = await fetchPosts(search);
+    posts = await fetchPosts(search, sortBy, order);
   } catch (error) {
     return <NotFoundPage />;
   }
