@@ -25,7 +25,7 @@ const PostsPage = async ({ searchParams }) => {
 
   return (
     <section className="posts-section">
-      <SearchInput searchPath="posts" />
+      <SearchInput searchPath="posts" supportsBodySort="true" />
       <div className="product-list_wrapper">
         {posts?.map((post) => (
           <div key={post.id} className="posts">

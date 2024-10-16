@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import debounce from "lodash.debounce";
 import "../../styles/SearchInput.css";
 
-const SearchInput = ({ searchPath, supportsPriceSort = false }) => {
+const SearchInput = ({ searchPath, supportsPriceSort = false, supportsBodySort=false }) => {
   const router = useRouter();
   const [searchTerm, setSearchTerm] = useState("");
   const [sortBy, setSortBy] = useState("");
@@ -63,7 +63,7 @@ const SearchInput = ({ searchPath, supportsPriceSort = false }) => {
           >
             <option value="">No sorting</option>
             <option value="title">Title</option>
-            <option value="body">Body</option>
+            {supportsBodySort && <option value="body">Body</option>}
             {supportsPriceSort && <option value="price">Price</option>}
           </select>
           <select
