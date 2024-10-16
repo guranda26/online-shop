@@ -1,0 +1,10 @@
+.sort-select,
+.search-input {
+  padding: 8px 12px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}

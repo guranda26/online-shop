@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import "../../styles/SearchInput.css";
 
 const SearchInput = ({ searchPath }) => {
   const router = useRouter();
@@ -15,13 +16,15 @@ const SearchInput = ({ searchPath }) => {
   };
 
   return (
-    <input
-      type="text"
-      value={searchTerm}
-      onChange={handleChange}
-      placeholder={`Search ${searchPath}...`}
-      className="search-input"
-    />
+    <div className="search-container">
+      <input
+        type="text"
+        value={searchTerm}
+        onChange={handleChange}
+        placeholder={`Search ${searchPath}...`}
+        className="search-input"
+      />
+    </div>
   );
 };
 

@@ -29,6 +29,15 @@
   padding: 20px;
 }
 
+.posts-section {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.search-input {
+  margin: 20px;
+}
+
 h2 {
   font-size: 1.5rem;
   margin: 0 0 10px;
