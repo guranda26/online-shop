@@ -1,18 +1,24 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { useRouter } from "next/navigation";
+import debounce from "lodash.debounce";
 import "../../styles/SearchInput.css";
 
 const SearchInput = ({ searchPath }) => {
   const router = useRouter();
   const [searchTerm, setSearchTerm] = useState("");
 
+  const debouncedSearch = useMemo(() => {
+    return debounce((term) => {
+      router.push(`/${searchPath}?search=${term}`);
+    }, 500);
+  }, [router, searchPath]);
+
   const handleChange = async (event) => {
     const newSearchTerm = event.target.value;
     setSearchTerm(newSearchTerm);
-
-    router.push(`/${searchPath}?search=${newSearchTerm}`);
+    debouncedSearch(newSearchTerm);
   };
 
   return (
