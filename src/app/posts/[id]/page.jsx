@@ -16,6 +16,10 @@ const PostsPage = async ({ params }) => {
 
   const post = await response.json();
 
+  if (!post || !post.id) {
+    return <NotFoundPage />;
+  }
+
   return (
     <section className="post-item">
       <div key={post.id} className="posts new-post">
