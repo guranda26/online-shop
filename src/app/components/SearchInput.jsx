@@ -49,27 +49,31 @@ const SearchInput = ({ searchPath }) => {
         placeholder={`Search ${searchPath}...`}
         className="search-input"
       />
-      <label htmlFor="sort-price" className="sort-label">
-        Sort by:
-      </label>
-      <select
-        value={sortBy}
-        onChange={handleSortChange}
-        className="sort-dropdown"
-      >
-        <option value="">No sorting</option>
-        <option value="title">Title</option>
-        <option value="body">Body</option>
-      </select>
-      <select
-        value={order}
-        onChange={handleOrderChange}
-        className="order-dropdown"
-      >
-        <option value="">Select order</option>{" "}
-        <option value="asc">Ascending</option>
-        <option value="desc">Descending</option>
-      </select>
+      <div className="sort-container">
+        <div className="sort-option">
+          <label htmlFor="sort-price" className="sort-label">
+            Sort by:
+          </label>
+          <select
+            value={sortBy}
+            onChange={handleSortChange}
+            className="sort-select"
+          >
+            <option value="">No sorting</option>
+            <option value="title">Title</option>
+            <option value="body">Body</option>
+          </select>
+          <select
+            value={order}
+            onChange={handleOrderChange}
+            className="sort-select"
+          >
+            <option value="">Select order</option>{" "}
+            <option value="asc">Ascending</option>
+            <option value="desc">Descending</option>
+          </select>
+        </div>
+      </div>
     </div>
   );
 };
