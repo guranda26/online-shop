@@ -1,11 +1,8 @@
 import NotFoundPage from "../not-found";
 
 export async function fetchPosts(search = "", sortBy = "title", order = "asc") {
-  let url = `https://dummyjson.com/posts?search=${search}`;
+  const url = `https://dummyjson.com/posts/search?q=${search || ""}${sortBy ? `&sortBy=${sortBy}` : ""}${order ? `&order=${order}` : ""}`;
 
-  if (sortBy && order) {
-    url += `&sortBy=${sortBy}&order=${order}`;
-  }
   const response = await fetch(url);
   if (!response.ok) NotFoundPage;
   console.log("url", url);

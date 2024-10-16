@@ -8,7 +8,7 @@ import SearchInput from "../components/SearchInput";
 import "./index.css";
 
 const PostsPage = async ({ searchParams }) => {
-  const { search, sortBy = "title", order = "asc" } = searchParams;
+  const { search, sortBy = "", order = "" } = searchParams;
 
   console.log(searchParams);
 
@@ -25,7 +25,7 @@ const PostsPage = async ({ searchParams }) => {
 
   return (
     <section className="posts-section">
-      <SearchInput searchPath="posts" className="search" />
+      <SearchInput searchPath="posts" />
       <div className="product-list_wrapper">
         {posts?.map((post) => (
           <div key={post.id} className="posts">

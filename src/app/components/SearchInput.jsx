@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import debounce from "lodash.debounce";
 import "../../styles/SearchInput.css";
 
-const SearchInput = ({ searchPath }) => {
+const SearchInput = ({ searchPath, supportsPriceSort = false }) => {
   const router = useRouter();
   const [searchTerm, setSearchTerm] = useState("");
   const [sortBy, setSortBy] = useState("");
@@ -14,10 +14,10 @@ const SearchInput = ({ searchPath }) => {
   const debouncedSearch = useMemo(() => {
     return debounce((term, sort, order) => {
       let query = `/${searchPath}?search=${term}`;
-
       if (sort && order) {
         query += `&sortBy=${sort}&order=${order}`;
       }
+      console.log("Navigating to query:", query);
       router.push(query);
     }, 500);
   }, [router, searchPath]);
@@ -42,16 +42,18 @@ const SearchInput = ({ searchPath }) => {
 
   return (
     <div className="search-container">
-      <input
-        type="text"
-        value={searchTerm}
-        onChange={handleChange}
-        placeholder={`Search ${searchPath}...`}
-        className="search-input"
-      />
+      <div className="search-input-wrapper">
+        <input
+          type="text"
+          value={searchTerm}
+          onChange={handleChange}
+          placeholder={`Search ${searchPath}...`}
+          className="search-input"
+        />
+      </div>
       <div className="sort-container">
         <div className="sort-option">
-          <label htmlFor="sort-price" className="sort-label">
+          <label htmlFor="sort" className="sort-label">
             Sort by:
           </label>
           <select
@@ -62,13 +64,14 @@ const SearchInput = ({ searchPath }) => {
             <option value="">No sorting</option>
             <option value="title">Title</option>
             <option value="body">Body</option>
+            {supportsPriceSort && <option value="price">Price</option>}
           </select>
           <select
             value={order}
             onChange={handleOrderChange}
             className="sort-select"
           >
-            <option value="">Select order</option>{" "}
+            <option value="">Select order</option>
             <option value="asc">Ascending</option>
             <option value="desc">Descending</option>
           </select>
