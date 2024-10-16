@@ -24,16 +24,6 @@ const PostsPage = async ({ searchParams }) => {
     return <NotFoundPage />;
   }
 
-  // const handleSearch = async (searchTerm) => {
-  //   try {
-  //     posts = await fetchPosts(searchTerm);
-  //   } catch (error) {
-  //     console.error("Error fetching posts:", error);
-  //     return <NotFoundPage />;
-  //     r;
-  //   }
-  // };
-
   return (
     <section className="posts-section">
       <SearchInput searchPath="posts" className="search" />
