@@ -1,5 +1,3 @@
-// import LoadingSpinner from "../../components/Loader";
-// import { useFetchItems } from "../../hooks/useFetchItems";
 import "../index.css";
 import NotFoundPage from "../../not-found";
 import ReturnBackButton from "../../components/ReturnBackButton";
