@@ -4,8 +4,8 @@ import { AiFillDislike, AiFillLike } from "react-icons/ai";
 import { FaRegUser } from "react-icons/fa";
 import NotFoundPage from "../not-found";
 import { fetchPosts } from "../components/FetchPosts";
-import "./index.css";
 import SearchInput from "../components/SearchInput";
+import "./index.css";
 
 const PostsPage = async ({ searchParams }) => {
   const { search } = searchParams;
@@ -16,7 +16,6 @@ const PostsPage = async ({ searchParams }) => {
   try {
     posts = await fetchPosts(search);
   } catch (error) {
-    console.error("Error fetching posts:", error);
     return <NotFoundPage />;
   }
 
