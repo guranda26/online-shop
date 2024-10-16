@@ -5,6 +5,7 @@ import { FaRegUser } from "react-icons/fa";
 import NotFoundPage from "../not-found";
 import { fetchPosts } from "../components/FetchPosts";
 import "./index.css";
+import SearchInput from "../components/SearchInput";
 
 const PostsPage = async ({ searchParams }) => {
   const { search } = searchParams;
@@ -19,12 +20,23 @@ const PostsPage = async ({ searchParams }) => {
     return <NotFoundPage />;
   }
 
-  if (!posts || posts.length === 0) {
+  if (!posts) {
     return <NotFoundPage />;
   }
 
+  // const handleSearch = async (searchTerm) => {
+  //   try {
+  //     posts = await fetchPosts(searchTerm);
+  //   } catch (error) {
+  //     console.error("Error fetching posts:", error);
+  //     return <NotFoundPage />;
+  //     r;
+  //   }
+  // };
+
   return (
     <div className="product-list_wrapper">
+      <SearchInput searchPath="posts" />
       {posts?.map((post) => (
         <div key={post.id} className="posts">
           <Link href={`posts/${post.id}`} className="post-list">
