@@ -10,7 +10,18 @@ const PostsPage = async ({ searchParams }) => {
   const { search } = searchParams;
 
   console.log(searchParams);
-  const posts = await fetchPosts(search);
+
+  let posts;
+  try {
+    posts = await fetchPosts(search);
+  } catch (error) {
+    console.error("Error fetching posts:", error);
+    return <NotFoundPage />;
+  }
+
+  if (!posts || posts.length === 0) {
+    return <NotFoundPage />;
+  }
 
   return (
     <div className="product-list_wrapper">
