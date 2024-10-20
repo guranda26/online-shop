@@ -6,6 +6,7 @@ import ThirdProduct from "../../../public/assets/product-3.jpg";
 import LoadingSpinner from "../components/Loader";
 import "../../styles/MainContent.css";
 import ProductList from "../components/ProductList";
+import Dashboard from "../components/NewCardProp";
 import "../products/index.css";
 import "./index.css";
 
@@ -22,6 +23,7 @@ const Products = () => {
         <ProductList />
       </Suspense>
       <div className="digital-product-list">
+        <Dashboard />
         <Product
           heading="Apple iPhone 15 (128 GB)"
           src={FirstProduct.src}
