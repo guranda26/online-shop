@@ -6,15 +6,7 @@ import LoadingSpinner from "./app/components/Loader";
 const App = () => {
   return (
     <>
-      <Suspense
-        fallback={
-          <div>
-            <LoadingSpinner />
-          </div>
-        }
-      >
-        <MainContent />
-      </Suspense>
+      <MainContent />
     </>
   );
 };

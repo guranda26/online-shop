@@ -3,10 +3,6 @@ body {
   padding: 0;
 }
 
-body.homepage-content {
-  overflow: hidden;
-}
-
 .section {
   min-height: 100vh;
   padding: 30px;
@@ -24,7 +20,7 @@ body.homepage-content {
 
 main {
   flex: 1;
-  overflow-y: hidden;
+  /* overflow-y: hidden; */
   height: 100%;
   background-color: #f4f4f9;
   justify-content: center;
