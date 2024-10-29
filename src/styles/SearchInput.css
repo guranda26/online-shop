@@ -1,6 +1,6 @@
 .sort-container {
   display: flex;
-  flex-grow: 3;
+  /* flex-grow: 3; */
   /* justify-content: space-evenly; */
   margin: 20px;
   /* margin: 0 auto; */
@@ -9,6 +9,7 @@
 .search-container {
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 .search-sort__wrapper {
