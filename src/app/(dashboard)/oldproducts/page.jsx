@@ -3,16 +3,16 @@ import React, { lazy, Suspense } from "react";
 import FirstProduct from "../../../public/assets/product-1.jpg";
 import SecondProduct from "../../../public/assets/product-2.jpeg";
 import ThirdProduct from "../../../public/assets/product-3.jpg";
-import LoadingSpinner from "../components/Loader";
+import LoadingSpinner from "../../components/Loader";
 import "../../styles/MainContent.css";
 // import ProductList from "../components/ProductList";
 // import Dashboard from "../components/NewCardProp";
 import "../products/index.css";
 import "./index.css";
 
-const Dashboard = lazy(() => import("../components/NewCardProp"));
-const ProductList = lazy(() => import("../components/ProductList"));
-const Product = lazy(() => import("../components/Product"));
+const Dashboard = lazy(() => import("../../components/NewCardProp"));
+const ProductList = lazy(() => import("../../components/ProductList"));
+const Product = lazy(() => import("../../components/Product"));
 
 const Products = () => {
   return (

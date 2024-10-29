@@ -1,8 +1,8 @@
 import Link from "next/link";
 import "./index.css";
-import NotFoundPage from "../not-found";
-import { fetchProducts } from "../components/FetchProducts";
-import SearchInput from "../components/SearchInput";
+import NotFoundPage from "../../not-found";
+import { fetchProducts } from "../../components/FetchProducts";
+import SearchInput from "../../components/SearchInput";
 
 const ProductPage = async ({ searchParams }) => {
   const { search, sortBy = "", order = "" } = searchParams;

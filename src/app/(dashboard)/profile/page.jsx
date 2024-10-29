@@ -1,6 +1,6 @@
 import React from "react";
-import "../../styles/ProfilePage.css";
-import { usersData } from "../../utils/usersData";
+import "../../../styles/ProfilePage.css";
+import { usersData } from "../../../utils/usersData";
 
 const user = usersData();
 

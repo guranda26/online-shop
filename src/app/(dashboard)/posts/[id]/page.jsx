@@ -1,8 +1,8 @@
 import { FaEye } from "react-icons/fa6";
 import { AiFillDislike, AiFillLike } from "react-icons/ai";
 import { FaRegUser } from "react-icons/fa";
-import ReturnBackButton from "../../components/ReturnBackButton";
-import NotFoundPage from "../../not-found";
+import ReturnBackButton from "../../../components/ReturnBackButton";
+import NotFoundPage from "../../../not-found";
 import "../index.css";
 
 const PostsPage = async ({ params }) => {

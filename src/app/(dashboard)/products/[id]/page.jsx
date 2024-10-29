@@ -1,6 +1,6 @@
 import "../index.css";
-import NotFoundPage from "../../not-found";
-import ReturnBackButton from "../../components/ReturnBackButton";
+import NotFoundPage from "../../../not-found";
+import ReturnBackButton from "../../../components/ReturnBackButton";
 
 const ProductPage = async ({ params }) => {
   const { id } = params;
