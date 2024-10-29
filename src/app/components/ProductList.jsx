@@ -1,22 +1,10 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import LoadingSpinner from "./Loader";
-import NotFoundPage from "../not-found";
-import { useFetchItems } from "../hooks/useFetchItems";
-
-const debounce = (func, delay) => {
-  let timeoutId;
-  return (...args) => {
-    if (timeoutId) {
-      clearTimeout(timeoutId);
-    }
-    timeoutId = setTimeout(() => {
-      func(...args);
-    }, delay);
-  };
-};
+import NotFoundPage from "../../not-found";
+import { useFetchItems } from "../../hooks/useFetchItems";
 
 const ProductList = () => {
   const url = "https://dummyjson.com/products";
@@ -27,6 +15,19 @@ const ProductList = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredProducts, setFilteredProducts] = useState([]);
 
+  const debouncedSearchProducts = useMemo(() => {
+    let timeoutId;
+    return (query) => {
+      if (timeoutId) {
+        clearTimeout(timeoutId);
+      }
+      timeoutId = setTimeout(() => {
+        searchProducts(query);
+      }, 300);
+    };
+  }, []);
+
+  // Search products logic
   const searchProducts = async (query) => {
     if (query.trim() === "") {
       setFilteredProducts([]);
@@ -39,11 +40,10 @@ const ProductList = () => {
     }
   };
 
-  const debouncedSearchProducts = debounce(searchProducts, 300);
-
+  // Trigger search when searchQuery changes
   useEffect(() => {
     debouncedSearchProducts(searchQuery);
-  }, [searchQuery]);
+  }, [searchQuery, debouncedSearchProducts]);
 
   const handleSearchChange = (e) => {
     setSearchQuery(e.target.value);

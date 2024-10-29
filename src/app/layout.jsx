@@ -1,7 +1,5 @@
 import "../index.css";
 import "../styles/Header.css";
-import Footer from "./components/Footer";
-import Header from "./components/Header";
 
 export const metadata = {
   title: "eCommerce app",
@@ -12,9 +10,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <Header />
         <main>{children}</main>
-        <Footer />
       </body>
     </html>
   );

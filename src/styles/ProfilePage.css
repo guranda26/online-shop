@@ -9,6 +9,10 @@
   font-family: "Arial", sans-serif;
 }
 
+.form-input span:not(last-of-type) {
+  margin-right: 5px;
+}
+
 .profile-title {
   font-size: 32px;
   color: #fff;
