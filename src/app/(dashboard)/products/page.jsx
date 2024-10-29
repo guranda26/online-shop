@@ -9,6 +9,7 @@ import { handleDelete } from "../../modules/handleDelete";
 import { addProduct } from "../../modules/addProduct";
 import { editProduct } from "../../modules/editProduct";
 import "../../../styles/SearchInput.css";
+import NotFoundPage from "../../not-found";
 
 const ProductPage = ({ searchParams }) => {
   const { search, sortBy = "", order = "" } = searchParams;
@@ -38,7 +39,7 @@ const ProductPage = ({ searchParams }) => {
   }, [search, sortBy, order]);
 
   if (error) {
-    return <div>{error}</div>;
+    return <NotFoundPage />;
   }
 
   const onDelete = (id) => {
