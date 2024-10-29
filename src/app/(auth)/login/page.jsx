@@ -65,14 +65,6 @@ export default function LoginPage() {
         </form>
 
         {error && <p className="error-message">{error}</p>}
-        <div className="login-footer">
-          <p className="login-footer-txt">
-            Forgot <span className="highlight">Username / Password</span>?
-          </p>
-          <p className="login-footer-txt">
-            Don't have an account? <span className="highlight">Sign Up</span>
-          </p>
-        </div>
       </div>
     </div>
   );
