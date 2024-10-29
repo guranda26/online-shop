@@ -1,71 +1,113 @@
+"use client";
+
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { FaEye } from "react-icons/fa6";
-import { AiFillDislike, AiFillLike } from "react-icons/ai";
-import { FaRegUser } from "react-icons/fa";
-import NotFoundPage from "../../not-found";
 import { fetchPosts } from "../../components/FetchPosts";
 import SearchInput from "../../components/SearchInput";
+import { handleDelete } from "../../modules/handleDelete";
+import { addPost } from "../../modules/addPost";
+import { editPost } from "../../modules/editPost";
+import NotFoundPage from "../../not-found";
+import "../../../index.css";
 import "./index.css";
 
-const PostsPage = async ({ searchParams }) => {
+const PostsPage = ({ searchParams }) => {
   const { search, sortBy = "", order = "" } = searchParams;
+  const [posts, setPosts] = useState([]);
+  const [error, setError] = useState(null);
+  const [editingPost, setEditingPost] = useState(null);
 
-  console.log(searchParams);
+  const [newPost, setNewPost] = useState({
+    title: "",
+    body: "",
+  });
 
-  let posts;
-  try {
-    posts = await fetchPosts(search, sortBy, order);
-  } catch (error) {
+  useEffect(() => {
+    const loadPosts = async () => {
+      try {
+        const fetchedPosts = await fetchPosts(search, sortBy, order);
+        setPosts(fetchedPosts);
+      } catch (error) {
+        console.error(error);
+        setError("Error loading posts");
+      }
+    };
+    loadPosts();
+  }, [search, sortBy, order]);
+
+  if (error) {
     return <NotFoundPage />;
   }
 
-  if (!posts) {
-    return <NotFoundPage />;
-  }
+  const onDelete = (id) => {
+    handleDelete(posts, "posts", id, setPosts);
+  };
+
+  const onEdit = (post) => {
+    setNewPost(post);
+    setEditingPost(post);
+  };
+
+  const handleSubmit = () => {
+    if (editingPost) {
+      editPost(posts, setPosts, { ...editingPost, ...newPost });
+      setEditingPost(null);
+    } else {
+      addPost(posts, setPosts, newPost, setNewPost);
+    }
+    setNewPost({ title: "", body: "" });
+  };
 
   return (
     <section className="posts-section">
-      <SearchInput searchPath="posts" supportsBodySort="true" />
-      <div className="product-list_wrapper">
-        {posts?.map((post) => (
-          <div key={post.id} className="posts">
-            <Link href={`posts/${post.id}`} className="post-list">
-              <div className="post-content">
-                <h2>{post.title}</h2>
-                <p>{post.body}</p>
-                <div className="post-tags">
-                  {post.tags.map((tag) => (
-                    <span key={tag} className="post-tag">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </div>
-              <div className="post-reactions">
-                <span className="reactions">
-                  <AiFillLike /> Likes:{" "}
-                  <span className="post-reaction">{post.reactions.likes}</span>
-                </span>
-                <span className="reactions">
-                  <AiFillDislike /> Dislikes:{" "}
-                  <span className="post-reaction">
-                    {post.reactions.dislikes}
-                  </span>
-                </span>
-                <span className="reactions">
-                  <FaEye /> Views:{" "}
-                  <span className="post-reaction">{post.views}</span>
-                </span>
-                <span>
-                  <FaRegUser /> USER:{" "}
-                  <span className="post-reaction">{post.userId}</span>
-                </span>
-              </div>
+      <h1>All Posts</h1>
+      <div className="search-sort__wrapper">
+        <SearchInput searchPath="posts" supportsBodySort="true" />
+      </div>
+      <div className="search-container">
+        <div className="search-input-wrapper">
+          <input
+            type="text"
+            placeholder="Title"
+            value={newPost.title}
+            onChange={(e) => setNewPost({ ...newPost, title: e.target.value })}
+            className="search-input"
+          />
+          <textarea
+            placeholder="Body"
+            value={newPost.body}
+            onChange={(e) => setNewPost({ ...newPost, body: e.target.value })}
+            className="search-input"
+          />
+          <button onClick={handleSubmit} className="search-btn">
+            {editingPost ? "Save Changes" : "Add Post"}
+          </button>
+        </div>
+      </div>
+
+      <div className="post-list_wrapper">
+        {posts.map(({ id, title, body }) => (
+          <div key={id} className="posts">
+            <Link href={`posts/${id}`} className="post-list">
+              <h2>{title}</h2>
+              <p>{body}</p>
             </Link>
+            <div className="buttons">
+              <button className="search-btn delete" onClick={() => onDelete(id)}>
+                Delete
+              </button>
+              <button
+                className="search-btn edit"
+                onClick={() => onEdit({ id, title, body })}
+              >
+                Edit
+              </button>
+            </div>
           </div>
         ))}
       </div>
     </section>
   );
 };
+
 export default PostsPage;

@@ -24,6 +24,11 @@
   margin-right: 5px;
 }
 
+.search-input-wrapper {
+  display: flex;
+  align-items: center;
+}
+
 .sort-label {
   font-weight: bold;
   margin-right: 10px;
