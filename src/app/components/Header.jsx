@@ -1,7 +1,9 @@
 import React from "react";
 import Link from "next/link";
+import "../../styles/LogoutButton.css";
 import "../../styles/Header.css";
 import { CgProfile } from "react-icons/cg";
+import LogoutButton from "./LogoutButton";
 
 const Header = () => {
   return (
@@ -30,6 +32,9 @@ const Header = () => {
             <Link href="/profile">
               <CgProfile className="profile" />
             </Link>
+          </li>
+          <li className="nav-item">
+            <LogoutButton />
           </li>
         </ul>
       </nav>
