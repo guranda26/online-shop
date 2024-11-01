@@ -50,7 +50,7 @@ const Homepage = () => {
   return (
     <div
       id="home"
-      className="min-h-[85vh] bg-[#f4d4ecad] flex items-center justify-center overflow-hidden"
+      className="min-h-[85vh] bg-[#f4d4ecad] flex items-center justify-center overflow-hidden w-screen"
     >
       <div className="text-gray-700 font-semibold">
         <h1 className="font-poppins mb-5 text-5xl">Welcome to the Home Page</h1>
