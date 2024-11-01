@@ -10,7 +10,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <div className="flex">{children}</div>
+        <div className="flex-col">{children}</div>
       </body>
     </html>
   );
