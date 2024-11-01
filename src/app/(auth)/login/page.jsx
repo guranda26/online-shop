@@ -35,7 +35,7 @@ export default function LoginPage() {
 
   return (
     <div className="login-page__wrapper">
-      <h1 className="section-header">Login form</h1>
+      <h1 className="text-4xl font-bold text-[#007bff]">Login form</h1>
 
       <div className="login-form-wrapper">
         <form className="login-form" onSubmit={handleSubmit}>
