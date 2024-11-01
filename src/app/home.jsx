@@ -25,7 +25,7 @@ const Homepage = () => {
 
         const data = await response.json();
         if (response.ok) {
-          setUser(data); // Set user data if response is successful
+          setUser(data);
         } else {
           console.error("Error fetching user data");
           localStorage.removeItem("accessToken");
@@ -33,7 +33,7 @@ const Homepage = () => {
       } catch (error) {
         console.error("An error occurred:", error);
       } finally {
-        setLoading(false); // Stop loading once fetching is done
+        setLoading(false);
       }
     };
 
@@ -48,18 +48,21 @@ const Homepage = () => {
     );
   }
   return (
-    <div id="home" className="home-section">
-      <div className="home-content">
-        <h1 className="font-poppins">Welcome to the Home Page</h1>
+    <div
+      id="home"
+      className="min-h-[85vh] bg-[#f4d4ecad] flex items-center justify-center overflow-hidden"
+    >
+      <div className="text-gray-700 font-semibold">
+        <h1 className="font-poppins mb-5 text-5xl">Welcome to the Home Page</h1>
         {user ? (
-          <p className="home-txt">
+          <p className="home-txt text-2xl">
             Hello, <strong className="highlight">{user.firstName}</strong>!
             Explore the app and manage your products and blog posts.
           </p>
         ) : (
-          <p className="home-txt">You are not logged in.</p>
+          <p className="text-2xl">You are not logged in.</p>
         )}
-        <p>
+        <p className="mt-2 text-2xl">
           We are dedicated to providing the best services for our customers.
         </p>
       </div>
