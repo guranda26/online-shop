@@ -125,12 +125,12 @@ const ProductPage = ({ searchParams }) => {
               </div>
             </Link>
             <div className="buttons">
-              <button className="btn">Add to cart</button>
+              <button className="p-5 bg-blue-600 w-2">Add to cart</button>
               <button className="btn delete" onClick={() => onDelete(id)}>
                 Delete
               </button>
               <button
-                className="btn edit"
+                className="text-3xl font-bold underline"
                 onClick={() =>
                   onEdit({ id, title, description, price, image: images[0] })
                 }

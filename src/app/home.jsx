@@ -48,9 +48,9 @@ const Homepage = () => {
     );
   }
   return (
-    <div id="home" className="home-section">
+    <div id="home" className="min-h-[100vh]">
       <div className="home-content">
-        <h1>Welcome to the Home Page</h1>
+        <h1 className="font-poppins">Welcome to the Home Page</h1>
         {user ? (
           <p className="home-txt">
             Hello, <strong className="highlight">{user.firstName}</strong>!
