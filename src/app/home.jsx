@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import LoadingSpinner from "./components/Loader";
+import "../index.css";
 
 const Homepage = () => {
   const [user, setUser] = useState(null);
@@ -48,25 +49,26 @@ const Homepage = () => {
     );
   }
   return (
-    <div
-      id="home"
-      className="min-h-[85vh] bg-[#f4d4ecad] flex items-center justify-center overflow-hidden w-screen"
-    >
-      <div className="text-gray-700 font-semibold">
-        <h1 className="font-poppins mb-5 text-5xl">Welcome to the Home Page</h1>
-        {user ? (
-          <p className="home-txt text-2xl">
-            Hello, <strong className="highlight">{user.firstName}</strong>!
-            Explore the app and manage your products and blog posts.
+    <section className="dark" id="home">
+      <div className="min-h-[85vh] bg-background text-textColor flex items-center justify-center overflow-hidden w-screen">
+        <div className="font-semibold">
+          <h1 className="font-poppins mb-5 text-5xl text-textColor">
+            Welcome to the Home Page
+          </h1>
+          {user ? (
+            <p className="home-txt text-2xl text-textColor">
+              Hello, <strong className="highlight">{user.firstName}</strong>!
+              Explore the app and manage your products and blog posts.
+            </p>
+          ) : (
+            <p className="text-2xl text-textColor">You are not logged in.</p>
+          )}
+          <p className="mt-2 text-2xl text-textColor">
+            We are dedicated to providing the best services for our customers.
           </p>
-        ) : (
-          <p className="text-2xl">You are not logged in.</p>
-        )}
-        <p className="mt-2 text-2xl">
-          We are dedicated to providing the best services for our customers.
-        </p>
+        </div>
       </div>
-    </div>
+    </section>
   );
 };
 

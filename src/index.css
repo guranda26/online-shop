@@ -2,6 +2,25 @@
 @tailwind components;
 @tailwind utilities;
 
+/* :root {
+  --light-bg: #f4d4ecad;
+  --dark-bg: #533864ad;
+} */
+
+.light {
+  --bg: #fadff3ad;
+  --text: #0d0114;
+}
+
+.dark {
+  --bg: #160521e8;
+  --text: #bcb3c2e4;
+}
+
+.system {
+  --light-bg: #f4d4ecad;
+}
+
 :root,
 body {
   margin: 0;
