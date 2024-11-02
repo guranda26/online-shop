@@ -4,6 +4,7 @@ import "../../styles/LogoutButton.css";
 import "../../styles/Header.css";
 import { CgProfile } from "react-icons/cg";
 import LogoutButton from "./LogoutButton";
+import ThemeToggle from "./ThemeToggle";
 
 const Header = () => {
   return (
@@ -37,6 +38,7 @@ const Header = () => {
             <LogoutButton />
           </li>
         </ul>
+        <ThemeToggle />
       </nav>
     </header>
   );
