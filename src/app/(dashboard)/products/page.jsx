@@ -62,7 +62,7 @@ const ProductPage = ({ searchParams }) => {
   };
 
   return (
-    <section className="products-section">
+    <section className="products-section bg-background text-textColor">
       <h1>All Products</h1>
       <div className="search-sort__wrapper">
         <SearchInput searchPath="products" supportsPriceSort="true" />

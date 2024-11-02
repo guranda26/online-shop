@@ -5,6 +5,7 @@ import "../../styles/Header.css";
 import { CgProfile } from "react-icons/cg";
 import LogoutButton from "./LogoutButton";
 import ThemeToggle from "./ThemeToggle";
+import ThemeButton from "./ThemeButton";
 
 const Header = () => {
   return (
@@ -38,6 +39,7 @@ const Header = () => {
             <LogoutButton />
           </li>
         </ul>
+        <ThemeButton />
         <ThemeToggle />
       </nav>
     </header>

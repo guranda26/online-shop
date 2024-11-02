@@ -49,7 +49,7 @@ const Homepage = () => {
     );
   }
   return (
-    <section className="dark" id="home">
+    <section id="home">
       <div className="min-h-[85vh] bg-background text-textColor flex items-center justify-center overflow-hidden w-screen">
         <div className="font-semibold">
           <h1 className="font-poppins mb-5 text-5xl text-textColor">
