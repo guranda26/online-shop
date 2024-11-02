@@ -113,8 +113,8 @@ const ProductPage = ({ searchParams }) => {
 
       <div className="product-list_wrapper">
         {products.map(({ id, images, title, description, price }) => (
-          <div key={id} className="products">
-            <Link href={`products/${id}`} className="product-list">
+          <div key={id} className="products product-list">
+            <Link href={`products/${id}`}>
               <div className="image-container">
                 <img src={images[0]} alt={title} className="product-img" />
               </div>
@@ -123,27 +123,26 @@ const ProductPage = ({ searchParams }) => {
                 <p>{description}</p>
                 <p className="price">Price: ${price}</p>
               </div>
-
-              <div className="flex gap-2 text-center justify-center font-semibold mt-4">
-                <button className="py-2 px-3 bg-blue-600 rounded-md text-white w-[110px]">
-                  Add to cart
-                </button>
-                <button
-                  className="py-2 px-3 bg-red-600 rounded-md text-white w-[110px]"
-                  onClick={() => onDelete(id)}
-                >
-                  Delete
-                </button>
-                <button
-                  className="py-2 px-3 bg-blue-400 rounded-md text-white w-[110px]"
-                  onClick={() =>
-                    onEdit({ id, title, description, price, image: images[0] })
-                  }
-                >
-                  Edit
-                </button>
-              </div>
             </Link>
+            <div className="flex gap-2 text-center justify-center font-semibold mt-4">
+              <button className="py-2 px-3 bg-blue-600 rounded-md text-white w-[110px]">
+                Add to cart
+              </button>
+              <button
+                className="py-2 px-3 bg-red-600 rounded-md text-white w-[110px]"
+                onClick={() => onDelete(id)}
+              >
+                Delete
+              </button>
+              <button
+                className="py-2 px-3 bg-blue-400 rounded-md text-white w-[110px]"
+                onClick={() =>
+                  onEdit({ id, title, description, price, image: images[0] })
+                }
+              >
+                Edit
+              </button>
+            </div>
           </div>
         ))}
       </div>
