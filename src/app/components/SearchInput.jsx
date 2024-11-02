@@ -5,7 +5,11 @@ import { useRouter } from "next/navigation";
 import debounce from "lodash.debounce";
 import "../../styles/SearchInput.css";
 
-const SearchInput = ({ searchPath, supportsPriceSort = false, supportsBodySort=false }) => {
+const SearchInput = ({
+  searchPath,
+  supportsPriceSort = false,
+  supportsBodySort = false,
+}) => {
   const router = useRouter();
   const [searchTerm, setSearchTerm] = useState("");
   const [sortBy, setSortBy] = useState("");
@@ -51,9 +55,9 @@ const SearchInput = ({ searchPath, supportsPriceSort = false, supportsBodySort=f
           className="search-input"
         />
       </div>
-      <div className="sort-container">
-        <div className="sort-option">
-          <label htmlFor="sort" className="sort-label">
+      <div className="sort-container text-formText">
+        <div className="sort-option text-textBlack">
+          <label htmlFor="sort" className="sort-label text-formText">
             Sort by:
           </label>
           <select

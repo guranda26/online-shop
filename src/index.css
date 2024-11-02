@@ -2,19 +2,29 @@
 @tailwind components;
 @tailwind utilities;
 
-/* :root {
-  --light-bg: #f4d4ecad;
-  --dark-bg: #533864ad;
-} */
+:root {
+  --text-black: #000;
+  /* --dark-bg: #533864ad; */
+  /* --form-text: #fff; */
+}
 
 .light {
   --bg: #fadff3ad;
   --text: #0d0114;
+  --contact-bg: #afcde0;
+  --form-bg: #eaeaea;
+  --post-bg: #fff;
+  --post-form: inherit;
 }
 
 .dark {
   --bg: #160521e8;
   --text: #bcb3c2e4;
+  --contact-bg: #475259;
+  --form-bg: #a5a5a5;
+  --form-text: #fff;
+  --post-bg: #2d2d2d;
+  --post-form: #fddcb7;
 }
 
 .system {

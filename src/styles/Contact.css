@@ -6,7 +6,6 @@
   max-width: 500px;
   margin: 20px auto;
   padding: 30px;
-  background-color: #f4f4f9;
   border-radius: 8px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
@@ -39,7 +38,7 @@
 }
 
 .form input[type="submit"] {
-  background-color: #757585;
+  background-color: #4a4a5f;
   color: white;
   border: none;
   padding: 10px 20px;

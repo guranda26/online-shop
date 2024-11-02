@@ -59,19 +59,19 @@ const PostsPage = ({ searchParams }) => {
   };
 
   return (
-    <section className="posts-section">
-      <h1>All Posts</h1>
+    <section className="posts-section p-7 bg-postBackground w-screen text-formText">
+      <h1 className="text-center text-3xl font-semibold">All Posts</h1>
       <div className="search-sort__wrapper">
         <SearchInput searchPath="posts" supportsBodySort="true" />
       </div>
       <div className="search-container">
-        <div className="search-input-wrapper">
+        <div className="search-input-wrapper text-textBlack">
           <input
             type="text"
             placeholder="Title"
             value={newPost.title}
             onChange={(e) => setNewPost({ ...newPost, title: e.target.value })}
-            className="search-input"
+            className="search-input text-black"
           />
           <textarea
             placeholder="Body"
@@ -87,13 +87,16 @@ const PostsPage = ({ searchParams }) => {
 
       <div className="post-list_wrapper">
         {posts.map(({ id, title, body }) => (
-          <div key={id} className="posts">
+          <div key={id} className="posts bg-postFormBg">
             <Link href={`posts/${id}`} className="post-list">
               <h2>{title}</h2>
               <p>{body}</p>
             </Link>
             <div className="buttons">
-              <button className="search-btn delete" onClick={() => onDelete(id)}>
+              <button
+                className="search-btn delete"
+                onClick={() => onDelete(id)}
+              >
                 Delete
               </button>
               <button

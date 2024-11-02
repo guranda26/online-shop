@@ -11,7 +11,13 @@ module.exports = {
     extend: {
       colors: {
         background: "var(--bg)",
+        contactBackground: "var(--contact-bg)",
         textColor: "var(--text)",
+        formBackground: "var(--form-bg)",
+        formText: "var(--form-text)",
+        postBackground: "var(--post-bg)",
+        postFormBg: "var(--post-form)",
+        textBlack: "var(--text-black)",
       },
     },
   },

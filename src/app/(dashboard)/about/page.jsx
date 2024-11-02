@@ -3,8 +3,8 @@ import "../../../styles/About.css";
 
 const About = () => {
   return (
-    <section id="about" className="dark w-screen">
-      <div className="bg-background text-textColor h-screen flex flex-col gap-5 p-10 text-2xl items-center leading-9">
+    <section id="about" className="w-screen bg-background text-textColor">
+      <div className="h-screen flex flex-col gap-5 p-10 text-2xl items-center leading-9">
         <div className="w-[50%] flex flex-col gap-5">
           <h2 className="text-4xl font-semibold">About Us</h2>
           <p>
