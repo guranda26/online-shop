@@ -2,8 +2,6 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-// import Button from "../../components/buttons/Button";
-// import Loading from "../../loading";
 import { useAuthRedirect } from "../../hooks/useAuthRedirect";
 import { useAuth } from "../../hooks/useAuth";
 import "./LoginPage.css";
@@ -34,7 +32,7 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="login-page__wrapper">
+    <div className="login-page__wrapper text-formText">
       <h1 className="text-4xl font-bold text-[#007bff]">Login form</h1>
 
       <div className="login-form-wrapper">

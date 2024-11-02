@@ -22,7 +22,7 @@ body {
 
 .login-page__wrapper {
   border-radius: 1rem;
-  padding: 4rem;
+  padding: 6rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -55,7 +55,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2rem;
+  gap: 4rem;
   width: 100%;
 }
 
@@ -76,8 +76,8 @@ body {
   border: 1px solid #d1d1d1;
   border-radius: 0.5rem;
   padding: 1rem;
-  width: 100%;
-  max-width: 30rem;
+  width: 25rem;
+  max-width: 40rem;
   height: 3.5rem;
   font-size: 1.4rem;
   transition: all 0.3s;
@@ -115,4 +115,10 @@ body {
   background-color: #0056b3;
   box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
   opacity: 0.95;
+}
+
+@media (max-width: 768px) {
+  .login-input {
+    width: 100%;
+  }
 }
