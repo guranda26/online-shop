@@ -38,8 +38,11 @@ const Header = () => {
           <li className="nav-item">
             <LogoutButton />
           </li>
+          <li className="nav-item">
+            {" "}
+            <ThemeButton />
+          </li>
         </ul>
-        <ThemeButton />
         <ThemeToggle />
       </nav>
     </header>

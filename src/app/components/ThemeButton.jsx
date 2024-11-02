@@ -1,12 +1,19 @@
 "use client";
 
 import { useTheme } from "next-themes";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { FaMoon } from "react-icons/fa6";
 import { MdLightMode } from "react-icons/md";
 
 const ThemeButton = () => {
   const { resolvedTheme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => setMounted(true), []);
+
+  if (!mounted) {
+    return null;
+  }
 
   return (
     <div
