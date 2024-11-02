@@ -18,7 +18,7 @@ const ThemeButton = () => {
   return (
     <div
       onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
-      className="flex items-center justify-center cursor-pointer bg-gray-300 dark:bg-gray-700 ml-auto mr-10 h-10 rounded-full transition-colors duration-300 ease-in-out w-[80px]"
+      className="flex items-center justify-center cursor-pointer bg-gray-300 dark:bg-[#0d0114] ml-auto mr-10 h-10 rounded-full transition-colors duration-300 ease-in-out w-[80px]"
     >
       {resolvedTheme === "dark" ? (
         <MdLightMode className="text-white-300 font-bold" />

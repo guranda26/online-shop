@@ -2,7 +2,7 @@ import "../../styles/Footer.css";
 
 const Footer = () => {
   return (
-    <footer className="footer">
+    <footer className="footer bg-footerBg font-semibold text-footerText">
       <nav className="footer-nav">
         <ul>
           <li>

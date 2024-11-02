@@ -18,6 +18,8 @@ module.exports = {
         postBackground: "var(--post-bg)",
         postFormBg: "var(--post-form)",
         textBlack: "var(--text-black)",
+        footerBg: "var(--footer-bg)",
+        footerText: "var(--footer-text)",
       },
     },
   },
