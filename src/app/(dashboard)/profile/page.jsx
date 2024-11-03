@@ -22,7 +22,7 @@ const Profile = () => {
 
   return (
     user && (
-      <section className="profile-page">
+      <section className="profile-page bg-profile">
         <h1 className="profile-title">About User</h1>
         <div className="profile-card">
           <div className="profile-image-container mx-auto">

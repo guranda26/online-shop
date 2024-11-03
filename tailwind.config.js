@@ -20,6 +20,10 @@ module.exports = {
         textBlack: "var(--text-black)",
         footerBg: "var(--footer-bg)",
         footerText: "var(--footer-text)",
+        profileBackground: "var(--profile-bg)",
+      },
+      backgroundImage: {
+        profile: "var(--profile-bg)",
       },
     },
   },

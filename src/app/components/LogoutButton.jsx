@@ -1,13 +1,9 @@
 "use client";
-import { useRouter } from "next/navigation";
-import { handleLogout } from "@auth0/nextjs-auth0";
 import "../../styles/LogoutButton.css";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import { IoLogOutOutline } from "react-icons/io5";
 
 export default function LogoutButton() {
-  const router = useRouter();
-
   const { logout } = useUser;
 
   const logoutHandler = () => {

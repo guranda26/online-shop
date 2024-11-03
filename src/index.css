@@ -15,6 +15,7 @@
   --post-form: inherit;
   --footer-bg: #fff0dd;
   --footer-text: inherit;
+  --profile-bg: linear-gradient(135deg, #8232d8 0%, #3a80f8 100%);
 }
 
 .dark {
@@ -27,6 +28,7 @@
   --post-form: #fddcb7;
   --footer-bg: #655050;
   --footer-text: #fff0dd;
+  --profile-bg: linear-gradient(135deg, #401a69 0%, #224a90 100%);
 }
 
 .system {
