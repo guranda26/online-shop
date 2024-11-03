@@ -1,43 +1,43 @@
 "use client";
 
 import { useState } from "react";
+import { useUser } from "@auth0/nextjs-auth0/client";
 
 export function useAuth() {
+  const { loginWithRedirect, user, error: authError, isLoading } = useUser();
   const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(false);
+  // const [loading, setLoading] = useState(false);
 
-  const checkAuth = async (username, password) => {
-    setLoading(true);
-    setError(null);
+  const checkAuth = async () => {
+    // setLoading(true);
+    // setError(null);
 
     try {
-      const res = await fetch("https://dummyjson.com/auth/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          username,
-          password,
-          expiresInMins: 60 * 24 * 7,
-        }),
-      });
+      await loginWithRedirect();
+      // const res = await fetch("https://dummyjson.com/auth/login", {
+      //   method: "POST",
+      //   headers: { "Content-Type": "application/json" },
+      //   body: JSON.stringify({
+      //     username,
+      //     password,
+      //     expiresInMins: 60 * 24 * 7,
+      //   }),
+      // });
 
-      if (!res.ok) {
-        throw new Error("Invalid username or password. Please try again.");
-      }
+      // if (!res.ok) {
+      //   throw new Error("Invalid username or password. Please try again.");
+      // }
 
-      const data = await res.json();
+      // const data = await res.json();
 
-      // If login is successful, store authentication status and navigate to home
-      localStorage.setItem("isAuth", JSON.stringify(true));
-      localStorage.setItem("accessToken", data.accessToken);
-      return true;
+      // // If login is successful, store authentication status and navigate to home
+      // localStorage.setItem("isAuth", JSON.stringify(true));
+      // localStorage.setItem("accessToken", data.accessToken);
+      // return true;
     } catch (err) {
-      setError("Invalid username or password. Please try again.");
-      return false;
-    } finally {
-      setLoading(false);
+      setError("Login failed. Please try again.");
     }
   };
 
-  return { checkAuth, loading, error, setError };
+  return { checkAuth, loading: isLoading, error: error || authError, user };
 }

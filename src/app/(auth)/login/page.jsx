@@ -1,69 +1,21 @@
 "use client";
 
-import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 import { useAuthRedirect } from "../../hooks/useAuthRedirect";
 import { useAuth } from "../../hooks/useAuth";
-import "./LoginPage.css";
 import LoadingSpinner from "../../components/Loader";
 
 export default function LoginPage() {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const router = useRouter();
-
   const loadingRedirect = useAuthRedirect();
-  const { checkAuth, loading, error, setError } = useAuth();
+  const { checkAuth, loading } = useAuth();
 
-  async function handleSubmit(e) {
-    e.preventDefault();
-    if (!username || !password) {
-      setError("Please enter both username and password.");
-      return;
-    }
-    const success = await checkAuth(username, password);
-    if (success) {
-      router.push("/home");
-    }
-  }
+  useEffect(() => {
+    checkAuth();
+  }, [checkAuth]);
 
   if (loadingRedirect || loading) {
     return <LoadingSpinner />;
   }
 
-  return (
-    <div className="login-page__wrapper text-formText">
-      <h1 className="text-4xl font-bold text-[#007bff]">Login form</h1>
-
-      <div className="login-form-wrapper">
-        <form className="login-form" onSubmit={handleSubmit}>
-          <label className="login-input__label" htmlFor="username">
-            <p className="login-label__txt">Username:</p>
-            <input
-              value={username}
-              className="login-input"
-              type="text"
-              id="username"
-              onChange={(e) => setUsername(e.target.value)}
-            />
-          </label>
-          <label className="login-input__label" htmlFor="password">
-            <p className="login-label__txt">Password:</p>
-            <input
-              value={password}
-              className="login-input"
-              type="password"
-              id="password"
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </label>
-          <button type="submit" className=" login-button">
-            Sign in
-          </button>
-        </form>
-
-        {error && <p className="error-message">{error}</p>}
-      </div>
-    </div>
-  );
+  return null;
 }

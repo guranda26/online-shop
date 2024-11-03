@@ -13,7 +13,7 @@ export default function LogoutButton() {
     // localStorage.clear();
     // router.push("/api/auth/logout?returnTo=/login");
 
-    logout({ returnTo: "/login" });
+    logout({ returnTo: "/api/auth/login" });
   };
 
   return (

@@ -1,19 +1,24 @@
 "use client";
+
+import { useEffect, useState } from "react";
+import { useUser } from "@auth0/nextjs-auth0/client";
 import { useRouter } from "next/navigation";
-import { useState, useEffect } from "react";
 
 export function useAuthCheck() {
-  const [loading, setLoading] = useState(true);
+  const { user, isLoading } = useUser();
+
   const router = useRouter();
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const isAuthenticated = JSON.parse(localStorage.getItem("isAuth"));
-    if (!isAuthenticated) {
-      router.push("/login");
-    } else {
-      setLoading(false);
+    if (!isLoading) {
+      if (!user) {
+        router.push("/api/auth/login");
+      } else {
+        setLoading(false);
+      }
     }
-  }, [router]);
+  }, [user, isLoading, router]);
 
   return loading;
 }
