@@ -1,9 +1,14 @@
 .logout-btn {
   padding: 8px;
-  width: 2.8rem;
-  height: 2.8rem;
+  /* width: 2.8rem; */
   cursor: pointer;
 }
+
+.logout-btn a {
+  height: 4.8rem;
+  width: 4.8rem;
+}
+
 .logout-btn:hover svg {
-  fill: #ec5e2a;
+  fill: #160521e8;
 }
