@@ -1,5 +1,6 @@
 import "../index.css";
 import "../styles/Header.css";
+import { UserProvider } from "@auth0/nextjs-auth0/client";
 import Providers from "./components/providers";
 
 export const metadata = {
@@ -10,11 +11,13 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body>
-        <Providers>
-          <div className="flex-col">{children}</div>
-        </Providers>
-      </body>
+      <UserProvider>
+        <body>
+          <Providers>
+            <div className="flex-col">{children}</div>
+          </Providers>
+        </body>
+      </UserProvider>
     </html>
   );
 }

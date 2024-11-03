@@ -56,15 +56,20 @@ const Homepage = () => {
             Welcome to the Home Page
           </h1>
           {user ? (
-            <p className="home-txt text-2xl text-textColor">
-              Hello, <strong className="highlight">{user.firstName}</strong>!
-              Explore the app and manage your products and blog posts.
-            </p>
+            <>
+              <p className="home-txt text-2xl text-textColor">
+                Hello, <strong className="highlight">{user.firstName}</strong>!
+                Explore the app and manage your products and blog posts.
+              </p>
+            </>
           ) : (
             <p className="text-2xl text-textColor">You are not logged in.</p>
           )}
           <p className="mt-2 text-2xl text-textColor">
             We are dedicated to providing the best services for our customers.
+          </p>
+          <p>
+            Go to the <a href="/api/auth/login">Login</a> page{" "}
           </p>
         </div>
       </div>
