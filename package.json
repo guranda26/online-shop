@@ -22,9 +22,9 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "npx serve@latest ./build",
+    "dev": "i18nexus pull && next dev",
+    "build": "i18nexus pull && next build",
+    "start": "i18nexus pull && npx serve@latest ./build",
     "lint": "eslint .",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -49,6 +49,7 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.4.20",
+    "i18nexus-cli": "^3.5.0",
     "postcss": "^8.4.47",
     "tailwindcss": "^3.4.14"
   }
