@@ -69,9 +69,6 @@ const Homepage = () => {
           <p className="mt-2 text-2xl text-textColor">
             We are dedicated to providing the best services for our customers.
           </p>
-          <p>
-            Go to the <a href="/api/auth/login">Login</a> page{" "}
-          </p>
         </div>
       </div>
     </section>
