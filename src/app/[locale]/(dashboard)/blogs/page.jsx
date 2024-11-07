@@ -2,8 +2,8 @@
 
 import React from "react";
 import Link from "next/link";
-import "../../../styles/BlogItems.css";
-import { postsData } from "../../../utils/postsData";
+import "../../../../styles/BlogItems.css";
+import { postsData } from "../../../../utils/postsData";
 
 const posts = postsData();
 

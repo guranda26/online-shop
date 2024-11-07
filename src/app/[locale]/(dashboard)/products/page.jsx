@@ -8,7 +8,7 @@ import SearchInput from "../../../components/SearchInput";
 import { handleDelete } from "../../../modules/handleDelete";
 import { addProduct } from "../../../modules/addProduct";
 import { editProduct } from "../../../modules/editProduct";
-import "../../../styles/SearchInput.css";
+import "../../../../styles/SearchInput.css";
 import NotFoundPage from "../../not-found";
 
 const ProductPage = ({ searchParams }) => {

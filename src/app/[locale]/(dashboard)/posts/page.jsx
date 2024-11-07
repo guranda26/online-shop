@@ -8,8 +8,8 @@ import { handleDelete } from "../../../modules/handleDelete";
 import { addPost } from "../../../modules/addPost";
 import { editPost } from "../../../modules/editPost";
 import NotFoundPage from "../../not-found";
-import "../../../index.css";
-import ".././index.css";
+import "../../../../index.css";
+import "./index.css";
 
 const PostsPage = ({ searchParams }) => {
   const { search, sortBy = "", order = "" } = searchParams;
