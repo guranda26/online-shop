@@ -1,4 +1,4 @@
-import NotFoundPage from "../not-found";
+import NotFoundPage from "../[locale]/not-found";
 
 export async function fetchPosts(search = "", sortBy = "title", order = "asc") {
   const url = `https://dummyjson.com/posts/search?q=${search || ""}${sortBy ? `&sortBy=${sortBy}` : ""}${order ? `&order=${order}` : ""}`;

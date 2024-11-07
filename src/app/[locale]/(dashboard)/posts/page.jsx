@@ -2,11 +2,11 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { fetchPosts } from "../../components/FetchPosts";
-import SearchInput from "../../components/SearchInput";
-import { handleDelete } from "../../modules/handleDelete";
-import { addPost } from "../../modules/addPost";
-import { editPost } from "../../modules/editPost";
+import { fetchPosts } from "../../../components/FetchPosts";
+import SearchInput from "../../../components/SearchInput";
+import { handleDelete } from "../../../modules/handleDelete";
+import { addPost } from "../../../modules/addPost";
+import { editPost } from "../../../modules/editPost";
 import NotFoundPage from "../../not-found";
 import "../../../index.css";
 import ".././index.css";

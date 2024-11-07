@@ -3,11 +3,11 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import "./index.css";
-import { fetchProducts } from "../../components/FetchProducts";
-import SearchInput from "../../components/SearchInput";
-import { handleDelete } from "../../modules/handleDelete";
-import { addProduct } from "../../modules/addProduct";
-import { editProduct } from "../../modules/editProduct";
+import { fetchProducts } from "../../../components/FetchProducts";
+import SearchInput from "../../../components/SearchInput";
+import { handleDelete } from "../../../modules/handleDelete";
+import { addProduct } from "../../../modules/addProduct";
+import { editProduct } from "../../../modules/editProduct";
 import "../../../styles/SearchInput.css";
 import NotFoundPage from "../../not-found";
 

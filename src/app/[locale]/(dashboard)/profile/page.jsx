@@ -2,7 +2,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import LoadingSpinner from "../../components/Loader";
+import LoadingSpinner from "../../../components/Loader";
 
 import "../../../styles/ProfilePage.css";
 import { useUser } from "@auth0/nextjs-auth0/client";

@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { notFound } from "next/navigation";
-import NotFoundPage from "../not-found";
+import NotFoundPage from "../[locale]/not-found";
 
 const useFetchItems = (url, itemsKey) => {
   const [items, setItems] = useState([]);

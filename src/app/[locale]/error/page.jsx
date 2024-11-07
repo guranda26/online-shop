@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import DangerousComponent from "../components/DangerousComponent";
+import DangerousComponent from "../../components/DangerousComponent";
 
 export default function TestErrorPage() {
   return (
