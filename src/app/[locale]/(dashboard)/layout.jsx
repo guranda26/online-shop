@@ -1,6 +1,6 @@
 "use client";
 
-import "../../index.css";
+import "../../../index.css";
 import { useAuthCheck } from "../hooks/useAuthCheck.js";
 import LoadingSpinner from "../components/Loader.jsx";
 import Header from "../components/Header.jsx";

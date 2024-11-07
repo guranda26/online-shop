@@ -1,6 +1,6 @@
 import React from "react";
 import Homepage from "../home";
-import "../../styles/MainContent.css";
+import "../../../styles/MainContent.css";
 
 const MainContent = () => {
   return (

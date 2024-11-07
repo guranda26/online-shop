@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import LoadingSpinner from "./Loader";
-import NotFoundPage from "../not-found";
+import NotFoundPage from "../../not-found";
 import { useFetchItems } from "../hooks/useFetchItems";
 
 const ProductList = () => {

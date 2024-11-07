@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import LoadingSpinner from "./components/Loader";
-import "../index.css";
+import "../../index.css";
 import { useUser } from "@auth0/nextjs-auth0/client";
 
 const Homepage = () => {

@@ -1,5 +1,5 @@
 "use client";
-import "../../styles/LogoutButton.css";
+import "../../../styles/LogoutButton.css";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import { IoLogOutOutline } from "react-icons/io5";
 

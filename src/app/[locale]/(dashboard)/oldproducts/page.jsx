@@ -8,7 +8,7 @@ import "../../styles/MainContent.css";
 // import ProductList from "../components/ProductList";
 // import Dashboard from "../components/NewCardProp";
 import "../products/index.css";
-import "./index.css";
+import ".././index.css";
 
 const Dashboard = lazy(() => import("../../components/NewCardProp"));
 const ProductList = lazy(() => import("../../components/ProductList"));

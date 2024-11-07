@@ -1,4 +1,4 @@
-import ThemeButton from "../components/ThemeButton";
+import ThemeButton from "./../components/ThemeButton";
 
 export default function AuthLayout({ children }) {
   return (
