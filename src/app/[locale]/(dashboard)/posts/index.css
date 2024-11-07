@@ -1,0 +1,143 @@
+.post-list_wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+  gap: 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.posts {
+  /* background-color: #ffffff; */
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.posts:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 30px rgba(0, 0, 0, 0.15);
+}
+
+.post-content {
+  padding: 20px;
+}
+
+.posts-section {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.search-input {
+  margin: 20px;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin: 0 0 10px;
+  color: #333;
+  font-weight: 600;
+}
+
+p {
+  margin: 10px 0;
+  color: #555;
+  line-height: 1.6;
+}
+
+.post-tags {
+  width: 100%;
+  margin: 10px auto;
+}
+
+.post-tag {
+  background-color: #007bff;
+  border-radius: 20px;
+  padding: 6px 12px;
+  margin-right: 5px;
+  display: inline-block;
+  font-size: 0.9rem;
+  color: #ffffff;
+  transition: background-color 0.3s;
+}
+
+.post-tag:hover {
+  background-color: #0056b3;
+}
+
+.post-reactions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-top: 10px;
+  font-size: 0.9rem;
+  color: #888;
+  margin: 15px auto;
+  /* height: 100%; */
+  align-self: flex-end;
+  justify-self: flex-end;
+  overflow: hidden;
+}
+
+.reactions {
+  display: flex;
+  align-items: center;
+}
+
+.post-reaction {
+  margin-left: 5px;
+  font-weight: bold;
+  color: #333;
+}
+
+.reactions svg {
+  margin-right: 5px;
+  color: #007bff;
+}
+
+.post-item {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.post-item h2 {
+  font-size: 30px;
+}
+
+.new-post {
+  max-width: 1200px;
+  min-height: 350px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.post-content_item {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.new-post p {
+  font-size: 20px;
+}
+
+.post-reactions {
+  gap: 15px;
+}
+
+.post-reactions .reaction {
+  min-width: 90px;
+}
+
+.tag {
+  display: inline-block;
+  padding: 12px 25px;
+  font-size: 16px;
+}

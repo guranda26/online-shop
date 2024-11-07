@@ -1,0 +1,23 @@
+import "../index.css";
+import "../styles/Header.css";
+import { UserProvider } from "@auth0/nextjs-auth0/client";
+import Providers from "./components/providers";
+
+export const metadata = {
+  title: "eCommerce app",
+  description: "Web site created with Next.js.",
+};
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang="en" suppressHydrationWarning>
+      <UserProvider>
+        <body>
+          <Providers>
+            <div className="flex-col">{children}</div>
+          </Providers>
+        </body>
+      </UserProvider>
+    </html>
+  );
+}
