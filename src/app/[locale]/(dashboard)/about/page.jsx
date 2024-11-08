@@ -1,15 +1,23 @@
 import React from "react";
+import initTranslations from "../../../i18n";
+import TranslationsProvider from "../../../components/TranslationsProvider";
 import "../../../../styles/About.css";
+// import { useTranslation } from "react-i18next";
 
-const About = () => {
+const About = async (params) => {
+  const locale = params?.locale || "en";
+  const { resources } = await initTranslations(locale, ["about-us"]);
+
+  // const { t } = useTranslation();
   return (
     <section id="about" className="w-screen bg-background text-textColor">
       <div className="h-screen flex flex-col gap-5 p-10 text-2xl items-center leading-9">
         <div className="w-[50%] flex flex-col gap-5">
           <h2 className="text-4xl font-semibold">About Us</h2>
           <p>
-            Welcome to our website, your one-stop destination for the latest and
-            most reliable electronic devices.
+            {/* Welcome to our website, your one-stop destination for the latest and
+            most reliable electronic devices. */}
+            {/* {resources["about-us"]?.intro} */}
           </p>
           <p>
             {" "}

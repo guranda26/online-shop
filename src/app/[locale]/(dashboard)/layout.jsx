@@ -3,21 +3,45 @@
 import "../../../index.css";
 import { useAuthCheck } from "../../hooks/useAuthCheck.js";
 import LoadingSpinner from "../../components/Loader.jsx";
+import initTranslations from "../../i18n";
+import TranslationsProvider from "../../components/TranslationsProvider";
+
 import Header from "../../components/Header.jsx";
 import Footer from "../../components/Footer.jsx";
+import { useState, useEffect } from "react";
 
-export default function DashboardLayout({ children }) {
+export default function DashboardLayout({ children, params }) {
+  const locale = params?.locale || "en";
+  const [resources, setResources] = useState(null);
   const isLoading = useAuthCheck();
 
-  if (isLoading) {
+  useEffect(() => {
+    const fetchTranslations = async () => {
+      const { resources } = await initTranslations(locale, [
+        "home",
+        "header",
+        "common",
+        "about-us",
+      ]);
+      setResources(resources);
+    };
+
+    fetchTranslations();
+  }, [locale]);
+
+  if (isLoading || !resources) {
     return <LoadingSpinner />;
   }
 
   return (
-    <>
+    <TranslationsProvider
+      resources={resources}
+      locale={locale}
+      namespaces={["home", "common", "header", "about-us"]}
+    >
       <Header />
       <main className="main">{children}</main>
       <Footer />
-    </>
+    </TranslationsProvider>
   );
 }

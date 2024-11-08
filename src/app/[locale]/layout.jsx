@@ -1,9 +1,9 @@
-import "../../index.css";
-import "../../styles/Header.css";
 import { UserProvider } from "@auth0/nextjs-auth0/client";
 import Providers from "../components/providers";
 import initTranslations from "../i18n";
 import TranslationsProvider from "../components/TranslationsProvider";
+import "../../index.css";
+import "../../styles/Header.css";
 
 export const metadata = {
   title: "eCommerce app",

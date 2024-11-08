@@ -1,6 +1,1 @@
-{
-  "welcomeHeader": "Welcome to the Home Page",
-  "welcome": "Hello, ",
-  "welcomeService": "We are dedicated to providing the best services for our customers.",
-  "welcomeSubHeader": "Explore the app and manage your products and blog posts."
-}
+{"welcomeHeader":"Welcome to the Home Page","welcomeService":"We are dedicated to providing the best services for our customers.","welcomeSubHeader":" Hello, {{user.given_name}}! Explore the app and manage your products and blog posts."}
