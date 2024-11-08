@@ -4,7 +4,6 @@ export function generateStaticParams() {
   return [
     { slug: [""] },
     { slug: ["home"] },
-    { slug: ["about"] },
     { slug: ["products"] },
     { slug: ["profile"] },
     { slug: ["blogs"] },

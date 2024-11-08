@@ -10,6 +10,7 @@ import ToggleLanguage from "./ToggleLanguage";
 
 const Header = () => {
   const { t } = useTranslation();
+
   return (
     <header className="header">
       <nav className="navbar">

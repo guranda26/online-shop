@@ -4,18 +4,24 @@ import initTranslations from "../i18n";
 import TranslationsProvider from "../components/TranslationsProvider";
 import "../../index.css";
 import "../../styles/Header.css";
+import { dir } from "i18next";
+import i18nConfig from "../../i18nConfig";
 
 export const metadata = {
   title: "eCommerce app",
   description: "Web site created with Next.js.",
 };
 
+export function generateStaticParams() {
+  return i18nConfig.locales.map((locale) => ({ locale }));
+}
+
 export default async function RootLayout({ children, params }) {
   const locale = params?.locale || "en";
   const { resources } = await initTranslations(locale, ["home"]);
 
   return (
-    <html lang={locale} suppressHydrationWarning>
+    <html lang={locale} dir={dir(locale)} suppressHydrationWarning>
       <UserProvider>
         <body>
           <TranslationsProvider
