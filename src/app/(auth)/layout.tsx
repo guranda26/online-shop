@@ -1,8 +1,12 @@
 import ThemeButton from "../components/ThemeButton";
 
-export default function AuthLayout({ children }) {
+export default function AuthLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
-    <div classnem="h-screen text-center">
+    <div className="h-screen text-center">
       <header className="bg-contactBackground p-10 flex justify-end">
         <ThemeButton />
       </header>
