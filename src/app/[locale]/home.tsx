@@ -3,13 +3,6 @@ import LoadingSpinner from "../components/Loader";
 import "../../index.css";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import { useTranslation } from "react-i18next";
-import { log } from "node:console";
-
-type UserType = {
-  user: {
-    given_name?: string;
-  };
-};
 
 const Homepage = () => {
   const { user, isLoading } = useUser();

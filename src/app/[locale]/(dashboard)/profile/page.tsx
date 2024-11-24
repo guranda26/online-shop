@@ -6,6 +6,13 @@ import "../../../../styles/ProfilePage.css";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import NotFoundPage from "../../not-found";
 
+type UserType = {
+  given_name?: string;
+  name?: string;
+  email?: string;
+  picture?: string;
+};
+
 const Profile = () => {
   const { user, error, isLoading } = useUser();
   if (!user || isLoading) {
@@ -18,6 +25,8 @@ const Profile = () => {
       </div>
     );
 
+  const { name, picture, email } = user as UserType;
+
   return (
     user && (
       <section className="profile-page bg-profile">
@@ -25,8 +34,8 @@ const Profile = () => {
         <div className="profile-card">
           <div className="profile-image-container mx-auto">
             <img
-              src={user.picture || "../../assets/person.svg"}
-              alt={user.name || "User"}
+              src={picture || "../../assets/person.svg"}
+              alt={name || "User"}
               className="profile-image translate-x-[50%]"
             />
           </div>
@@ -37,7 +46,7 @@ const Profile = () => {
             <input
               type="text"
               id="name"
-              value={user.name}
+              value={name}
               readOnly
               className="form-input"
             />
@@ -47,7 +56,7 @@ const Profile = () => {
             <input
               type="email"
               id="email"
-              value={user.email}
+              value={email}
               readOnly
               className="form-input"
             />
