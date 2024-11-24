@@ -2,7 +2,7 @@
 
 const { ThemeProvider } = require("next-themes");
 
-const Providers = ({ children }) => {
+const Providers = ({ children }: { children: React.ReactNode }) => {
   return <ThemeProvider attribute="class">{children}</ThemeProvider>;
 };
 
