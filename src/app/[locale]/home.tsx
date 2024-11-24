@@ -3,6 +3,13 @@ import LoadingSpinner from "../components/Loader";
 import "../../index.css";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import { useTranslation } from "react-i18next";
+import { log } from "node:console";
+
+type UserType = {
+  user: {
+    given_name?: string;
+  };
+};
 
 const Homepage = () => {
   const { user, isLoading } = useUser();
@@ -11,6 +18,7 @@ const Homepage = () => {
   if (isLoading) {
     return <LoadingSpinner />;
   }
+
   return (
     <section id="home">
       <div className="min-h-[85vh] bg-background text-textColor flex items-center justify-center overflow-hidden w-screen">
@@ -23,7 +31,9 @@ const Homepage = () => {
               <p className="home-txt text-2xl text-textColor">
                 {t("welcome")}
                 <strong className="highlight">
-                  {user.given_name.toUpperCase()}
+                  {typeof user.given_name === "string"
+                    ? user.given_name?.toUpperCase()
+                    : ""}
                 </strong>
                 ! {t("welcomeSubHeader")}
               </p>

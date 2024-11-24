@@ -1,8 +1,8 @@
 "use client";
 
 import "../../../index.css";
-import { useAuthCheck } from "../../hooks/useAuthCheck.js";
-import LoadingSpinner from "../../components/Loader.jsx";
+import { useAuthCheck } from "../../hooks/useAuthCheck";
+import LoadingSpinner from "../../components/Loader";
 import initTranslations from "../../i18n";
 import TranslationsProvider from "../../components/TranslationsProvider";
 
