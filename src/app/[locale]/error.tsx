@@ -1,6 +1,10 @@
 "use client";
 
-export default function Error({ error, reset }) {
+type ErrorProps = {
+  reset: () => void;
+};
+
+export default function Error({ reset }: ErrorProps) {
   return (
     <div>
       <h2>Something went wrong!</h2>
