@@ -6,8 +6,8 @@ import LoadingSpinner from "../../components/Loader.jsx";
 import initTranslations from "../../i18n";
 import TranslationsProvider from "../../components/TranslationsProvider";
 
-import Header from "../../components/Header.jsx";
-import Footer from "../../components/Footer.jsx";
+import Header from "../../components/Header";
+import Footer from "../../components/Footer";
 import { useState, useEffect } from "react";
 
 export default function DashboardLayout({ children, params }) {

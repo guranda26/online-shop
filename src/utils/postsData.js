@@ -1,4 +1,3 @@
-import Image from "next/image"; // Import next/image for optimized image loading
 import samsungGalaxyS23 from "../../public/assets/samsung-galaxy-s23.jpeg";
 import iphone15Pro from "../../public/assets/iphone-15-pro.jpg";
 import googlePixel7Pro from "../../public/assets/google-pixel7-pro.jpg";

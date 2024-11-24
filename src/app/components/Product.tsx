@@ -1,7 +1,17 @@
 import React from "react";
 import "../../styles/Product.css";
 
-const Product = ({ src, heading, description }) => {
+type ProductParamsType = {
+  src: string;
+  heading: string;
+  description: string;
+};
+
+const Product: React.FC<ProductParamsType> = ({
+  src,
+  heading,
+  description,
+}) => {
   return (
     <div className="product">
       <h2>{heading}</h2>

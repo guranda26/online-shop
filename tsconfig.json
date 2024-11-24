@@ -2,6 +2,7 @@
   "compilerOptions": {
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
+    "jsx": "react-jsx",
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -12,7 +13,6 @@
     "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve",
     "incremental": true,
     "plugins": [
       {
@@ -28,10 +28,8 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "app/[locale]/(dashboard)/blog/page.jsx",
-    "app/[locale]/Components/EditPost.tsx",
-    "app/[locale]/Components/EditWindow.tsx",
-    "app/[locale]/Components/SingleProduct.jsx"
+    "./build/types/**/*.ts",
+    "public/assets/*.jpeg"
   ],
   "exclude": ["node_modules"]
 }
