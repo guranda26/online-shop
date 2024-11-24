@@ -52,45 +52,6 @@ const Profile = () => {
               className="form-input"
             />
           </div>
-          {/* <div className="form-group">
-          <label htmlFor="age">Age</label>
-          <input
-            type="number"
-            id="age"
-            value={user.age}
-            readOnly
-            className="form-input"
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="gender">Gender</label>
-          <input
-            type="text"
-            id="gender"
-            value={user.gender}
-            readOnly
-            className="form-input"
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="address">Address</label>
-          <p className="form-input">
-            <span>{user.address.address}</span>
-            <span>{user.address.city}</span>
-            <span>{user.address.country}</span>
-          </p>
-        </div>
-
-        <div className="form-group">
-          <label htmlFor="phone">Phone Number</label>
-          <input
-            type="tel"
-            id="phone"
-            value={user.phone}
-            readOnly
-            className="form-input"
-          />
-        </div> */}
         </form>
       </section>
     )
