@@ -20,7 +20,7 @@ const Contact = () => {
         <input id="email" type="email" />
 
         <label htmlFor="message">Message:</label>
-        <textarea name="message" id="message" cols="30" rows="10"></textarea>
+        <textarea name="message" id="message" cols={30} rows={10}></textarea>
 
         <input type="submit" value="Submit" />
       </form>
