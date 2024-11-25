@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, ChangeEvent } from "react";
 import { useRouter } from "next/navigation";
 import debounce from "lodash.debounce";
 import "../../styles/SearchInput.css";
@@ -9,6 +9,10 @@ const SearchInput = ({
   searchPath,
   supportsPriceSort = false,
   supportsBodySort = false,
+}: {
+  searchPath?: string;
+  supportsPriceSort?: boolean;
+  supportsBodySort?: boolean;
 }) => {
   const router = useRouter();
   const [searchTerm, setSearchTerm] = useState("");
@@ -26,19 +30,19 @@ const SearchInput = ({
     }, 500);
   }, [router, searchPath]);
 
-  const handleChange = async (event) => {
+  const handleChange = async (event: ChangeEvent<HTMLInputElement>) => {
     const newSearchTerm = event.target.value;
     setSearchTerm(newSearchTerm);
     debouncedSearch(newSearchTerm, sortBy, order);
   };
 
-  const handleSortChange = (event) => {
+  const handleSortChange = (event: ChangeEvent<HTMLSelectElement>) => {
     const newSortBy = event.target.value;
     setSortBy(newSortBy);
     debouncedSearch(searchTerm, newSortBy, order);
   };
 
-  const handleOrderChange = (event) => {
+  const handleOrderChange = (event: ChangeEvent<HTMLSelectElement>) => {
     const newOrder = event.target.value;
     setOrder(newOrder);
     debouncedSearch(searchTerm, sortBy, newOrder);
