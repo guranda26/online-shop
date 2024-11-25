@@ -8,9 +8,16 @@ import TranslationsProvider from "../../components/TranslationsProvider";
 
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
+import { Locale } from "../layout";
 
-export default function DashboardLayout({ children, params }) {
+export default function DashboardLayout({
+  children,
+  params,
+}: {
+  children: React.ReactNode;
+  params: { locale: Locale };
+}) {
   const locale = params?.locale || "en";
   const [resources, setResources] = useState(null);
   const isLoading = useAuthCheck();
