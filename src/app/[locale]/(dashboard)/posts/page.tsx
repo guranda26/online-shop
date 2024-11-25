@@ -4,7 +4,6 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { fetchPosts } from "../../../components/FetchPosts";
 import SearchInput from "../../../components/SearchInput";
-import { handleDelete } from "../../../modules/handleDelete";
 import { addPost } from "../../../modules/addPost";
 import { editPost } from "../../../modules/editPost";
 import NotFoundPage from "../../not-found";
@@ -13,6 +12,7 @@ import { useSearchParams } from "next/navigation";
 import "../../../../index.css";
 import "./index.css";
 import { deletePost } from "@/src/app/modules/deletePost";
+import { SetPosts } from "@/src/app/types/PostDetails";
 
 const PostsPage: React.FC<PostsAndProductPageType> = () => {
   const searchParams = useSearchParams();
@@ -59,7 +59,7 @@ const PostsPage: React.FC<PostsAndProductPageType> = () => {
       editPost(posts, setPosts, { ...editingPost, ...newPost });
       setEditingPost(null);
     } else {
-      addPost(posts, setPosts, newPost, setNewPost);
+      addPost(posts, setPosts, newPost, () => setNewPost);
     }
     setNewPost({ title: "", body: "" });
   };

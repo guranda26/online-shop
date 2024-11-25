@@ -12,3 +12,5 @@ export type PostDetails = Post & {
 export type SetPosts = {
   (posts: Post[]): void;
 };
+
+export type NewPost = Omit<Post, "id">;
