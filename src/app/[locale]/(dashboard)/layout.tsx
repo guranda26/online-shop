@@ -5,7 +5,6 @@ import { useAuthCheck } from "../../hooks/useAuthCheck";
 import LoadingSpinner from "../../components/Loader";
 import initTranslations from "../../i18n";
 import TranslationsProvider from "../../components/TranslationsProvider";
-import { use } from "react";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import React, { useState, useEffect } from "react";
@@ -18,14 +17,16 @@ export default function DashboardLayout({
   children: React.ReactNode;
   params: Promise<{ locale: Locale }>;
 }) {
-  const { locale } = use(params) || { locale: "en" };
-
+  const [locale, setLocale] = useState<Locale | string>("en");
   const [resources, setResources] = useState(null);
   const isLoading = useAuthCheck();
 
   useEffect(() => {
-    const fetchTranslations = async () => {
-      const { resources } = await initTranslations(locale, [
+    const fetchParamsAndTranslations = async () => {
+      const resolvedParams = await params;
+      setLocale(resolvedParams.locale);
+
+      const { resources } = await initTranslations(resolvedParams.locale, [
         "home",
         "header",
         "common",
@@ -34,8 +35,8 @@ export default function DashboardLayout({
       setResources(resources);
     };
 
-    fetchTranslations();
-  }, [locale]);
+    fetchParamsAndTranslations();
+  }, [params]);
 
   if (isLoading || !resources) {
     return <LoadingSpinner />;

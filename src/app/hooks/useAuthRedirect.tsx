@@ -8,7 +8,8 @@ export function useAuthRedirect() {
   const router = useRouter();
 
   useEffect(() => {
-    const isLoggedIn = JSON.parse(localStorage.getItem("isAuth"));
+    const checkAuth = localStorage?.getItem("isAuth");
+    const isLoggedIn = checkAuth && JSON.parse(checkAuth);
     if (isLoggedIn) {
       router.push("/home");
     } else {
