@@ -6,9 +6,6 @@ export function generateStaticParams() {
     { slug: ["home"] },
     { slug: ["products"] },
     { slug: ["profile"] },
-    { slug: ["blogs"] },
-    { slug: ["blogs/post/[...slug]"] },
-    { slug: ["assignment-3"] },
   ];
 }
 
