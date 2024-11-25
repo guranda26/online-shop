@@ -3,25 +3,9 @@ import { AiFillDislike, AiFillLike } from "react-icons/ai";
 import { FaRegUser } from "react-icons/fa";
 import ReturnBackButton from "../../../../components/ReturnBackButton";
 import NotFoundPage from "../../../not-found";
+import { PostDetails } from "../../../../types/PostDetails";
+import { Params } from "../../../../interfaces/params";
 import "../index.css";
-import { Post } from "../page";
-
-export interface Params {
-  id: number;
-}
-
-interface tag {
-  id: number;
-  name: string;
-}
-type PostDetails = Post & {
-  tags: [];
-  reactions: {
-    likes: string;
-    dislikes: string;
-  };
-  views: string;
-};
 
 const PostsPage = async ({ params }: { params: Params }) => {
   const { id } = params;

@@ -10,22 +10,7 @@ import { editPost } from "../../../modules/editPost";
 import NotFoundPage from "../../not-found";
 import "../../../../index.css";
 import "./index.css";
-
-interface SearchParams {
-  search: string;
-  sortBy: string;
-  order: string;
-}
-
-export interface Post {
-  id: number;
-  title: string;
-  body: string;
-}
-
-interface PostsPageType {
-  searchParams: SearchParams;
-}
+import { Post, PostsPageType } from "@/src/app/interfaces/posts";
 
 const PostsPage: React.FC<PostsPageType> = ({ searchParams }) => {
   const { search, sortBy = "", order = "" } = searchParams;
