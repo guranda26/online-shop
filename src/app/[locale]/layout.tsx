@@ -30,7 +30,9 @@ export default async function RootLayout({
   children: React.ReactNode;
   params: { locale: Locale };
 }) {
-  const locale = params?.locale || "en";
+  // Await params as per the error suggestion
+  const { locale } = await params;
+
   const { resources } = await initTranslations(locale, ["home"]);
 
   return (

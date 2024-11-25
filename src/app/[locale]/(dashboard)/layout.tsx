@@ -5,7 +5,7 @@ import { useAuthCheck } from "../../hooks/useAuthCheck";
 import LoadingSpinner from "../../components/Loader";
 import initTranslations from "../../i18n";
 import TranslationsProvider from "../../components/TranslationsProvider";
-
+import { use } from "react";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import React, { useState, useEffect } from "react";

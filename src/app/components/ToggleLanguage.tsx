@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { usePathname } from "next/navigation";
 import { useTranslation } from "react-i18next";
 import i18nConfig from "../../i18nConfig";
+import { ChangeEvent } from "react";
 
 export default function LanguageChanger() {
   const { i18n } = useTranslation();
@@ -11,7 +12,7 @@ export default function LanguageChanger() {
   const router = useRouter();
   const currentPathname = usePathname();
 
-  const handleChange = (e) => {
+  const handleChange = (e: ChangeEvent<HTMLSelectElement>) => {
     const newLocale = e.target.value;
 
     const days = 30;

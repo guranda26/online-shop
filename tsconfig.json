@@ -30,8 +30,7 @@
     ".next/types/**/*.ts",
     "./build/types/**/*.ts",
     "public/assets/*.jpeg",
-    "src/app/components/LogoutButton.jsx",
-    "src/app/components/SortOptions.jsx"
+    "src/app/components/LogoutButton.jsx"
   ],
   "exclude": ["node_modules"]
 }

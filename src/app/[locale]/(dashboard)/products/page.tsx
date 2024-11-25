@@ -12,9 +12,14 @@ import { PostsAndProductPageType } from "@/src/app/interfaces/posts";
 import "../../../../styles/SearchInput.css";
 import "./index.css";
 import { Product } from "@/src/app/interfaces/products";
+import { useSearchParams } from "next/navigation";
 
-const ProductPage: React.FC<PostsAndProductPageType> = ({ searchParams }) => {
-  const { search, sortBy = "", order = "" } = searchParams;
+const ProductPage: React.FC<PostsAndProductPageType> = () => {
+  const searchParams = useSearchParams();
+  const search = searchParams.get("search") || "";
+  const sortBy = searchParams.get("sortBy") || "";
+  const order = searchParams.get("order") || "";
+
   const [products, setProducts] = useState([]);
   const [error, setError] = useState<string | null>(null);
   const [editingProduct, setEditingProduct] = useState<Product | null>(null);

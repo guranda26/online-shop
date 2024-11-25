@@ -8,12 +8,16 @@ import { handleDelete } from "../../../modules/handleDelete";
 import { addPost } from "../../../modules/addPost";
 import { editPost } from "../../../modules/editPost";
 import NotFoundPage from "../../not-found";
+import { Post, PostsAndProductPageType } from "@/src/app/interfaces/posts";
+import { useSearchParams } from "next/navigation";
 import "../../../../index.css";
 import "./index.css";
-import { Post, PostsAndProductPageType } from "@/src/app/interfaces/posts";
 
-const PostsPage: React.FC<PostsAndProductPageType> = ({ searchParams }) => {
-  const { search, sortBy = "", order = "" } = searchParams;
+const PostsPage: React.FC<PostsAndProductPageType> = () => {
+  const searchParams = useSearchParams();
+  const search = searchParams.get("search") || "";
+  const sortBy = searchParams.get("sortBy") || "";
+  const order = searchParams.get("order") || "";
   const [posts, setPosts] = useState([]);
   const [error, setError] = useState<string | null>(null);
   const [editingPost, setEditingPost] = useState<Post | null>(null);
