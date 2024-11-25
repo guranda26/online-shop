@@ -2,22 +2,22 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import "./index.css";
 import { fetchProducts } from "../../../components/FetchProducts";
 import SearchInput from "../../../components/SearchInput";
 import { handleDelete } from "../../../modules/handleDelete";
 import { addProduct } from "../../../modules/addProduct";
 import { editProduct } from "../../../modules/editProduct";
-import "../../../../styles/SearchInput.css";
 import NotFoundPage from "../../not-found";
+import { PostsAndProductPageType } from "@/src/app/interfaces/posts";
+import "../../../../styles/SearchInput.css";
+import "./index.css";
+import { Product } from "@/src/app/interfaces/products";
 
-const ProductPage = ({ searchParams }) => {
+const ProductPage: React.FC<PostsAndProductPageType> = ({ searchParams }) => {
   const { search, sortBy = "", order = "" } = searchParams;
   const [products, setProducts] = useState([]);
-  const [error, setError] = useState(null);
-  const [active, setActive] = useState(false);
-  const [editingProduct, setEditingProduct] = useState(null);
-  // New states for product addition form
+  const [error, setError] = useState<string | null>(null);
+  const [editingProduct, setEditingProduct] = useState<Product | null>(null);
   const [newProduct, setNewProduct] = useState({
     title: "",
     description: "",
@@ -42,18 +42,21 @@ const ProductPage = ({ searchParams }) => {
     return <NotFoundPage />;
   }
 
-  const onDelete = (id) => {
+  const onDelete = (id: number) => {
     handleDelete(products, "products", id, setProducts);
   };
 
-  const onEdit = (product) => {
+  const onEdit = (product: Product) => {
     setNewProduct(product);
     setEditingProduct(product);
   };
 
   const handleSubmit = () => {
     if (editingProduct) {
-      editProduct(products, setProducts, { ...editingProduct, ...newProduct });
+      editProduct(products, setProducts, {
+        ...editingProduct,
+        ...newProduct,
+      });
       setEditingProduct(null);
     } else {
       addProduct(products, setProducts, newProduct, setNewProduct);
@@ -65,7 +68,7 @@ const ProductPage = ({ searchParams }) => {
     <section className="products-section bg-background text-textColor">
       <h1>All Products</h1>
       <div className="search-sort__wrapper">
-        <SearchInput searchPath="products" supportsPriceSort="true" />
+        <SearchInput searchPath="products" supportsPriceSort={true} />
       </div>
       <div className="search-container">
         <div className="search-input-wrapper">

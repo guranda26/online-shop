@@ -10,6 +10,6 @@ interface SearchParams {
   order: string;
 }
 
-export interface PostsPageType {
+export interface PostsAndProductPageType {
   searchParams: SearchParams;
 }

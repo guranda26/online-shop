@@ -1,8 +1,9 @@
-import "../../../../../index.css";
 import NotFoundPage from "../../../not-found";
 import ReturnBackButton from "../../../../components/ReturnBackButton";
+import { Params } from "../../../../interfaces/params";
+import "../../../../../index.css";
 
-const ProductPage = async ({ params }) => {
+const ProductPage = async ({ params }: { params: Params }) => {
   const { id } = params;
 
   const response = await fetch(`https://dummyjson.com/products/${id}`);

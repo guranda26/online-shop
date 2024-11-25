@@ -10,9 +10,9 @@ import { editPost } from "../../../modules/editPost";
 import NotFoundPage from "../../not-found";
 import "../../../../index.css";
 import "./index.css";
-import { Post, PostsPageType } from "@/src/app/interfaces/posts";
+import { Post, PostsAndProductPageType } from "@/src/app/interfaces/posts";
 
-const PostsPage: React.FC<PostsPageType> = ({ searchParams }) => {
+const PostsPage: React.FC<PostsAndProductPageType> = ({ searchParams }) => {
   const { search, sortBy = "", order = "" } = searchParams;
   const [posts, setPosts] = useState([]);
   const [error, setError] = useState<string | null>(null);
