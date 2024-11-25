@@ -11,11 +11,27 @@ import NotFoundPage from "../../not-found";
 import "../../../../index.css";
 import "./index.css";
 
-const PostsPage = ({ searchParams }) => {
+interface SearchParams {
+  search: string;
+  sortBy: string;
+  order: string;
+}
+
+interface Post {
+  id: number;
+  title: string;
+  body: string;
+}
+
+interface PostsPageType {
+  searchParams: SearchParams;
+}
+
+const PostsPage: React.FC<PostsPageType> = ({ searchParams }) => {
   const { search, sortBy = "", order = "" } = searchParams;
   const [posts, setPosts] = useState([]);
-  const [error, setError] = useState(null);
-  const [editingPost, setEditingPost] = useState(null);
+  const [error, setError] = useState<string | null>(null);
+  const [editingPost, setEditingPost] = useState<Post | null>(null);
 
   const [newPost, setNewPost] = useState({
     title: "",
@@ -39,11 +55,11 @@ const PostsPage = ({ searchParams }) => {
     return <NotFoundPage />;
   }
 
-  const onDelete = (id) => {
+  const onDelete = (id: number) => {
     handleDelete(posts, "posts", id, setPosts);
   };
 
-  const onEdit = (post) => {
+  const onEdit = (post: Post) => {
     setNewPost(post);
     setEditingPost(post);
   };
@@ -62,7 +78,7 @@ const PostsPage = ({ searchParams }) => {
     <section className="posts-section p-7 bg-postBackground w-screen text-formText">
       <h1 className="text-center text-3xl font-semibold">All Posts</h1>
       <div className="search-sort__wrapper">
-        <SearchInput searchPath="posts" supportsBodySort="true" />
+        <SearchInput searchPath="posts" supportsBodySort={true} />
       </div>
       <div className="search-container">
         <div className="search-input-wrapper text-textBlack">
