@@ -4,8 +4,26 @@ import { FaRegUser } from "react-icons/fa";
 import ReturnBackButton from "../../../../components/ReturnBackButton";
 import NotFoundPage from "../../../not-found";
 import "../index.css";
+import { Post } from "../page";
 
-const PostsPage = async ({ params }) => {
+export interface Params {
+  id: number;
+}
+
+interface tag {
+  id: number;
+  name: string;
+}
+type PostDetails = Post & {
+  tags: [];
+  reactions: {
+    likes: string;
+    dislikes: string;
+  };
+  views: string;
+};
+
+const PostsPage = async ({ params }: { params: Params }) => {
   const { id } = params;
 
   const response = await fetch(`https://dummyjson.com/posts/${id}`);
@@ -14,7 +32,7 @@ const PostsPage = async ({ params }) => {
     return <NotFoundPage />;
   }
 
-  const post = await response.json();
+  const post: PostDetails = await response.json();
 
   if (!post || !post.id) {
     return <NotFoundPage />;
@@ -47,8 +65,7 @@ const PostsPage = async ({ params }) => {
             <FaEye /> Views: <span className="post-reaction">{post.views}</span>
           </span>
           <span>
-            <FaRegUser /> USER:{" "}
-            <span className="post-reaction">{post.userId}</span>
+            <FaRegUser /> USER: <span className="post-reaction">{post.id}</span>
           </span>
         </div>
         <div className="return-back">

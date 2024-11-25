@@ -17,7 +17,7 @@ interface SearchParams {
   order: string;
 }
 
-interface Post {
+export interface Post {
   id: number;
   title: string;
   body: string;
