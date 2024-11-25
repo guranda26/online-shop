@@ -12,13 +12,14 @@ import { Post, PostsAndProductPageType } from "@/src/app/interfaces/posts";
 import { useSearchParams } from "next/navigation";
 import "../../../../index.css";
 import "./index.css";
+import { deletePost } from "@/src/app/modules/deletePost";
 
 const PostsPage: React.FC<PostsAndProductPageType> = () => {
   const searchParams = useSearchParams();
   const search = searchParams.get("search") || "";
   const sortBy = searchParams.get("sortBy") || "";
   const order = searchParams.get("order") || "";
-  const [posts, setPosts] = useState([]);
+  const [posts, setPosts] = useState<Post[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [editingPost, setEditingPost] = useState<Post | null>(null);
 
@@ -45,7 +46,7 @@ const PostsPage: React.FC<PostsAndProductPageType> = () => {
   }
 
   const onDelete = (id: number) => {
-    handleDelete(posts, "posts", id, setPosts);
+    deletePost(posts, "posts", id, setPosts);
   };
 
   const onEdit = (post: Post) => {
