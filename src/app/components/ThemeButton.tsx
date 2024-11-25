@@ -12,7 +12,7 @@ const ThemeButton = () => {
 
   useEffect(() => setMounted(true), []);
 
-  const handleThemeChange = (newTheme) => {
+  const handleThemeChange = (newTheme: string) => {
     setTheme(newTheme);
     localStorage.setItem("user-theme", newTheme);
   };

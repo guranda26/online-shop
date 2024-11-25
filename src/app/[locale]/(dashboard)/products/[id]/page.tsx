@@ -26,7 +26,9 @@ const ProductPage = async ({ params }: { params: Params }) => {
             <img src={product.images[0]} alt="" className="product-img" />
           </div>
           <div className="product-info">
-            <h2>{product.title}</h2>
+            <h2 className="text-blue-800 font-bold text-2xl">
+              {product.title}
+            </h2>
             <p>{product.description}</p>
             <p className="price">Price: ${product.price}</p>
           </div>

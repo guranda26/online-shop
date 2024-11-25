@@ -118,11 +118,13 @@ const ProductPage: React.FC<PostsAndProductPageType> = ({ searchParams }) => {
         {products.map(({ id, images, title, description, price }) => (
           <div key={id} className="products product-list">
             <Link href={`products/${id}`}>
-              <div className="image-container">
-                <img src={images[0]} alt={title} className="product-img" />
-              </div>
               <div className="product-info">
-                <h2>{title}</h2>
+                <h2 className="text-blue-800 text-center font-bold text-2xl mt-3">
+                  {title}
+                </h2>
+                <div className="image-container">
+                  <img src={images[0]} alt={title} className="product-img" />
+                </div>
                 <p>{description}</p>
                 <p className="price">Price: ${price}</p>
               </div>

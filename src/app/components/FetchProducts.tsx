@@ -1,3 +1,5 @@
+import NotFoundPage from "../[locale]/not-found";
+
 export async function fetchProducts(
   search = "",
   sortBy = "title",
