@@ -19,6 +19,11 @@ export enum Locale {
   es = "ES",
 }
 
+type LocaleParams = {
+  locale: Locale;
+  [key: string]: string | number | undefined;
+};
+
 export function generateStaticParams() {
   return i18nConfig.locales.map((locale) => ({ locale }));
 }
@@ -28,10 +33,11 @@ export default async function RootLayout({
   params,
 }: {
   children: React.ReactNode;
-  params: { locale: Locale };
+  params: Promise<LocaleParams>; // Type the params as Promise<LocaleParams>
 }) {
-  // Await params as per the error suggestion
-  const { locale } = await params;
+  // Await the params promise
+  const resolvedParams = await params;
+  const { locale } = resolvedParams; // Access locale from resolvedParams
 
   const { resources } = await initTranslations(locale, ["home"]);
 

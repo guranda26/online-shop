@@ -16,9 +16,10 @@ export default function DashboardLayout({
   params,
 }: {
   children: React.ReactNode;
-  params: { locale: Locale };
+  params: Promise<{ locale: Locale }>;
 }) {
-  const locale = params?.locale || "en";
+  const { locale } = use(params) || { locale: "en" };
+
   const [resources, setResources] = useState(null);
   const isLoading = useAuthCheck();
 

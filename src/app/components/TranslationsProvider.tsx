@@ -22,15 +22,15 @@ export default function TranslationsProvider({
 
   initTranslations(locale, namespaces, i18n, resources);
 
-  console.log(
-    typeof locale,
-    "namespaces",
-    namespaces,
-    "i18n",
-    i18n,
-    "resources",
-    resources
-  );
+  // console.log(
+  //   typeof locale,
+  //   "namespaces",
+  //   namespaces,
+  //   "i18n",
+  //   i18n,
+  //   "resources",
+  //   resources
+  // );
 
   return <I18nextProvider i18n={i18n}>{children}</I18nextProvider>;
 }
