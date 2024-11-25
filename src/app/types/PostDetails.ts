@@ -8,3 +8,7 @@ export type PostDetails = Post & {
   };
   views: string;
 };
+
+export type SetPosts = {
+  (posts: Post[]): void;
+};

@@ -20,7 +20,7 @@ const ProductPage: React.FC<PostsAndProductPageType> = () => {
   const sortBy = searchParams.get("sortBy") || "";
   const order = searchParams.get("order") || "";
 
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState<Product[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [editingProduct, setEditingProduct] = useState<Product | null>(null);
   const [newProduct, setNewProduct] = useState({
@@ -128,7 +128,11 @@ const ProductPage: React.FC<PostsAndProductPageType> = () => {
                   {title}
                 </h2>
                 <div className="image-container">
-                  <img src={images[0]} alt={title} className="product-img" />
+                  <img
+                    src={images && images[0]}
+                    alt={title}
+                    className="product-img"
+                  />
                 </div>
                 <p>{description}</p>
                 <p className="price">Price: ${price}</p>
@@ -147,7 +151,13 @@ const ProductPage: React.FC<PostsAndProductPageType> = () => {
               <button
                 className="py-2 px-3 bg-blue-400 rounded-md text-white w-[110px]"
                 onClick={() =>
-                  onEdit({ id, title, description, price, image: images[0] })
+                  onEdit({
+                    id,
+                    title,
+                    description,
+                    price,
+                    image: images![0],
+                  })
                 }
               >
                 Edit
