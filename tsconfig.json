@@ -30,7 +30,6 @@
     ".next/types/**/*.ts",
     "./build/types/**/*.ts",
     "public/assets/*.jpeg",
-    "src/app/[locale]/(dashboard)/assignment-3/page.jsx",
     "src/app/[locale]/(dashboard)/oldproducts/page.jsx",
     "src/app/components/LogoutButton.jsx"
   ],
