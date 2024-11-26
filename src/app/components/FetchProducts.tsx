@@ -2,7 +2,7 @@ import NotFoundPage from "../[locale]/not-found";
 
 export async function fetchProducts(
   search = "",
-  sortBy = "title",
+  sortBy = "name",
   order = "asc"
 ) {
   const localUrl = "http://localhost:3000/api/products";
@@ -38,7 +38,11 @@ export async function fetchProducts(
 
     return dummyData.products;
   } catch (error) {
-    console.error("Error in fetchProducts:", error.message);
+    if (error instanceof Error) {
+      console.error("Error in fetchProducts:", error.message);
+    } else {
+      console.error("Unknown error in fetchProducts:", error);
+    }
     return <NotFoundPage />;
   }
 }
