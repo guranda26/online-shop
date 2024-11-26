@@ -31,7 +31,7 @@ export const GET = async (req: NextRequest) => {
     }
   );
 
-  const { data, error } = await supabase.from("mascaras").select();
+  const { data, error } = await supabase.from("products").select();
 
   if (error) {
     console.error("Error fetching data:", error);

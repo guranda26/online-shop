@@ -18,7 +18,7 @@ export async function fetchProducts(
       console.log(localData);
 
       if (localData && localData.length > 0) {
-        return localData; // Return local data if available
+        return localData;
       }
     }
 

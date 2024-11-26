@@ -116,54 +116,52 @@ const ProductPage: React.FC = () => {
       </div>
 
       <div className="product-list_wrapper">
-        {products.map(({ id, images, title, description, price, category }) => (
-          <div key={id} className="products product-list">
-            <Link href={`products/${id}`}>
-              <div className="product-info">
-                <h2 className="text-blue-800 text-center font-bold text-2xl mt-3">
-                  {title}
-                </h2>
-                <div className="image-container">
-                  <img
-                    src={images && images[0] ? images[0] : placeholderImage}
-                    alt={title}
-                    className="product-img"
-                  />
+        {products.map(
+          ({ id, image_link, name, description, price, category }) => (
+            <div key={id} className="products product-list">
+              <Link href={`products/${id}`}>
+                <div className="product-info">
+                  <h2 className="text-blue-800 text-center font-bold text-2xl mt-3">
+                    {name}
+                  </h2>
+                  <div className="image-container">
+                    <img src={image_link} alt={name} className="product-img" />
+                  </div>
+                  <p>{description}</p>
+                  <p className="text-['#7e1d1d'] font-semibold italic">
+                    Category: {category}
+                  </p>
+                  <p className="price">Price: ${price}</p>
                 </div>
-                <p>{description}</p>
-                <p className="text-['#7e1d1d'] font-semibold italic">
-                  Category: {category}
-                </p>
-                <p className="price">Price: ${price}</p>
+              </Link>
+              <div className="flex gap-2 text-center justify-center font-semibold mt-4">
+                <button className="py-2 px-3 bg-blue-600 rounded-md text-white w-[110px]">
+                  Add to cart
+                </button>
+                <button
+                  className="py-2 px-3 bg-red-600 rounded-md text-white w-[110px]"
+                  onClick={() => onDelete(id)}
+                >
+                  Delete
+                </button>
+                <button
+                  className="py-2 px-3 bg-blue-400 rounded-md text-white w-[110px]"
+                  onClick={() =>
+                    onEdit({
+                      id,
+                      name,
+                      description,
+                      price,
+                      image_link,
+                    })
+                  }
+                >
+                  Edit
+                </button>
               </div>
-            </Link>
-            <div className="flex gap-2 text-center justify-center font-semibold mt-4">
-              <button className="py-2 px-3 bg-blue-600 rounded-md text-white w-[110px]">
-                Add to cart
-              </button>
-              <button
-                className="py-2 px-3 bg-red-600 rounded-md text-white w-[110px]"
-                onClick={() => onDelete(id)}
-              >
-                Delete
-              </button>
-              <button
-                className="py-2 px-3 bg-blue-400 rounded-md text-white w-[110px]"
-                onClick={() =>
-                  onEdit({
-                    id,
-                    title,
-                    description,
-                    price,
-                    image: images && images[0],
-                  })
-                }
-              >
-                Edit
-              </button>
             </div>
-          </div>
-        ))}
+          )
+        )}
       </div>
     </section>
   );
