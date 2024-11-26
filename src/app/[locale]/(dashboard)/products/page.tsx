@@ -12,7 +12,8 @@ import { useSearchParams } from "next/navigation";
 import "../../../../styles/SearchInput.css";
 import "./index.css";
 
-const placeholderImage = "/placeholder.jpg"; // Placeholder image path
+const placeholderImage =
+  "../../../../../public/assets/product-placeholder.webp";
 
 const ProductPage: React.FC = () => {
   const searchParams = useSearchParams();
@@ -125,7 +126,11 @@ const ProductPage: React.FC = () => {
                     {name}
                   </h2>
                   <div className="image-container">
-                    <img src={image_link} alt={name} className="product-img" />
+                    <img
+                      src={image_link || placeholderImage}
+                      alt={name}
+                      className="product-img"
+                    />
                   </div>
                   <p>{description}</p>
                   <p className="text-['#7e1d1d'] font-semibold italic">
