@@ -19,6 +19,7 @@
         "name": "next"
       }
     ],
+    "baseUrl": ".",
     "paths": {
       "@/*": ["./*"]
     }
@@ -31,7 +32,8 @@
     "./build/types/**/*.ts",
     "public/assets/*.jpeg",
     "src/app/components/LogoutButton.tsx",
-    "src/app/i18n.js"
+    "src/app/i18n.js",
+    "tailwind.config.js"
   ],
   "exclude": ["node_modules"]
 }
