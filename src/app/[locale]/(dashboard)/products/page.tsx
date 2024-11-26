@@ -7,14 +7,14 @@ import SearchInput from "../../../components/SearchInput";
 import { handleDelete } from "../../../modules/handleDelete";
 import { addProduct } from "../../../modules/addProduct";
 import { editProduct } from "../../../modules/editProduct";
-import NotFoundPage from "../../not-found";
-import { PostsAndProductPageType } from "@/src/app/interfaces/posts";
-import "../../../../styles/SearchInput.css";
-import "./index.css";
 import { Product } from "@/src/app/interfaces/products";
 import { useSearchParams } from "next/navigation";
+import "../../../../styles/SearchInput.css";
+import "./index.css";
 
-const ProductPage: React.FC<PostsAndProductPageType> = () => {
+const placeholderImage = "/placeholder.jpg"; // Placeholder image path
+
+const ProductPage: React.FC = () => {
   const searchParams = useSearchParams();
   const search = searchParams.get("search") || "";
   const sortBy = searchParams.get("sortBy") || "";
@@ -35,17 +35,18 @@ const ProductPage: React.FC<PostsAndProductPageType> = () => {
       try {
         const fetchedProducts = await fetchProducts(search, sortBy, order);
         setProducts(fetchedProducts);
-      } catch (error) {
-        console.error(error);
+      } catch (err) {
+        console.error(err);
         setError("Error loading products");
       }
     };
     loadProducts();
   }, [search, sortBy, order]);
 
-  if (error) {
-    return <NotFoundPage />;
-  }
+  const validateNewProduct = () => {
+    const { title, description, price, image } = newProduct;
+    return title && description && price && image;
+  };
 
   const onDelete = (id: number) => {
     handleDelete(products, "products", id, setProducts);
@@ -57,17 +58,23 @@ const ProductPage: React.FC<PostsAndProductPageType> = () => {
   };
 
   const handleSubmit = () => {
+    if (!validateNewProduct()) {
+      alert("Please fill in all fields");
+      return;
+    }
+
     if (editingProduct) {
-      editProduct(products, setProducts, {
-        ...editingProduct,
-        ...newProduct,
-      });
+      editProduct(products, setProducts, { ...editingProduct, ...newProduct });
       setEditingProduct(null);
     } else {
       addProduct(products, setProducts, newProduct, setNewProduct);
     }
     setNewProduct({ title: "", description: "", price: "", image: "" });
   };
+
+  if (error) {
+    return <div className="error-message">Error: {error}</div>;
+  }
 
   return (
     <section className="products-section bg-background text-textColor">
@@ -77,42 +84,31 @@ const ProductPage: React.FC<PostsAndProductPageType> = () => {
       </div>
       <div className="search-container">
         <div className="search-input-wrapper">
-          <input
-            type="text"
-            placeholder="Title"
-            value={newProduct.title}
-            onChange={(e) =>
-              setNewProduct({ ...newProduct, title: e.target.value })
-            }
-            className="search-input"
-          />
-          <input
-            type="text"
-            placeholder="Description"
-            value={newProduct.description}
-            onChange={(e) =>
-              setNewProduct({ ...newProduct, description: e.target.value })
-            }
-            className="search-input"
-          />
-          <input
-            type="number"
-            placeholder="Price"
-            value={newProduct.price}
-            onChange={(e) =>
-              setNewProduct({ ...newProduct, price: e.target.value })
-            }
-            className="search-input"
-          />
-          <input
-            type="text"
-            placeholder="Image URL"
-            value={newProduct.image}
-            onChange={(e) =>
-              setNewProduct({ ...newProduct, image: e.target.value })
-            }
-            className="search-input"
-          />
+          {["Title", "Description", "Price", "Image URL"].map(
+            (placeholder, index) => (
+              <input
+                key={index}
+                type={placeholder === "Price" ? "number" : "text"}
+                placeholder={placeholder}
+                value={
+                  placeholder === "Title"
+                    ? newProduct.title
+                    : placeholder === "Description"
+                      ? newProduct.description
+                      : placeholder === "Price"
+                        ? newProduct.price
+                        : newProduct.image
+                }
+                onChange={(e) =>
+                  setNewProduct({
+                    ...newProduct,
+                    [placeholder.toLowerCase()]: e.target.value,
+                  })
+                }
+                className="search-input"
+              />
+            )
+          )}
           <button onClick={handleSubmit} className="search-btn">
             {editingProduct ? "Save Changes" : "Add Product"}
           </button>
@@ -120,7 +116,7 @@ const ProductPage: React.FC<PostsAndProductPageType> = () => {
       </div>
 
       <div className="product-list_wrapper">
-        {products.map(({ id, images, title, description, price }) => (
+        {products.map(({ id, images, title, description, price, category }) => (
           <div key={id} className="products product-list">
             <Link href={`products/${id}`}>
               <div className="product-info">
@@ -129,12 +125,15 @@ const ProductPage: React.FC<PostsAndProductPageType> = () => {
                 </h2>
                 <div className="image-container">
                   <img
-                    src={images && images[0]}
+                    src={images && images[0] ? images[0] : placeholderImage}
                     alt={title}
                     className="product-img"
                   />
                 </div>
                 <p>{description}</p>
+                <p className="text-['#7e1d1d'] font-semibold italic">
+                  Category: {category}
+                </p>
                 <p className="price">Price: ${price}</p>
               </div>
             </Link>
@@ -156,7 +155,7 @@ const ProductPage: React.FC<PostsAndProductPageType> = () => {
                     title,
                     description,
                     price,
-                    image: images![0],
+                    image: images && images[0],
                   })
                 }
               >

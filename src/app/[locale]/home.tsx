@@ -3,6 +3,7 @@ import LoadingSpinner from "../components/Loader";
 import "../../index.css";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import { useTranslation } from "react-i18next";
+import { createClient } from "../../utils/supabase/client";
 
 const Homepage = () => {
   const { user, isLoading } = useUser();
@@ -11,6 +12,8 @@ const Homepage = () => {
   if (isLoading) {
     return <LoadingSpinner />;
   }
+
+  console.log(createClient());
 
   return (
     <section id="home">
