@@ -1,5 +1,9 @@
 import { Product } from "../interfaces/products";
-import { SetNewProduct, SetProducts, NewProduct } from "../types/ProductDetails";
+import {
+  SetNewProduct,
+  SetProducts,
+  NewProduct,
+} from "../types/ProductDetails";
 
 export const addProduct = (
   products: Product[],
@@ -19,7 +23,7 @@ export const addProduct = (
   setProducts([productToAdd, ...products]);
 
   setNewProduct({
-    title: "",
+    name: "",
     description: "",
     price: "",
     image: "",

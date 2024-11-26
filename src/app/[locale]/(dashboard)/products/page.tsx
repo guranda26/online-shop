@@ -24,7 +24,7 @@ const ProductPage: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
   const [editingProduct, setEditingProduct] = useState<Product | null>(null);
   const [newProduct, setNewProduct] = useState({
-    title: "",
+    name: "",
     description: "",
     price: "",
     image: "",
@@ -44,8 +44,8 @@ const ProductPage: React.FC = () => {
   }, [search, sortBy, order]);
 
   const validateNewProduct = () => {
-    const { title, description, price, image } = newProduct;
-    return title && description && price && image;
+    const { name, description, price, image } = newProduct;
+    return name && description && price && image;
   };
 
   const onDelete = (id: number) => {
@@ -69,7 +69,7 @@ const ProductPage: React.FC = () => {
     } else {
       addProduct(products, setProducts, newProduct, setNewProduct);
     }
-    setNewProduct({ title: "", description: "", price: "", image: "" });
+    setNewProduct({ name: "", description: "", price: "", image: "" });
   };
 
   if (error) {
@@ -92,7 +92,7 @@ const ProductPage: React.FC = () => {
                 placeholder={placeholder}
                 value={
                   placeholder === "Title"
-                    ? newProduct.title
+                    ? newProduct.name
                     : placeholder === "Description"
                       ? newProduct.description
                       : placeholder === "Price"
@@ -117,7 +117,7 @@ const ProductPage: React.FC = () => {
 
       <div className="product-list_wrapper">
         {products.map(
-          ({ id, image_link, name, description, price, category }) => (
+          ({ id, image_link, name, description, price, category, image }) => (
             <div key={id} className="products product-list">
               <Link href={`products/${id}`}>
                 <div className="product-info">
@@ -152,7 +152,7 @@ const ProductPage: React.FC = () => {
                       name,
                       description,
                       price,
-                      image_link,
+                      image,
                     })
                   }
                 >
