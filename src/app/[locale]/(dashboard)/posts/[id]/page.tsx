@@ -67,7 +67,7 @@ const PostsPage = async ({ params }: { params: Params }) => {
           </span>
         </div>
         <div className="return-back">
-          <ReturnBackButton />
+          <ReturnBackButton fallbackRoute="/posts" />
         </div>
       </div>
     </section>
