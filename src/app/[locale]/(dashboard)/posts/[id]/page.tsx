@@ -10,8 +10,6 @@ import "../index.css";
 const PostsPage = async ({ params }: { params: Params }) => {
   const { id } = params;
 
-  console.log(id);
-
   const response = await fetch(`http://localhost:3000/api/posts/${id}`);
 
   if (!response.ok) {
@@ -22,16 +20,22 @@ const PostsPage = async ({ params }: { params: Params }) => {
 
   if (!post || !post.id) {
     return <NotFoundPage />;
-  } else {
-    console.log(post.tags_0);
   }
+
+  const currentLocale = (await params) || "en";
+
+  const { locale } = currentLocale;
+  console.log("locale", locale);
+
+  const titleKey = `title_${locale}` as keyof PostDetails;
+  const bodyKey = `body_${locale}` as keyof PostDetails;
 
   return (
     <section className="post-item">
       <div key={post.id} className="posts new-post">
         <div className="post-content post-content_item">
-          <h2>{post.title}</h2>
-          <p>{post.body}</p>
+          <h2>{post[titleKey]}</h2>
+          <p>{post[bodyKey]}</p>
           <div className="post-tags">
             <span key={post.tags_0} className="post-tag tag">
               {`${post.tags_0}`}
