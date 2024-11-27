@@ -1,11 +1,11 @@
 import { Post } from "../interfaces/posts";
 
 export type PostDetails = Post & {
-  tags: [];
-  reactions: {
-    likes: string;
-    dislikes: string;
-  };
+  tags_0: string;
+  tags_1: string;
+  tags_2: string;
+  reactions_likes: number;
+  reactions_dislikes: number;
   views: string;
 };
 

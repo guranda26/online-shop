@@ -10,7 +10,9 @@ import "../index.css";
 const PostsPage = async ({ params }: { params: Params }) => {
   const { id } = params;
 
-  const response = await fetch(`https://dummyjson.com/posts/${id}`);
+  console.log(id);
+
+  const response = await fetch(`http://localhost:3000/api/posts/${id}`);
 
   if (!response.ok) {
     return <NotFoundPage />;
@@ -20,6 +22,8 @@ const PostsPage = async ({ params }: { params: Params }) => {
 
   if (!post || !post.id) {
     return <NotFoundPage />;
+  } else {
+    console.log(post.tags_0);
   }
 
   return (
@@ -29,21 +33,27 @@ const PostsPage = async ({ params }: { params: Params }) => {
           <h2>{post.title}</h2>
           <p>{post.body}</p>
           <div className="post-tags">
-            {post.tags.map((tag) => (
-              <span key={tag} className="post-tag tag">
-                {tag}
-              </span>
-            ))}
+            <span key={post.tags_0} className="post-tag tag">
+              {`${post.tags_0}`}
+            </span>
+            <span key={post.tags_1} className="post-tag tag">
+              {`${post.tags_1}`}
+            </span>
+            <span key={post.tags_2} className="post-tag tag">
+              {`${post.tags_2}`}
+            </span>
           </div>
         </div>
         <div className="post-reactions post-reactions">
           <span className="reactions reaction">
             <AiFillLike /> Likes:{" "}
-            <span className="post-reaction">{post.reactions.likes}</span>
+            <span className="post-reaction text-red-500">
+              {post.reactions_likes}
+            </span>
           </span>
           <span className="reactions">
             <AiFillDislike /> Dislikes:{" "}
-            <span className="post-reaction">{post.reactions.dislikes}</span>
+            <span className="post-reaction">{post.reactions_dislikes}</span>
           </span>
           <span className="reactions">
             <FaEye /> Views: <span className="post-reaction">{post.views}</span>

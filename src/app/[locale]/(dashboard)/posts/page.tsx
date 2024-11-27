@@ -8,7 +8,7 @@ import { addPost } from "../../../modules/addPost";
 import { editPost } from "../../../modules/editPost";
 import NotFoundPage from "../../not-found";
 import { Post, PostsAndProductPageType } from "@/src/app/interfaces/posts";
-import { useSearchParams } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
 import "../../../../index.css";
 import "./index.css";
 import { deletePost } from "@/src/app/modules/deletePost";
@@ -64,6 +64,18 @@ const PostsPage: React.FC<PostsAndProductPageType> = () => {
     setNewPost({ title: "", body: "" });
   };
 
+  const path = usePathname();
+  const ka = path.includes("/ka");
+  const es = path.includes("/es");
+  const locale = path.includes("/ka")
+    ? "ka"
+    : path.includes("/es")
+      ? "es"
+      : "en";
+
+  const titleKey = `title_${locale}` as keyof Post;
+  const bodyKey = `body_${locale}` as keyof Post;
+
   return (
     <section className="posts-section p-7 bg-postBackground w-screen text-formText">
       <h1 className="text-center text-3xl font-semibold">All Posts</h1>
@@ -92,16 +104,16 @@ const PostsPage: React.FC<PostsAndProductPageType> = () => {
       </div>
 
       <div className="post-list_wrapper">
-        {posts.map(({ id, title, body }) => (
-          <div key={id} className="posts bg-postFormBg">
-            <Link href={`posts/${id}`} className="post-list">
-              <h2>{title}</h2>
-              <p>{body}</p>
+        {posts.map((post) => (
+          <div key={post.id} className="posts bg-postFormBg">
+            <Link href={`posts/${post.id}`} className="post-list">
+              <h2>{post[titleKey]}</h2>
+              <p>{post[bodyKey]}</p>
             </Link>
             <div className="buttons">
               <button
                 className="search-btn delete"
-                onClick={() => onDelete(id)}
+                onClick={() => onDelete(post.id)}
               >
                 Delete
               </button>

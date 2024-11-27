@@ -40,7 +40,7 @@ export const GET = async (
   );
 
   const { data, error } = await supabase
-    .from("products")
+    .from("posts")
     .select()
     .eq("id", productId)
     .single();

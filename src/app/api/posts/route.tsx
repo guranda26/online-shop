@@ -30,7 +30,7 @@ export const GET = async (req: NextRequest) => {
     }
   );
 
-  const { data, error } = await supabase.from("posts_data").select();
+  const { data, error } = await supabase.from("posts").select();
 
   if (error) {
     console.error("Error fetching data:", error);
