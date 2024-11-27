@@ -117,10 +117,7 @@ const PostsPage: React.FC<PostsAndProductPageType> = () => {
               >
                 Delete
               </button>
-              <button
-                className="search-btn edit"
-                onClick={() => onEdit({ id, title, body })}
-              >
+              <button className="search-btn edit" onClick={() => onEdit(post)}>
                 Edit
               </button>
             </div>
