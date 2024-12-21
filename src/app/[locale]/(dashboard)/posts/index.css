@@ -30,7 +30,7 @@
 }
 
 .posts-section {
-  max-width: 1400px;
+  /* max-width: 1400px; */
   margin: 0 auto;
   background-color: rgba(244, 212, 236, 0.679);
 }

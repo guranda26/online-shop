@@ -1,6 +1,3 @@
-/**
- * This is a singleton to ensure we only instantiate Stripe once.
- */
 import { Stripe, loadStripe } from "@stripe/stripe-js";
 
 let stripePromise: Promise<Stripe | null>;
