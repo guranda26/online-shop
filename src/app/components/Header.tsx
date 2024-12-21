@@ -28,6 +28,9 @@ const Header = () => {
             <Link href="/posts">{t("header:posts")}</Link>
           </li>
           <li className="nav-item">
+            <Link href="/pricing">{t("header:pricing")}</Link>
+          </li>
+          <li className="nav-item">
             <Link href="/contact">{t("header:contact")}</Link>
           </li>
           <li className="nav-item">

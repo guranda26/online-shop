@@ -7,10 +7,25 @@ import "../../styles/Header.css";
 import { dir } from "i18next";
 import i18nConfig from "../../i18nConfig";
 import React from "react";
+import Link from "next/link";
 
 export const metadata = {
-  title: "eCommerce app",
-  description: "Web site created with Next.js.",
+  title: {
+    default: "eCommerce app",
+    template: "%s | Next.js + TypeScript Example",
+  },
+  twitter: {
+    card: "summary_large_image",
+    description:
+      "Full-stack TypeScript application created using Next.js, react-stripe-js, and stripe-node.",
+    images: [
+      {
+        url: "https://nextjs-typescript-react-stripe-js.vercel.app/social_card.png",
+      },
+    ],
+    site: "@StripeDev",
+    title: "TypeScript Next.js Stripe Example",
+  },
 };
 
 export enum Locale {
@@ -33,7 +48,7 @@ export default async function RootLayout({
   params,
 }: {
   children: React.ReactNode;
-  params: Promise<LocaleParams>; 
+  params: Promise<LocaleParams>;
 }) {
   const resolvedParams = await params;
   const { locale } = resolvedParams;
