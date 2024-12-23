@@ -50,28 +50,61 @@ export default function SuccessPage() {
       setStatus("failed");
     }
   }
-
   if (status === "loading") {
-    return <div>Loading...</div>;
+    return (
+      <div className="flex items-center justify-center h-screen bg-gray-100">
+        <div className="text-lg font-semibold text-gray-700">Loading...</div>
+      </div>
+    );
   }
 
   if (status === "failed") {
-    return <div>Failed to process subscription. Please try again.</div>;
+    return (
+      <div className="flex items-center justify-center h-screen bg-red-100">
+        <div className="p-6 bg-white rounded shadow-md">
+          <h1 className="text-2xl font-bold text-red-600">
+            Subscription Failed
+          </h1>
+          <p className="mt-4 text-gray-600">
+            Failed to process subscription. Please try again.
+          </p>
+        </div>
+      </div>
+    );
   }
 
   if (status === "unknown") {
     return (
-      <div>Unable to retrieve subscription status. Please contact support.</div>
+      <div className="flex items-center justify-center h-screen bg-yellow-100">
+        <div className="p-6 bg-white rounded shadow-md">
+          <h1 className="text-2xl font-bold text-yellow-600">
+            Unknown Subscription Status
+          </h1>
+          <p className="mt-4 text-gray-600">
+            Unable to retrieve subscription status. Please contact support.
+          </p>
+        </div>
+      </div>
     );
   }
 
   return (
-    <div>
-      <h1>Subscription Successful!</h1>
-      <p>
-        Thank you for your subscription. A confirmation email has been sent to{" "}
-        {customerEmail}.
-      </p>
+    <div className="flex items-center justify-center h-screen bg-green-100">
+      <div className="p-6 bg-white rounded shadow-md">
+        <h1 className="text-3xl font-bold text-green-600">
+          Subscription Successful!
+        </h1>
+        <p className="mt-4 text-gray-700">
+          The subscription with the email{" "}
+          <a
+            href={`mailto:${customerEmail}`}
+            className="font-semibold text-blue-600 hover:underline"
+          >
+            {customerEmail}
+          </a>{" "}
+          has been confirmed.
+        </p>
+      </div>
     </div>
   );
 }
