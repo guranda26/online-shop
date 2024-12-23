@@ -1,12 +1,13 @@
 import NotFoundPage from "../[locale]/not-found";
 
-export async function fetchProducts() {
-// search = "",
-// sortBy = "name",
-// order = "asc"
+export async function fetchProducts(
+  search = "",
+  sortBy = "name",
+  order = "asc"
+) {
   const localUrl = "http://localhost:3000/api/products";
 
-  // const dummyUrl = `http://dummyjson.com/products/search?q=${search || ""}${sortBy ? `&sortBy=${sortBy}` : ""}${order ? `&order=${order}` : ""}`;
+  const dummyUrl = `http://dummyjson.com/products/search?q=${search || ""}${sortBy ? `&sortBy=${sortBy}` : ""}${order ? `&order=${order}` : ""}`;
 
   try {
     const localResponse = await fetch(localUrl);
@@ -21,21 +22,21 @@ export async function fetchProducts() {
       }
     }
 
-    // const dummyResponse = await fetch(dummyUrl);
+    const dummyResponse = await fetch(dummyUrl);
 
     // const response = await fetch(url);
 
-    // if (!dummyResponse.ok) {
-    //   console.error("Error fetching products:", dummyResponse.statusText);
-    //   return <NotFoundPage />;
-    // }
+    if (!dummyResponse.ok) {
+      console.error("Error fetching products:", dummyResponse.statusText);
+      return <NotFoundPage />;
+    }
 
-    // const dummyData = await dummyResponse.json();
-    // if (!dummyData.products) {
-    //   throw new Error("No products found");
-    // }
+    const dummyData = await dummyResponse.json();
+    if (!dummyData.products) {
+      throw new Error("No products found");
+    }
 
-    // return dummyData.products;
+    return dummyData.products;
   } catch (error) {
     if (error instanceof Error) {
       console.error("Error in fetchProducts:", error.message);

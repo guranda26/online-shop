@@ -12,6 +12,7 @@ import { usePathname, useSearchParams } from "next/navigation";
 import "../../../../index.css";
 import "./index.css";
 import { deletePost } from "@/src/app/modules/deletePost";
+import { SetPosts } from "@/src/app/types/PostDetails";
 
 const PostsPage: React.FC<PostsAndProductPageType> = () => {
   const searchParams = useSearchParams();
