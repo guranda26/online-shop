@@ -7,7 +7,6 @@ export const createCheckoutSession = async (
   subscriptionId?: string
 ) => {
   const amount = Number(data.get("customDonation"));
-  // const stripe = await getStripe();
 
   const session = await stripe.checkout.sessions.create({
     line_items: subscriptionId

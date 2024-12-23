@@ -21,7 +21,7 @@ export async function createCheckoutSession(
   const checkoutSession: Stripe.Checkout.Session =
     await stripe.checkout.sessions.create({
       mode: "subscription",
-      submit_type: "donate",
+      submit_type: "subscribe",
       line_items: [
         {
           price: subscriptionId || process.env.STRIPE_PRICE_ID,

@@ -12,28 +12,43 @@ export default function SuccessPage() {
   useEffect(() => {
     if (sessionId) {
       fetchSessionStatus();
+    } else {
+      console.error("No session ID provided in URL.");
+      setStatus("failed");
     }
   }, [sessionId]);
 
   async function fetchSessionStatus() {
-    const response = await fetch("/api/check-session", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ sessionId }),
-    });
+    try {
+      const response = await fetch(`/api/check-session`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ sessionId }),
+      });
 
-    const { session, error } = await response.json();
+      console.log("Raw response:", response);
 
-    if (error) {
+      if (!response.ok) {
+        throw new Error("Failed to fetch session details.");
+      }
+
+      const { session } = await response.json();
+      console.log("Parsed session:", session);
+
+      if (session.payment_status) {
+        setStatus(session.payment_status);
+        setCustomerEmail(
+          session.customer_details?.email || "No email provided"
+        );
+      } else {
+        throw new Error("Missing required session details.");
+      }
+    } catch (error) {
+      console.error("Error fetching session:", error);
       setStatus("failed");
-      console.error(error);
-      return;
     }
-
-    setStatus(session.status);
-    setCustomerEmail(session.customer_email);
   }
 
   if (status === "loading") {
@@ -42,6 +57,12 @@ export default function SuccessPage() {
 
   if (status === "failed") {
     return <div>Failed to process subscription. Please try again.</div>;
+  }
+
+  if (status === "unknown") {
+    return (
+      <div>Unable to retrieve subscription status. Please contact support.</div>
+    );
   }
 
   return (
