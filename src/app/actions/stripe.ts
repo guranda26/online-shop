@@ -9,7 +9,8 @@ import { formatAmountForStripe } from "../../utils/stripe-helpers";
 import { stripe } from "../../lib/stripe";
 
 export async function createCheckoutSession(
-  data: FormData
+  data: FormData,
+  subscriptionId?: string
 ): Promise<{ client_secret: string | null; url: string | null }> {
   const ui_mode = data.get(
     "uiMode"
@@ -19,21 +20,12 @@ export async function createCheckoutSession(
 
   const checkoutSession: Stripe.Checkout.Session =
     await stripe.checkout.sessions.create({
-      mode: "payment",
-      submit_type: "donate",
+      mode: "subscription",
+      submit_type: "subscribe",
       line_items: [
         {
+          price: subscriptionId || process.env.STRIPE_PRICE_ID,
           quantity: 1,
-          price_data: {
-            currency: CURRENCY,
-            product_data: {
-              name: "Custom amount donation",
-            },
-            unit_amount: formatAmountForStripe(
-              Number(data.get("customDonation") as string),
-              CURRENCY
-            ),
-          },
         },
       ],
       ...(ui_mode === "hosted" && {
