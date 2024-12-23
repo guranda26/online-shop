@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
+import LoadingSpinner from "../../../components/Loader";
 
 export default function SuccessPage() {
   const [status, setStatus] = useState("loading");
@@ -53,7 +54,9 @@ export default function SuccessPage() {
   if (status === "loading") {
     return (
       <div className="flex items-center justify-center h-screen bg-gray-100">
-        <div className="text-lg font-semibold text-gray-700">Loading...</div>
+        <div className="text-lg font-semibold text-gray-700">
+          <LoadingSpinner />
+        </div>
       </div>
     );
   }

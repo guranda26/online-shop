@@ -34,7 +34,7 @@
     "src/app/components/LogoutButton.tsx",
     "src/app/i18n.js",
     "tailwind.config.js",
-    "src/app/[locale]/(dashboard)/success/page.js"
+    "src/app/[locale]/(dashboard)/success/page.ts"
   ],
   "exclude": ["node_modules"]
 }

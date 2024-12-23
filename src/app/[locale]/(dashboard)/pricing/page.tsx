@@ -8,12 +8,20 @@ const stripePromise = loadStripe(
   process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!
 );
 
+interface Plan {
+  id: string;
+  name: string | null;
+  description?: string | null;
+  price: number;
+  interval?: string;
+  price_id: string;
+}
+
 export default function Pricing() {
   const [plans, setPlans] = useState([]);
   const router = useRouter();
 
   useEffect(() => {
-    // Fetch subscription plans from your API
     fetch("/api/subscription-plans")
       .then((res) => res.json())
       .then((data) => setPlans(data))
@@ -83,13 +91,14 @@ export default function Pricing() {
             Subscribe Free
           </button>
         </div>
-        {plans.map((plan: any) => (
+        {plans.map((plan: Plan) => (
           <div
             key={plan.id}
             className="border border-gray-300 rounded-lg shadow-lg p-6 bg-white dark:bg-gray-800"
           >
             <h2 className="text-2xl font-semibold text-gray-800 dark:text-white">
-              {plan.name}
+              {plan.name ?? "Plan Name Unavailable"}{" "}
+              {/* Handle null gracefully */}
             </h2>
             <p className="text-gray-600 dark:text-gray-400 mt-2">
               {plan.description}

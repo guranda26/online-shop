@@ -1,9 +1,10 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
+import { stripe } from "../../../lib/stripe";
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+// const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string);
 
-export async function POST(request) {
+export async function POST(request: NextRequest) {
   try {
     console.log("Request received. Method:", request.method);
 
@@ -18,13 +19,19 @@ export async function POST(request) {
 
     if (session.payment_status === "paid") {
       console.log("Payment status is 'paid'.");
-      // Update your database to mark the user as subscribed
-      // await updateUserSubscriptionStatus(session.client_reference_id, 'active');
     }
 
     return NextResponse.json({ session });
   } catch (error) {
-    console.error("Error in POST /api/check-session:", error);
-    return NextResponse.json({ error: error.message }, { status: 400 });
+    if (error instanceof Error) {
+      console.error("Error in POST /api/check-session:", error.message);
+      return NextResponse.json({ error: error.message }, { status: 400 });
+    }
+
+    console.error("Unknown error occurred:", error);
+    return NextResponse.json(
+      { error: "An unknown error occurred." },
+      { status: 500 }
+    );
   }
 }
