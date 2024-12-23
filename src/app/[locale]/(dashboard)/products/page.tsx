@@ -11,6 +11,7 @@ import { Product } from "@/src/app/interfaces/products";
 import { useSearchParams } from "next/navigation";
 import "../../../../styles/SearchInput.css";
 import "./index.css";
+import AddToCart from "@/src/app/components/AddToCart";
 
 const placeholderImage =
   "../../../../../public/assets/product-placeholder.webp";
@@ -140,9 +141,8 @@ const ProductPage: React.FC = () => {
                 </div>
               </Link>
               <div className="flex gap-2 text-center justify-center font-semibold mt-4">
-                <button className="py-2 px-3 bg-blue-600 rounded-md text-white w-[110px]">
-                  Add to cart
-                </button>
+                
+                
                 <button
                   className="py-2 px-3 bg-red-600 rounded-md text-white w-[110px]"
                   onClick={() => onDelete(id)}
