@@ -3,7 +3,7 @@ import React from "react";
 import LoadingSpinner from "../../../components/Loader";
 
 import "../../../../styles/ProfilePage.css";
-import { useUser } from "@auth0/nextjs-auth0/client";
+// import { useUser } from "@auth0/nextjs-auth0/client";
 import NotFoundPage from "../../not-found";
 
 type UserType = {
@@ -14,18 +14,26 @@ type UserType = {
 };
 
 const Profile = () => {
-  const { user, error, isLoading } = useUser();
-  if (!user || isLoading) {
-    return <LoadingSpinner />;
-  }
-  if (error)
-    return (
-      <div>
-        <NotFoundPage />
-      </div>
-    );
+  // const { user, error, isLoading } = useUser();
+  // if (!user || isLoading) {
+  //   return <LoadingSpinner />;
+  // }
+  // if (error)
+  //   return (
+  //     <div>
+  //       <NotFoundPage />
+  //     </div>
+  //   );
 
-  const { name, picture, email } = user as UserType;
+  // const { name, picture, email } = user as UserType;
+
+  let user = {};
+
+  const { name, picture, email } = {
+    name: "Guranda",
+    picture: "picture",
+    email: "email",
+  } as UserType;
 
   return (
     user && (

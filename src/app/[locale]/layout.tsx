@@ -1,4 +1,4 @@
-import { UserProvider } from "@auth0/nextjs-auth0/client";
+// import { UserProvider } from "@auth0/nextjs-auth0/client";
 import Providers from "../components/providers";
 import initTranslations from "../i18n";
 import TranslationsProvider from "../components/TranslationsProvider";
@@ -57,19 +57,19 @@ export default async function RootLayout({
 
   return (
     <html lang={locale} dir={dir(locale)} suppressHydrationWarning>
-      <UserProvider>
-        <body>
-          <TranslationsProvider
-            resources={resources}
-            locale={locale}
-            namespaces={["home", "common", "header", "about-us"]}
-          >
-            <Providers>
-              <div className="flex-col">{children}</div>
-            </Providers>
-          </TranslationsProvider>
-        </body>
-      </UserProvider>
+      {/* <UserProvider> */}
+      <body>
+        <TranslationsProvider
+          resources={resources}
+          locale={locale}
+          namespaces={["home", "common", "header", "about-us"]}
+        >
+          <Providers>
+            <div className="flex-col">{children}</div>
+          </Providers>
+        </TranslationsProvider>
+      </body>
+      {/* </UserProvider> */}
     </html>
   );
 }

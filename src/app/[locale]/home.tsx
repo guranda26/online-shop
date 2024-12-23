@@ -6,12 +6,14 @@ import { useTranslation } from "react-i18next";
 import { createClient } from "../../utils/supabase/client";
 
 const Homepage = () => {
-  const { user, isLoading } = useUser();
+  // const { user, isLoading } = useUser();
   const { t } = useTranslation();
 
-  if (isLoading) {
-    return <LoadingSpinner />;
-  }
+  // if (isLoading) {
+  //   return <LoadingSpinner />;
+  // }
+
+  let user = { given_name: "Guranda2" };
 
   console.log(createClient());
 

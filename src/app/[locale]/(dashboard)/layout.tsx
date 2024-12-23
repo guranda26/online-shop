@@ -1,7 +1,7 @@
 "use client";
 
 import "../../../index.css";
-import { useAuthCheck } from "../../hooks/useAuthCheck";
+// import { useAuthCheck } from "../../hooks/useAuthCheck";
 import LoadingSpinner from "../../components/Loader";
 import initTranslations from "../../i18n";
 import TranslationsProvider from "../../components/TranslationsProvider";
@@ -19,7 +19,7 @@ export default function DashboardLayout({
 }) {
   const [locale, setLocale] = useState<Locale | string>("en");
   const [resources, setResources] = useState(null);
-  const isLoading = useAuthCheck();
+  const isLoading = false;
 
   useEffect(() => {
     const fetchParamsAndTranslations = async () => {
