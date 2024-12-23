@@ -5,20 +5,21 @@ import Link from "next/link";
 import { handleDelete } from "../../../modules/handleDelete";
 import { useProducts } from "../../../hooks/useProducts";
 import "../../../../styles/SearchInput.css";
+import LoadingSpinner from "../../../components/Loader";
 import "./index.css";
 
 const placeholderImage = "/assets/product-placeholder.webp";
 
 const ProductPage: React.FC = () => {
-  const { products, setProducts, error } = useProducts();
+  const { products, setProducts, error, loading } = useProducts();
 
   const onDelete = (id: number) => {
     handleDelete(products, "products", id, setProducts);
   };
 
-  // if (loading) {
-  //   return <div className="loading-message">Loading products...</div>;
-  // }
+  if (loading) {
+    return <LoadingSpinner />;
+  }
 
   if (error) {
     return <div className="error-message">Error: {error}</div>;
