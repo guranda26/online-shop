@@ -19,7 +19,7 @@ export async function POST(req: Request) {
       images: [photo],
     });
 
-    console.log("Book created:", product);
+    console.log("Product created:", product);
 
     const priceObj = await stripe.prices.create({
       unit_amount: price * 100,
@@ -31,7 +31,7 @@ export async function POST(req: Request) {
 
     return NextResponse.json({ product, price: priceObj });
   } catch (error) {
-    console.error("Error creating book or price:", error);
+    console.error("Error creating product or price:", error);
 
     return NextResponse.json(
       { error: (error as Error).message },

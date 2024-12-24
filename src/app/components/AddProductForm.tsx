@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import "../../styles/AddBook.css";
+import "../../styles/AddProduct.css";
 
 interface FormData {
   name: string;
@@ -10,7 +10,7 @@ interface FormData {
   photo: string;
 }
 
-export default function AddBookForm() {
+export default function AddProductForm() {
   const [formData, setFormData] = useState<FormData>({
     name: "",
     description: "",
@@ -29,7 +29,7 @@ export default function AddBookForm() {
     e.preventDefault();
 
     try {
-      const response = await fetch("/api/bookstore", {
+      const response = await fetch("/api/store", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -43,18 +43,18 @@ export default function AddBookForm() {
       });
 
       if (!response.ok) {
-        throw new Error("Failed to create book");
+        throw new Error("Failed to create product");
       }
 
       setFormData({ name: "", description: "", price: "", photo: "" });
     } catch (error) {
-      console.error("Error creating book:", error);
+      console.error("Error creating product:", error);
     }
   };
 
   return (
     <div className="form-container">
-      <h2>Add New Book</h2>
+      <h2>Add New Product</h2>
 
       <div className="form-section">
         <form onSubmit={handleSubmit}>
@@ -62,7 +62,7 @@ export default function AddBookForm() {
             <input
               type="text"
               name="name"
-              placeholder="Book Name"
+              placeholder="Product Name"
               value={formData.name}
               onChange={handleChange}
               required
@@ -79,7 +79,7 @@ export default function AddBookForm() {
 
           <textarea
             name="description"
-            placeholder="Book Description"
+            placeholder="Product Description"
             value={formData.description}
             onChange={handleChange}
             required
@@ -94,7 +94,7 @@ export default function AddBookForm() {
             required
           />
 
-          <button type="submit">Add Book</button>
+          <button type="submit">Add Product</button>
         </form>
       </div>
     </div>
