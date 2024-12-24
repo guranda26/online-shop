@@ -17,8 +17,27 @@ interface Plan {
   price_id: string;
 }
 
+const fetchActiveSubscription = async () => {
+  try {
+    const response = await fetch("/api/get-active-subscription");
+    if (!response.ok) {
+      throw new Error(
+        `Failed to fetch active subscription: ${response.statusText}`
+      );
+    }
+    const data = await response.json();
+    return data.subscriptionId;
+  } catch (error) {
+    console.error("Error fetching active subscription:", error);
+    return null;
+  }
+};
+
 export default function Pricing() {
-  const [plans, setPlans] = useState([]);
+  const [plans, setPlans] = useState<Plan[]>([]);
+  const [activeSubscription, setActiveSubscription] = useState<string | null>(
+    null
+  );
   const router = useRouter();
 
   useEffect(() => {
@@ -30,33 +49,70 @@ export default function Pricing() {
       );
   }, []);
 
+  useEffect(() => {
+    const getSubscription = async () => {
+      const subscriptionId = await fetchActiveSubscription();
+      setActiveSubscription(subscriptionId);
+    };
+
+    getSubscription();
+  }, []);
+
   const handleSubscribe = async (priceId: string) => {
-    try {
-      const stripe = await stripePromise;
-      if (!stripe) {
-        throw new Error("Stripe has not been initialized");
+    if (activeSubscription === priceId) {
+      return;
+    } else {
+      try {
+        const stripe = await stripePromise;
+        if (!stripe) {
+          throw new Error("Stripe has not been initialized");
+        }
+
+        const { sessionId } = await fetch("/api/create-checkout-session", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ priceId }),
+        }).then((res) => res.json());
+
+        const result = await stripe.redirectToCheckout({ sessionId });
+
+        if (result.error) {
+          console.error(result.error.message);
+        }
+      } catch (error) {
+        console.error("Subscription error:", error);
       }
-
-      const { sessionId } = await fetch("/api/create-checkout-session", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ priceId }),
-      }).then((res) => res.json());
-
-      const result = await stripe.redirectToCheckout({ sessionId });
-
-      if (result.error) {
-        console.error(result.error.message);
-      }
-    } catch (error) {
-      console.error("Subscription error:", error);
     }
   };
 
   const handleBasicSubscribe = () => {
     router.push("/posts");
+  };
+
+  const handleCancelSubscription = async (subscriptionId: string) => {
+    try {
+      const response = await fetch("/api/cancel-subscription", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ subscriptionId }),
+      });
+
+      if (!response.ok) {
+        const result = await response.json();
+        console.error(result.error || "Failed to cancel subscription");
+        return;
+      }
+
+      const result = await response.json();
+      console.log(result.message);
+      setActiveSubscription(null);
+    } catch (error) {
+      console.error("Error canceling subscription:", error);
+    }
   };
 
   return (
@@ -91,14 +147,14 @@ export default function Pricing() {
             Subscribe Free
           </button>
         </div>
-        {plans.map((plan: Plan) => (
+
+        {plans.map((plan) => (
           <div
             key={plan.id}
             className="border border-gray-300 rounded-lg shadow-lg p-6 bg-white dark:bg-gray-800"
           >
             <h2 className="text-2xl font-semibold text-gray-800 dark:text-white">
-              {plan.name ?? "Plan Name Unavailable"}{" "}
-              {/* Handle null gracefully */}
+              {plan.name ?? "Plan Name Unavailable"}
             </h2>
             <p className="text-gray-600 dark:text-gray-400 mt-2">
               {plan.description}
@@ -106,12 +162,21 @@ export default function Pricing() {
             <p className="text-lg font-medium text-gray-900 dark:text-white mt-4">
               ${plan.price / 100} / {plan.interval}
             </p>
-            <button
-              onClick={() => handleSubscribe(plan.price_id)}
-              className="mt-6 bg-blue-600 text-white px-6 py-3 rounded-lg w-full font-semibold hover:bg-blue-700 transition"
-            >
-              Subscribe Pro
-            </button>
+            {activeSubscription === plan.id ? (
+              <button
+                onClick={() => handleCancelSubscription(plan.id)}
+                className="mt-6 bg-red-600 text-white px-6 py-3 rounded-lg w-full font-semibold hover:bg-red-700 transition"
+              >
+                Cancel Subscription
+              </button>
+            ) : (
+              <button
+                onClick={() => handleSubscribe(plan.price_id)}
+                className="mt-6 bg-blue-600 text-white px-6 py-3 rounded-lg w-full font-semibold hover:bg-blue-700 transition"
+              >
+                Subscribe Pro
+              </button>
+            )}
           </div>
         ))}
       </div>
