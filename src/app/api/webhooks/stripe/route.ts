@@ -50,14 +50,17 @@ export async function POST(request: NextRequest) {
 
 async function handleSubscriptionUpdated(subscription: StripeSubscription) {
   console.log("Subscription updated:", subscription.id);
+  console.log("Customer ID:", subscription.customer); // Customer ID
 }
 
 async function handleSubscriptionDeleted(subscription: StripeSubscription) {
   console.log("Subscription deleted:", subscription.id);
+  console.log("Customer ID:", subscription.customer); // Customer ID
 }
 
 async function handleInvoicePaid(invoice: StripeInvoice) {
   console.log("Invoice paid:", invoice.id);
+  console.log("Customer ID:", invoice.customer);
 }
 
 export const config = {
