@@ -1,29 +1,25 @@
-import { useState, useEffect } from "react";
-import { fetchProducts } from "../components/FetchProducts";
-import { Product } from "../interfaces/products";
 
-export const useProducts = () => {
-  const [products, setProducts] = useState<Product[]>([]);
-  const [error, setError] = useState<string | null>(null);
-  const [loading, setLoading] = useState(true)
 
-  const loadProducts = async () => {
-    try {
-      const fetchedProducts = await fetchProducts();
-      setProducts(fetchedProducts);
-      setLoading(false)
-    } catch (err) {
-      console.error(err);
-      setError("Error loading products");
-      setLoading(false)
-    }
-  };
 
-  useEffect(() => {
-    if (products.length === 0 && !error) {
-      loadProducts();
-    }
-  }, []);
+interface Products {
+  id: number;
+  name: string;
+  image_link?: string;
+  description: string;
+  price: string;
+  image: string;
+  category?: string;
+}
 
-  return { products, setProducts, error, setError, loading };
+
+const useProducts = async (): Promise<Products[]> => {
+  
+  const data = await fetch('http://localhost:3000/api/products')
+  const products: Products[] = await data.json()
+
+
+  return products
 };
+
+
+export default useProducts;
