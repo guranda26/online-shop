@@ -35,7 +35,7 @@
     "src/app/i18n.js",
     "tailwind.config.js",
     "src/app/[locale]/(dashboard)/success/page.ts",
-    "src/app/api/get-active-subscription/route.js"
+    "src/app/api/get-active-subscription/route.ts"
   ],
   "exclude": ["node_modules"]
 }
