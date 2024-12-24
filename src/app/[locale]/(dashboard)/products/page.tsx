@@ -1,30 +1,12 @@
-"use client";
-
-import React from "react";
 import Link from "next/link";
-import { handleDelete } from "../../../modules/handleDelete";
-import { useProducts } from "../../../hooks/useProducts";
-import "../../../../styles/SearchInput.css";
-import LoadingSpinner from "../../../components/Loader";
 import "./index.css";
 import AddToCart from "@/src/app/components/AddToCart";
+import useProducts from "@/src/app/hooks/useProducts";
 
 const placeholderImage = "/assets/product-placeholder.webp";
 
-const ProductPage: React.FC = () => {
-  const { products, setProducts, error, loading } = useProducts();
-
-  const onDelete = (id: number) => {
-    handleDelete(products, "products", id, setProducts);
-  };
-
-  if (loading) {
-    return <LoadingSpinner />;
-  }
-
-  if (error) {
-    return <div className="error-message">Error: {error}</div>;
-  }
+const ProductPage = async () => {
+  const products = await useProducts();
 
   return (
     <section className="products-section bg-background text-textColor">
@@ -53,16 +35,8 @@ const ProductPage: React.FC = () => {
                   <p className="price">Price: ${price}</p>
                 </div>
               </Link>
-              <div className="flex gap-2 text-center justify-center font-semibold mt-4">
-                
-                
-                <button
-                  className="py-2 px-3 bg-red-600 rounded-md text-white w-[110px]"
-                  onClick={() => onDelete(id)}
-                >
-                  Delete
-                </button>
-              </div>
+              <AddToCart productId={id} productName={name} productPrice={price}/>
+              <div className="flex gap-2 text-center justify-center font-semibold mt-4"></div>
             </div>
           )
         )}
