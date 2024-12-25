@@ -72,10 +72,10 @@ const Header = () => {
           </li>
           <li className="text-center md:flex md:flex-col">
             <Link
-              href="/contact"
+              href="/cart"
               className="text-white text-lg font-bold px-2 py-2 block hover:text-[#dfc7e7]"
             >
-              {t("header:contact")}
+              Cart
             </Link>
           </li>
           <li className="text-center flex justify-center md:flex-col text-white">
