@@ -77,13 +77,13 @@ const PostsPage: React.FC<PostsAndProductPageType> = () => {
   const bodyKey = `body_${locale}` as keyof Post;
 
   return (
-    <section className="posts-section p-7 bg-postBackground w-screen text-formText">
+    <section className="posts-section p-7 bg-background w-screen text-formText">
       <div className="max-w-[1400px]">
         <h1 className="text-center text-3xl font-semibold">All Posts</h1>
         <div className="search-sort__wrapper">
           <SearchInput searchPath="posts" supportsBodySort={true} />
         </div>
-        <div className="search-container">
+        <div className="search-container flex flex-col flex-wrap md:flex-row gap-3 justify-center">
           <div className="search-input-wrapper text-textBlack">
             <input
               type="text"
@@ -108,7 +108,10 @@ const PostsPage: React.FC<PostsAndProductPageType> = () => {
 
         <div className="post-list_wrapper">
           {posts.map((post) => (
-            <div key={post.id} className="posts bg-postFormBg">
+            <div
+              key={post.id}
+              className="posts bg-postFormBg w-auto max-w-[100%] md:m-[20px]"
+            >
               <Link href={`posts/${post.id}`} className="post-list">
                 <h2>{post[titleKey]}</h2>
                 <p>{post[bodyKey]}</p>
