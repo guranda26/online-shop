@@ -8,6 +8,8 @@ const stripePromise = loadStripe(
   process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!
 );
 
+const blogImg = "/assets/blog-img.jpg";
+
 interface Plan {
   id: string;
   name: string | null;
@@ -15,6 +17,7 @@ interface Plan {
   price: number;
   interval?: string;
   price_id: string;
+  images: string | null;
 }
 
 export default function Pricing() {
@@ -75,6 +78,7 @@ export default function Pricing() {
             <h2 className="text-3xl font-semibold text-gray-300 dark:text-gray-100 mb-5">
               Basic Plan
             </h2>
+            <img src={blogImg} alt="blog" className="h-[350px] md:h-[200px]" />
             <p className="text-gray-300 dark:text-gray-300">
               Access limited features such as viewing blogs and more.
             </p>
@@ -89,7 +93,7 @@ export default function Pricing() {
             onClick={handleBasicSubscribe}
             className="mt-auto bg-cyan-500 text-white px-6 py-3 rounded-lg w-full font-medium hover:bg-blue-700 transition-colors"
           >
-            Subscribe Free
+            Get Free Resources
           </button>
         </div>
 
@@ -98,10 +102,17 @@ export default function Pricing() {
             key={plan.id}
             className="flex flex-col justify-between border border-gray-300 rounded-xl shadow-md p-8 bg-[#955251] hover:shadow-xl transition-shadow duration-300 dark:bg-gray-900"
           >
-            <div>
+            <div className="flex flex-col items-center">
               <h2 className="text-3xl font-semibold text-gray-300 dark:text-gray-100 mb-5">
                 {plan.name}
               </h2>
+              {plan.images && (
+                <img
+                  src={plan.images}
+                  alt="product image"
+                  className="h-[350px] md:h-[200px]"
+                />
+              )}
               <p className="text-gray-300 dark:text-gray-300 mt-2 mb-6">
                 {plan.description}
               </p>
