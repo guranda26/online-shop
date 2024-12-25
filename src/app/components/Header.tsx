@@ -34,6 +34,9 @@ const Header = () => {
             <Link href="/contact">{t("header:contact")}</Link>
           </li>
           <li className="nav-item">
+            <Link href="/cart">Cart</Link>
+          </li>
+          <li className="nav-item">
             <Link href="/profile">
               <CgProfile className="profile" />
             </Link>

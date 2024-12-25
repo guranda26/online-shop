@@ -91,8 +91,8 @@ const Page = async () => {
         <h2 className="text-2xl">Total Amount: $2200</h2>{" "}
         {/* Replace with actual total */}
         <div className="flex gap-2">
-          <button className="btn btn-primary">Continue Shopping</button>
-          <button className="btn border-t-green-700">Checkout</button>
+          <button className="p-4 bg-teal-600 rounded-lg hover:bg-teal-400 transition-colors">Continue Shopping</button>
+          <button className="p-4 bg-lime-600 rounded-lg hover:bg-lime-400 transition-colors">Checkout</button>
         </div>
       </div>
     </div>
