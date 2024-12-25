@@ -59,7 +59,9 @@ export default function Pricing() {
   };
 
   const handleBasicSubscribe = () => {
-    router.push("/posts");
+    setTimeout(() => {
+      router.push("/posts");
+    }, 5000);
   };
 
   return (
@@ -74,7 +76,7 @@ export default function Pricing() {
       </div>
       <div className="container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mx-auto">
         <div className="flex flex-col justify-between border border-gray-300 rounded-xl shadow-md p-8 bg-[#955251] hover:shadow-xl transition-shadow duration-300 dark:bg-gray-900">
-          <div>
+          <div className="flex flex-col items-center">
             <h2 className="text-3xl font-semibold text-gray-300 dark:text-gray-100 mb-5">
               Basic Plan
             </h2>
