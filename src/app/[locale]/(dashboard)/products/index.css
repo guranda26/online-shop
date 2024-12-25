@@ -160,3 +160,22 @@
   border-color: #555;
   outline: none;
 }
+
+@media only screen and (max-width: 768px) {
+  .search-sort__wrapper {
+    flex-direction: column;
+  }
+
+  .search-container {
+    margin-bottom: 20px;
+  }
+
+  .sort-container {
+    flex-direction: column;
+  }
+
+  .sort-option {
+    margin-bottom: 10px;
+    flex-direction: column;
+  }
+}

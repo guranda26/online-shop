@@ -17,15 +17,15 @@ const Homepage = () => {
 
   return (
     <section id="home">
-      <div className="min-h-[85vh] bg-background text-textColor flex items-center justify-center overflow-hidden w-screen">
-        <div className="font-semibold">
-          <h1 className="font-poppins mb-5 text-5xl text-textColor">
+      <div className="min-h-screen md:min-h-[85vh] bg-background text-textColor flex items-center justify-center overflow-hidden w-screen px-4 sm:px-8">
+        <div className="font-semibold text-center">
+          <h1 className="font-poppins mb-5 text-3xl sm:text-4xl lg:text-5xl text-textColor leading-snug">
             {t("welcomeHeader")}
           </h1>
           {user ? (
             <>
-              <p className="home-txt text-2xl text-textColor">
-                {t("welcome")}
+              <p className="text-lg sm:text-xl lg:text-2xl text-textColor leading-relaxed">
+                {t("welcome")}{" "}
                 <strong className="highlight">
                   {typeof user.given_name === "string"
                     ? user.given_name?.toUpperCase()
@@ -35,9 +35,13 @@ const Homepage = () => {
               </p>
             </>
           ) : (
-            <p className="text-2xl text-textColor">You are not logged in.</p>
+            <p className="text-lg sm:text-xl lg:text-2xl text-textColor leading-relaxed">
+              You are not logged in.
+            </p>
           )}
-          <p className="mt-2 text-2xl text-textColor">{t("welcomeService")}</p>
+          <p className="mt-2 text-lg sm:text-xl lg:text-2xl text-textColor leading-relaxed">
+            {t("welcomeService")}
+          </p>
         </div>
       </div>
     </section>

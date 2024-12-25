@@ -12,6 +12,7 @@ export async function GET() {
     interface Product {
       name?: string | null;
       description?: string | null;
+      images: string[] | null;
     }
 
     interface Plan {
@@ -32,8 +33,11 @@ export async function GET() {
         price: price.unit_amount,
         interval: price.recurring?.interval,
         price_id: price.id,
+        images: product?.images ?? null,
       };
     });
+
+    console.log("plans", plans);
 
     return NextResponse.json(plans);
   } catch (error) {
