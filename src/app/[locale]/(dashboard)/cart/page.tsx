@@ -132,9 +132,9 @@ const Page = async () => {
           </div>
         </>
       ) : (
-        <p className="text-center text-gray-500 text-base sm:text-lg">
+        <h2 className="text-center text-gray-500 text-base sm:text-lg">
           Your cart is empty.
-        </p>
+        </h2>
       )}
       <div className="flex flex-col sm:flex-row items-center justify-between p-2">
         <h2 className="md:text-2xl font-semibold">Total Amount: $2200</h2>
