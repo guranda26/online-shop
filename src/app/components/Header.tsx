@@ -7,6 +7,8 @@ import LogoutButton from "./LogoutButton";
 import ThemeButton from "./ThemeButton";
 import { useTranslation } from "react-i18next";
 import ToggleLanguage from "./ToggleLanguage";
+import { IoStorefront } from "react-icons/io5";
+import { MdOutlineLocalGroceryStore } from "react-icons/md";
 
 const Header = () => {
   const { t } = useTranslation();
@@ -73,9 +75,17 @@ const Header = () => {
           <li className="text-center md:flex md:flex-col">
             <Link
               href="/cart"
-              className="text-white text-lg font-bold px-2 py-2 block hover:text-[#dfc7e7]"
+              className="text-white text-lg flex justify-center font-bold px-2 py-2 block hover:text-[#dfc7e7]"
             >
-              Cart
+              <MdOutlineLocalGroceryStore className="w-6 h-6 text-white" />
+            </Link>
+          </li>
+          <li className="text-center md:flex md:flex-col">
+            <Link
+              href="/store"
+              className="text-white text-lg px-2 py-2 flex justify-center hover:text-[#dfc7e7]"
+            >
+              <IoStorefront className="w-6 h-6 text-white" />
             </Link>
           </li>
           <li className="text-center flex justify-center md:flex-col text-white">
