@@ -1,12 +1,12 @@
-import { NextResponse } from "next/server";
-import { stripe } from "../../../lib/stripe";
+import { NextResponse } from 'next/server';
+import { stripe } from '../../../lib/stripe';
 
 export async function GET() {
   try {
     const prices = await stripe.prices.list({
-      expand: ["data.product"],
+      expand: ['data.product'],
       active: true,
-      type: "recurring",
+      type: 'recurring',
     });
 
     interface Product {
@@ -36,14 +36,11 @@ export async function GET() {
         images: product?.images ?? null,
       };
     });
-
-    console.log("plans", plans);
-
     return NextResponse.json(plans);
   } catch (error) {
     console.error(error);
     return NextResponse.json(
-      { error: "Error fetching subscription plans" },
+      { error: 'Error fetching subscription plans' },
       { status: 500 }
     );
   }
