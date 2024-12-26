@@ -1,3 +1,4 @@
+import { UserProvider } from "@auth0/nextjs-auth0/client";
 import Providers from "../components/providers";
 import initTranslations from "../i18n";
 import TranslationsProvider from "../components/TranslationsProvider";
@@ -6,6 +7,7 @@ import "../../styles/Header.css";
 import { dir } from "i18next";
 import i18nConfig from "../../i18nConfig";
 import React from "react";
+import Link from "next/link";
 
 export const metadata = {
   title: {
@@ -55,17 +57,19 @@ export default async function RootLayout({
 
   return (
     <html lang={locale} dir={dir(locale)} suppressHydrationWarning>
-      <body>
-        <TranslationsProvider
-          resources={resources}
-          locale={locale}
-          namespaces={["home", "common", "header", "about-us"]}
-        >
-          <Providers>
-            <div className="flex-col">{children}</div>
-          </Providers>
-        </TranslationsProvider>
-      </body>
+      <UserProvider>
+        <body>
+          <TranslationsProvider
+            resources={resources}
+            locale={locale}
+            namespaces={["home", "common", "header", "about-us"]}
+          >
+            <Providers>
+              <div className="flex-col">{children}</div>
+            </Providers>
+          </TranslationsProvider>
+        </body>
+      </UserProvider>
     </html>
   );
 }

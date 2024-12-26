@@ -27,6 +27,7 @@ export default function AddProductForm() {
   const [errors, setErrors] = useState<Partial<Record<keyof FormData, string>>>(
     {}
   );
+  const [status, setStatus] = useState<string>("");
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -37,6 +38,7 @@ export default function AddProductForm() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setStatus("Submitting...");
 
     const validation = formSchema.safeParse(formData);
 
@@ -49,11 +51,11 @@ export default function AddProductForm() {
         {} as Partial<Record<keyof FormData, string>>
       );
       setErrors(zodErrors);
+      setStatus("");
       return;
     }
 
     setErrors({});
-
     try {
       const response = await fetch("/api/store", {
         method: "POST",
@@ -72,9 +74,12 @@ export default function AddProductForm() {
         throw new Error("Failed to create product");
       }
 
+      const result = await response.json();
+      setStatus("Product created successfully!");
       setFormData({ name: "", description: "", price: "", photo: "" });
     } catch (error) {
       console.error("Error creating product:", error);
+      setStatus("Product failed to create, please try again");
     }
   };
 
@@ -163,11 +168,23 @@ export default function AddProductForm() {
 
           <button
             type="submit"
-            className="mt-6 w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+            className="mt-6 w-full bg-blue-500 text-white py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
           >
             Add Product
           </button>
         </form>
+
+        {status && (
+          <p
+            className={`mt-4 text-white p-2 text-center ${
+              status === "Product created successfully!"
+                ? "bg-[#4caf50]"
+                : "bg-[#e57373]"
+            }`}
+          >
+            {status}
+          </p>
+        )}
       </div>
     </div>
   );
