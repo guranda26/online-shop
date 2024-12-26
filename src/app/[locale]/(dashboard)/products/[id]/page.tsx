@@ -2,6 +2,8 @@ import NotFoundPage from "../../../not-found";
 import ReturnBackButton from "../../../../components/ReturnBackButton";
 import { Params } from "../../../../interfaces/params";
 import "../../../../../index.css";
+import "../index.css";
+
 import BuyProductButton from "@/src/app/components/BuyProductButton";
 
 const ProductPage = async ({ params }: { params: Params }) => {
@@ -27,7 +29,7 @@ const ProductPage = async ({ params }: { params: Params }) => {
             <img
               src={product.image_link}
               alt="product-img"
-              className="product-img"
+              className="product-img max-w-300px"
             />
           </div>
           <div className="product-info">
@@ -38,7 +40,7 @@ const ProductPage = async ({ params }: { params: Params }) => {
             <p className="price">Price: ${product.price}</p>
           </div>
         </div>
-        <div className="return-back">
+        <div className="return-back mb-5 flex gap-3">
           <ReturnBackButton />
           <BuyProductButton
             productId={product.id}

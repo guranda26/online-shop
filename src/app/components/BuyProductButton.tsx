@@ -52,7 +52,7 @@ const BuyProductButton = ({
   return (
     <button
       onClick={handleBuyProduct}
-      className="py-2 px-3 bg-[#4a90e2] rounded-md text-white w-[110px] ml-3"
+      className="py-2 px-3 bg-[#e24a4a] hover:bg-[#b43e3e] transition-all-color hover:scale-105 rounded-md text-white w-[110px]"
     >
       Buy Now
     </button>
