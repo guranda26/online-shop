@@ -9,8 +9,45 @@ import { useTranslation } from "react-i18next";
 import ToggleLanguage from "./ToggleLanguage";
 import { IoStorefront } from "react-icons/io5";
 import { MdOutlineLocalGroceryStore } from "react-icons/md";
+import React, { useEffect, useState } from "react";
+import Link from "next/link";
+import "../../styles/LogoutButton.css";
+import { CgProfile } from "react-icons/cg";
+import { HiMenu, HiX } from "react-icons/hi";
+import LogoutButton from "./LogoutButton";
+import ThemeButton from "./ThemeButton";
+import { useTranslation } from "react-i18next";
+import ToggleLanguage from "./ToggleLanguage";
+import { IoStorefront } from "react-icons/io5";
+import { MdOutlineLocalGroceryStore } from "react-icons/md";
+import { get } from "http";
+
+interface CartItem {
+  id: number;
+  created_at: string;
+  product_id: number;
+  user_id: string;
+  stripe_product_id: string;
+  stripe_price_id: string;
+  products?: "";
+}
 
 const Header = () => {
+  const [cartLength, setCartLength] = useState(0);
+  useEffect(() => {
+    const getCartLength = async () => {
+      const response = await fetch("http://localhost:3000/api/cart", {
+        cache: "no-store",
+      });
+      const cart: CartItem[] = await response.json();
+
+      setCartLength(cart.length);
+      console.log("this", cart, "sa");
+    };
+
+    getCartLength();
+  }, []);
+
   const { t } = useTranslation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -76,8 +113,14 @@ const Header = () => {
             <Link
               href="/cart"
               className="text-white text-lg flex justify-center font-bold px-2 py-2 block hover:text-[#dfc7e7]"
+              href="/cart"
+              className="text-white text-lg flex justify-center font-bold px-2 py-2 items-end hover:text-[#dfc7e7]"
             >
               <MdOutlineLocalGroceryStore className="w-6 h-6 text-white" />
+              <MdOutlineLocalGroceryStore className="w-6 h-6 text-white" />
+              <span className="text-center flex items-center justify-center text-[12px] font-medium ml-2 w-[18px] h-[18px] bg-red-500 rounded-full">
+                {cartLength}
+              </span>
             </Link>
           </li>
           <li className="text-center md:flex md:flex-col">
