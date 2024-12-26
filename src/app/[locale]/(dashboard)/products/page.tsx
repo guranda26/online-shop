@@ -2,6 +2,7 @@ import Link from "next/link";
 import "./index.css";
 import AddToCart from "@/src/app/components/AddToCart";
 import useProducts from "@/src/app/hooks/useProducts";
+import BuyProductButton from "@/src/app/components/BuyProductButton";
 
 const placeholderImage = "/assets/product-placeholder.webp";
 
@@ -35,7 +36,18 @@ const ProductPage = async () => {
                   <p className="price">Price: ${price}</p>
                 </div>
               </Link>
-              <AddToCart productId={id} productName={name} productPrice={price}/>
+              <AddToCart
+                productId={id}
+                productName={name}
+                productPrice={price}
+              />
+              <BuyProductButton
+                productId={id}
+                productName={name}
+                productDescription={description}
+                productPrice={price}
+              />
+
               <div className="flex gap-2 text-center justify-center font-semibold mt-4"></div>
             </div>
           )

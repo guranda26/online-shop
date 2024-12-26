@@ -2,6 +2,7 @@ import NotFoundPage from "../../../not-found";
 import ReturnBackButton from "../../../../components/ReturnBackButton";
 import { Params } from "../../../../interfaces/params";
 import "../../../../../index.css";
+import BuyProductButton from "@/src/app/components/BuyProductButton";
 
 const ProductPage = async ({ params }: { params: Params }) => {
   const { id } = params;
@@ -23,7 +24,11 @@ const ProductPage = async ({ params }: { params: Params }) => {
       <div key={product.id} className="products">
         <div className="product-list">
           <div className="image-container">
-            <img src={product.image_link} alt="" className="product-img" />
+            <img
+              src={product.image_link}
+              alt="product-img"
+              className="product-img"
+            />
           </div>
           <div className="product-info">
             <h2 className="text-blue-800 font-bold text-2xl">{product.name}</h2>
@@ -35,6 +40,12 @@ const ProductPage = async ({ params }: { params: Params }) => {
         </div>
         <div className="return-back">
           <ReturnBackButton />
+          <BuyProductButton
+            productId={product.id}
+            productName={product.name}
+            productDescription={product.description}
+            productPrice={product.price}
+          />
         </div>
       </div>
     </section>
