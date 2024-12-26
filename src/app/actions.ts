@@ -23,7 +23,7 @@ export const signUpAction = async (formData: FormData) => {
     email,
     password,
     options: {
-      emailRedirectTo: `${origin}`,
+      emailRedirectTo: `${origin}/auth/callback`,
     },
   });
 
@@ -53,7 +53,7 @@ export const signInAction = async (formData: FormData) => {
     return encodedRedirect("error", "/sign-in", error.message);
   }
 
-  return redirect("/");
+  return redirect("/protected");
 };
 
 export const forgotPasswordAction = async (formData: FormData) => {
@@ -132,3 +132,32 @@ export const signOutAction = async () => {
   await supabase.auth.signOut();
   return redirect("/sign-in");
 };
+type Provider =
+  | "google"
+  | "github"
+  | "facebook"
+  | "twitter"
+  | "linkedin"
+  | "apple";
+
+const signInWith = (provider: Provider) => async () => {
+  const supabase = await createClient();
+
+  const auth_callback_url = `${process.env.SITE_URL}/auth/callback`;
+
+  const { data, error } = await supabase.auth.signInWithOAuth({
+    provider,
+    options: {
+      redirectTo: auth_callback_url,
+    },
+  });
+
+  console.log(data);
+
+  if (error) {
+    console.log(error);
+  }
+  if (data.url) redirect(data.url);
+};
+
+export const signinWithGithub = signInWith("github");
