@@ -49,7 +49,7 @@ const AddToCart = ({
   return (
     <form action={AddProduct}>
       <button
-        className="py-2 px-3 bg-teal-600 hover:bg-teal-400 transition-colors rounded-md text-white w-[110px]"
+        className="py-2 px-3 bg-teal-600 hover:bg-teal-800 transition-colors hover:scale-105 rounded-md text-white w-[110px]"
         type="submit"
       >
         Add to Cart
