@@ -1,9 +1,7 @@
 .sort-container {
   display: flex;
-  /* flex-grow: 3; */
-  /* justify-content: space-evenly; */
+  flex-wrap: wrap;
   margin: 20px;
-  /* margin: 0 auto; */
 }
 
 .search-container {
@@ -16,6 +14,7 @@
   max-width: 1400px;
   margin: 0 auto;
   display: flex;
+  justify-content: center;
 }
 
 .sort-option {
@@ -27,6 +26,8 @@
 .search-input-wrapper {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
 .sort-label {
@@ -62,4 +63,21 @@
 .sort-select:focus {
   border-color: #555;
   outline: none;
+}
+
+@media only screen and (max-width: 768px) {
+  .search-sort__wrapper {
+    flex-direction: column;
+  }
+
+  .search-container {
+    flex-direction: column;
+  }
+
+  .search-input-wrapper {
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 10px;
+  }
 }

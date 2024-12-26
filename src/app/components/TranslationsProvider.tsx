@@ -9,7 +9,7 @@ interface TranslationsProviderProps {
   children: React.ReactNode;
   locale: string;
   namespaces: string[];
-  resources: Record<string, any>;
+  resources: Record<string, unknown>;
 }
 
 export default function TranslationsProvider({
@@ -21,16 +21,6 @@ export default function TranslationsProvider({
   const i18n = createInstance();
 
   initTranslations(locale, namespaces, i18n, resources);
-
-  // console.log(
-  //   typeof locale,
-  //   "namespaces",
-  //   namespaces,
-  //   "i18n",
-  //   i18n,
-  //   "resources",
-  //   resources
-  // );
 
   return <I18nextProvider i18n={i18n}>{children}</I18nextProvider>;
 }

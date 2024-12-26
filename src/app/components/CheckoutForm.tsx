@@ -10,11 +10,11 @@ import StripeTestCards from "../components/StripeTestCards";
 import { formatAmountForDisplay } from "../../utils/stripe-helpers";
 import * as config from "@/config";
 import { createCheckoutSession } from "../actions/stripe";
-import getStripe from "../../utils/get-stripe";
 import {
   EmbeddedCheckout,
   EmbeddedCheckoutProvider,
 } from "@stripe/react-stripe-js";
+import getStripe from "@/src/utils/get-stripe";
 
 interface CheckoutFormProps {
   uiMode: Stripe.Checkout.SessionCreateParams.UiMode;
