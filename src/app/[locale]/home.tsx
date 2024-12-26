@@ -1,15 +1,19 @@
 "use client";
-import LoadingSpinner from "../components/Loader";
 import "../../index.css";
 import { useTranslation } from "react-i18next";
 import { createClient } from "../../utils/supabase/client";
-
+import { useState } from "react";
+import { User } from "@supabase/supabase-js";
 const Homepage = () => {
   const { t } = useTranslation();
 
-  let user = { given_name: "Guranda2" };
+  const [user, setUser] = useState<User | null>(null);
 
-  console.log(createClient());
+  const { auth } = createClient();
+
+  auth.onAuthStateChange((event, session) => {
+    setUser(session?.user ?? null);
+  });
 
   return (
     <section id="home">
@@ -23,8 +27,10 @@ const Homepage = () => {
               <p className="home-txt text-2xl text-textColor">
                 {t("welcome")}
                 <strong className="highlight">
-                  {typeof user.given_name === "string"
-                    ? user.given_name?.toUpperCase()
+                  {typeof user.email === "string"
+                    ? user.email
+                        ?.toUpperCase()
+                        .slice(0, user.email.indexOf("@"))
                     : ""}
                 </strong>
                 ! {t("welcomeSubHeader")}
