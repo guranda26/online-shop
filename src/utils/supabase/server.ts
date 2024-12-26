@@ -27,3 +27,15 @@ export async function createClient() {
     }
   );
 }
+
+export async function getUser() {
+  const { auth } = await createClient();
+  const user = (await auth.getUser()).data.user;
+
+  return user;
+}
+
+export async function protectRoute() {
+  const user = await getUser();
+  if (!user) throw new Error("Unauthorized");
+}

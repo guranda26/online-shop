@@ -1,7 +1,6 @@
 "use client";
 
 import "../../../index.css";
-// import { useAuthCheck } from "../../hooks/useAuthCheck";
 import LoadingSpinner from "../../components/Loader";
 import initTranslations from "../../i18n";
 import TranslationsProvider from "../../components/TranslationsProvider";
@@ -9,6 +8,8 @@ import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import React, { useState, useEffect } from "react";
 import { Locale } from "../layout";
+import { useRouter } from "next/navigation";
+import { createClient } from "../../../utils/supabase/client";
 
 export default function DashboardLayout({
   children,
@@ -17,9 +18,25 @@ export default function DashboardLayout({
   children: React.ReactNode;
   params: Promise<{ locale: Locale }>;
 }) {
+  const router = useRouter();
   const [locale, setLocale] = useState<Locale | string>("en");
   const [resources, setResources] = useState(null);
-  const isLoading = false;
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const supabase = createClient();
+
+    const checkUser = async () => {
+      const { data, error } = await supabase.auth.getUser();
+      if (error || !data?.user) {
+        router.push("/sign-in");
+      } else {
+        setIsLoading(false);
+      }
+    };
+
+    checkUser();
+  }, [router]);
 
   useEffect(() => {
     const fetchParamsAndTranslations = async () => {
