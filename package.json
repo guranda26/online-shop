@@ -28,7 +28,8 @@
     "react-router-dom": "^6.26.2",
     "sonner": "^1.7.1",
     "stripe": "^17.5.0",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "zod": "^3.24.1"
   },
   "scripts": {
     "dev": "i18nexus pull && next dev",
