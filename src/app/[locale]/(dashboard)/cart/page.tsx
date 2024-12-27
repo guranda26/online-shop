@@ -3,16 +3,17 @@
 import { useCart } from "@/src/app/hooks/useCart";
 import { createClient } from "@/src/utils/supabase/client";
 import { MdDelete } from "react-icons/md";
-import { FaRegEdit } from "react-icons/fa";
+import RedirectToProductBtn from "../../../components/RedirectToProductPage";
+import CheckoutButton from "../../../components/checkoutButton";
 import Link from "next/link";
 
 const Page = () => {
   const { cart, setCart } = useCart();
 
   const onDelete = async (productId: number) => {
-    if (cart) {
-      setCart(cart.filter((item) => item.product_id !== productId));
-    }
+    const currentCart = cart || [];
+    setCart(currentCart.filter((item) => item.product_id !== productId));
+
     const supabase = createClient();
     const { data, error } = await supabase
       .from("cart")
@@ -164,12 +165,8 @@ const Page = () => {
           Total Amount: {totalAmount}
         </h2>
         <div className="flex gap-1 md:gap-2 flex-wrap">
-          <button className="p-4 bg-teal-600 rounded-lg hover:bg-teal-400 transition-colors">
-            <Link href="/products">Continue Shopping</Link>
-          </button>
-          <button className="p-4 bg-lime-600 rounded-lg hover:bg-lime-400 transition-colors">
-            Checkout
-          </button>
+          <RedirectToProductBtn />
+          <CheckoutButton cart={cart || []} />
         </div>
       </div>
     </div>
