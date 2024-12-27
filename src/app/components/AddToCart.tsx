@@ -32,19 +32,47 @@ const AddToCart = ({
       currency: 'usd',
     });
 
-    const { data, error } = await supabase
-      .from('cart')
-      .insert({
-        product_id: productId,
-        user_id: user.data.user?.id,
-        stripe_product_id: stripeProduct.id,
-        stripe_price_id: stripePrice.id,
-        quantity: 1,
-      })
-      .single();
+   // Check if the product already exists in the cart
+const { data: existingCartItem, error: fetchError } = await supabase
+.from('cart')
+.select('*')
+.eq('product_id', productId)
+.eq('user_id', user.data.user?.id)
+.single();
+
+if (fetchError && fetchError.code !== 'PGRST116') {
+// Handle unexpected errors (excluding "row not found")
+console.error('Error fetching cart item:', fetchError);
+} else if (existingCartItem) {
+// Update the quantity if the item exists
+const { error: updateError } = await supabase
+  .from('cart')
+  .update({ quantity: existingCartItem.quantity + 1 })
+  .eq('product_id', productId)
+  .eq('user_id', user.data.user?.id);
+
+if (updateError) {
+  console.error('Error updating quantity:', updateError);
+}
+} else {
+// Insert a new record if the product does not exist
+const { error: insertError } = await supabase
+  .from('cart')
+  .insert({
+    product_id: productId,
+    user_id: user.data.user?.id,
+    stripe_product_id: stripeProduct.id,
+    stripe_price_id: stripePrice.id,
+    quantity: 1,
+  });
+
+if (insertError) {
+  console.error('Error inserting new item:', insertError);
+}
+}
 
     console.log(user.data.user?.id);
-    console.log('data', data, 'error', error);
+   
   }
 
   return (
