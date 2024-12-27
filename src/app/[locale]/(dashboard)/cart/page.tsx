@@ -139,7 +139,7 @@ const Page = () => {
                       {item.products.price}
                     </td>
                     <td className="px-4 py-4 text-gray-700 text-center font-semibold">
-                      {item.products.price}
+                      {item.products.price * item.quantity}
                     </td>
                     <td className="py-4 text-center">
                       <button
