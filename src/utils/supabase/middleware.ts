@@ -1,12 +1,9 @@
-import { createServerClient, type CookieOptions } from "@supabase/ssr";
-import { type NextRequest, NextResponse } from "next/server";
+import { createServerClient } from "@supabase/ssr";
+import { NextResponse, type NextRequest } from "next/server";
 
-export const createClient = (request: NextRequest) => {
-  // Create an unmodified response
+export async function updateSession(request: NextRequest) {
   let supabaseResponse = NextResponse.next({
-    request: {
-      headers: request.headers,
-    },
+    request,
   });
 
   const supabase = createServerClient(
@@ -32,5 +29,15 @@ export const createClient = (request: NextRequest) => {
     }
   );
 
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  if (!user && !request.nextUrl.pathname.startsWith("/sign-in")) {
+    const url = request.nextUrl.clone();
+    url.pathname = "/sign-in";
+    return NextResponse.redirect(url);
+  }
+
   return supabaseResponse;
-};
+}
