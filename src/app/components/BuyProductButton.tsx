@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { createClient } from "../../utils/supabase/client";
 
 interface BuyProductButtonProps {
   productId: number;
@@ -44,15 +45,56 @@ const BuyProductButton = ({
       } else {
         console.error("No URL returned from API.");
       }
+
+      const res = await fetch("/api/cart-checkout", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          price_data: {
+            currency: "usd",
+            product_data: {
+              name: productName,
+              images: productImage,
+            },
+            unit_amount: Math.round(+productPrice * 100), // Convert price to cents
+          },
+          quantity: 1,
+        }),
+      });
+
+      if (!res.ok) return;
+
+      // add item to supabase orders list
+      const supabase = createClient();
+
+      const {
+        data: { user },
+      } = await supabase.auth.getUser();
+
+      const { data, error } = await supabase
+        .from("orders")
+        .insert({
+          product_id: productId,
+          user_id: user?.id,
+          product_name: productName,
+          product_price: productPrice,
+          product_description: productDescription,
+          product_photo: productImage,
+        })
+        .single();
+
+      if (data) {
+        console.log(data);
+      }
     } catch (error) {
-      console.error("Error processing checkout:", error);
+      throw new Error("Error processing checkout:");
     }
   }
 
   return (
     <button
+      className="py-2 px-3 bg-[#e24a4a] hover:bg-[#b43e3e]  transition-all-color hover:scale-105 rounded-md text-white w-[110px]"
       onClick={handleBuyProduct}
-      className="py-2 px-3 bg-[#e24a4a] hover:bg-[#b43e3e] transition-all-color hover:scale-105 rounded-md text-white w-[110px]"
     >
       Buy Now
     </button>
