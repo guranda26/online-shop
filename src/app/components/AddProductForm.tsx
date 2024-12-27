@@ -79,13 +79,13 @@ export default function AddProductForm() {
 
       const result = await response.json();
       toast.success("Product created successfully!", {
-        position: "bottom-center",
+        position: "top-center",
       });
       setFormData({ name: "", description: "", price: "", photo: "" });
     } catch (error) {
       console.error("Error creating product:", error);
       toast.error("Product failed to create, please try again !", {
-        position: "bottom-center",
+        position: "top-center",
       });
     }
   };
