@@ -47,6 +47,7 @@ const ProductPage = async ({ params }: { params: Params }) => {
             productName={product.name}
             productDescription={product.description}
             productPrice={product.price}
+            productImage={product.image_link}
           />
         </div>
       </div>
