@@ -11,9 +11,9 @@ const Page = () => {
   const { cart, setCart } = useCart();
 
   const onDelete = async (productId: number) => {
-    const currentCart = cart || [];
-    setCart(currentCart.filter((item) => item.product_id !== productId));
-
+    if (cart) {
+      setCart(cart.filter((item) => item.product_id !== productId));
+    }
     const supabase = createClient();
     const { data, error } = await supabase
       .from("cart")
@@ -166,7 +166,11 @@ const Page = () => {
         </h2>
         <div className="flex gap-1 md:gap-2 flex-wrap">
           <RedirectToProductBtn />
-          <CheckoutButton cart={cart || []} />
+          {cart && cart.length > 0 && (
+            <>
+              <CheckoutButton cart={cart} />
+            </>
+          )}
         </div>
       </div>
     </div>
