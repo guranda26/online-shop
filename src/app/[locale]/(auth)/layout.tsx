@@ -22,9 +22,7 @@ export default async function AuthLayout({
       <header className="bg-contactBackground p-10 flex justify-end">
         <ThemeButton />
       </header>
-      <main className="main bg-contactBackground w-screen h-screen">
-        {children}
-      </main>
+      <main className="main bg-contactBackground h-screen">{children}</main>
     </div>
   );
 }
