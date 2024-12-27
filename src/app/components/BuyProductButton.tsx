@@ -20,49 +20,31 @@ const BuyProductButton = ({
 }: BuyProductButtonProps) => {
   async function handleBuyProduct() {
     try {
-      const response = await fetch("/api/checkout-session", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          productId,
-          productName,
-          productPrice,
-          productDescription,
-          productImage,
-        }),
-      });
+      // const response = await fetch("/api/checkout-session", {
+      //   method: "POST",
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //   },
+      //   body: JSON.stringify({
+      //     productId,
+      //     productName,
+      //     productPrice,
+      //     productDescription,
+      //     productImage,
+      //   }),
+      // });
 
-      if (!response.ok) {
-        throw new Error("Failed to create Stripe Checkout session.");
-      }
+      // if (!response.ok) {
+      //   throw new Error("Failed to create Stripe Checkout session.");
+      // }
 
-      const { url } = await response.json();
+      // const { url } = await response.json();
 
-      if (url) {
-        window.location.href = url;
-      } else {
-        console.error("No URL returned from API.");
-      }
-
-      const res = await fetch("/api/cart-checkout", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          price_data: {
-            currency: "usd",
-            product_data: {
-              name: productName,
-              images: productImage,
-            },
-            unit_amount: Math.round(+productPrice * 100), // Convert price to cents
-          },
-          quantity: 1,
-        }),
-      });
-
-      if (!res.ok) return;
+      // if (url) {
+      //   window.location.href = url;
+      // } else {
+      //   console.error("No URL returned from API.");
+      // }
 
       // add item to supabase orders list
       const supabase = createClient();
