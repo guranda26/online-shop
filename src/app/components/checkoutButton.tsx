@@ -5,7 +5,7 @@ import React from "react";
 interface Product {
   name: string;
   price: number;
-  image_link?: string; // Optional if images are available
+  image_link?: string;
 }
 
 interface CartItem {
@@ -20,9 +20,7 @@ interface CheckoutButtonProps {
 }
 
 const CheckoutButton: React.FC<CheckoutButtonProps> = ({ cart }) => {
-  // Transform the cart items to Stripe-compatible line items
   const transformCartToLineItems = () =>
-    // console.log("Current cart items:", cart);
     cart.map((item) => {
       if (!item.products.name || !item.products.price) {
         console.error("Invalid item data: ", item);

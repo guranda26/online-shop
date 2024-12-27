@@ -3,6 +3,8 @@
 import { useState } from "react";
 import "../../styles/AddProduct.css";
 import { z } from "zod";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const formSchema = z.object({
   name: z
@@ -33,6 +35,7 @@ export default function AddProductForm() {
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
+    setErrors((prevErrors) => ({ ...prevErrors, [name]: undefined }));
     setFormData({ ...formData, [name]: value });
   };
 
@@ -75,11 +78,15 @@ export default function AddProductForm() {
       }
 
       const result = await response.json();
-      setStatus("Product created successfully!");
+      toast.success("Product created successfully!", {
+        position: "top-center",
+      });
       setFormData({ name: "", description: "", price: "", photo: "" });
     } catch (error) {
       console.error("Error creating product:", error);
-      setStatus("Product failed to create, please try again");
+      toast.error("Product failed to create, please try again !", {
+        position: "top-center",
+      });
     }
   };
 
@@ -147,7 +154,7 @@ export default function AddProductForm() {
             )}
           </div>
 
-          <div className="mt-4">
+          <div className="mt-4 mb-2">
             <input
               type="text"
               name="photo"
@@ -173,18 +180,7 @@ export default function AddProductForm() {
             Add Product
           </button>
         </form>
-
-        {status && (
-          <p
-            className={`mt-4 text-white p-2 text-center ${
-              status === "Product created successfully!"
-                ? "bg-[#4caf50]"
-                : "bg-[#e57373]"
-            }`}
-          >
-            {status}
-          </p>
-        )}
+        <ToastContainer />
       </div>
     </div>
   );

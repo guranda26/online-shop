@@ -17,7 +17,7 @@ const Homepage = () => {
 
   return (
     <section id="home">
-      <div className="min-h-screen md:min-h-[85vh] bg-background text-textColor flex items-center justify-center overflow-hidden w-screen px-4 sm:px-8">
+      <div className="min-h-screen max-w-screen md:min-h-[85vh] bg-background text-textColor flex items-center justify-center overflow-hidden px-4 sm:px-8">
         <div className="font-semibold text-center">
           <h1 className="font-poppins mb-5 text-3xl sm:text-4xl lg:text-5xl text-textColor leading-snug">
             {t("welcomeHeader")}

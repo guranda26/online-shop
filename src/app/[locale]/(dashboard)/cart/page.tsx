@@ -4,7 +4,7 @@ import { useCart } from "@/src/app/hooks/useCart";
 import { createClient } from "@/src/utils/supabase/client";
 import { MdDelete } from "react-icons/md";
 import RedirectToProductBtn from "../../../components/RedirectToProductPage";
-import CheckoutButton from "../../../components/checkoutButton";
+import CheckoutButton from "../../../components/CheckoutButton";
 import Link from "next/link";
 
 const Page = () => {
@@ -144,7 +144,7 @@ const Page = () => {
                     <td className="py-4 text-center">
                       <button
                         className="text-red-600"
-                        onClick={() => onDelete(item.id)}
+                        onClick={() => onDelete(item.product_id)}
                       >
                         <MdDelete size={20} />
                       </button>
