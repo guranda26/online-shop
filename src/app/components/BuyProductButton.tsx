@@ -20,31 +20,19 @@ const BuyProductButton = ({
 }: BuyProductButtonProps) => {
   async function handleBuyProduct() {
     try {
-      // const response = await fetch("/api/checkout-session", {
-      //   method: "POST",
-      //   headers: {
-      //     "Content-Type": "application/json",
-      //   },
-      //   body: JSON.stringify({
-      //     productId,
-      //     productName,
-      //     productPrice,
-      //     productDescription,
-      //     productImage,
-      //   }),
-      // });
-
-      // if (!response.ok) {
-      //   throw new Error("Failed to create Stripe Checkout session.");
-      // }
-
-      // const { url } = await response.json();
-
-      // if (url) {
-      //   window.location.href = url;
-      // } else {
-      //   console.error("No URL returned from API.");
-      // }
+      const response = await fetch("/api/checkout-session", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          productId,
+          productName,
+          productPrice,
+          productDescription,
+          productImage,
+        }),
+      });
 
       // add item to supabase orders list
       const supabase = createClient();
@@ -64,6 +52,18 @@ const BuyProductButton = ({
           product_photo: productImage,
         })
         .single();
+
+      if (!response.ok) {
+        throw new Error("Failed to create Stripe Checkout session.");
+      }
+
+      const { url } = await response.json();
+
+      if (url) {
+        window.location.href = url;
+      } else {
+        console.error("No URL returned from API.");
+      }
 
       if (data) {
         console.log(data);
