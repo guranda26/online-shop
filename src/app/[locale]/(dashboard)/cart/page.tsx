@@ -24,6 +24,32 @@ const Page = async () => {
   });
   const cart: CartItem[] = await response.json();
 
+  const handleCheckout = async () => {
+    const lineItems = cart.map((item) => ({
+      price: item.stripe_price_id,
+      quantity: 1,
+    }));
+  };
+
+  try {
+    const res = await fetch("/api/checkout-session", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ lineItems }),
+    });
+
+    if (!res.ok) {
+      throw new Error("Failed to create checkout session");
+    }
+
+    const { url } = await res.json();
+    window.location.href = url; 
+  } catch (error) {
+    console.error("Error during checkout:", error);
+  }
+};
+
+
   return (
     <div className="w-full md:w-[75vw] p-3 md:p-6 mx-auto">
       <h1 className="text-xl md:text-2xl font-bold text-gray-800 mb-3 md:mb-6">
