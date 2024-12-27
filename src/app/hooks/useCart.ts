@@ -14,8 +14,8 @@ interface CartItem {
   }
   
   interface Product {
-    title_en: string;
-    thumbnail: string;
+    name: string;
+    image_link: string;
     price: number;
   }
 export const useCart = () => {
