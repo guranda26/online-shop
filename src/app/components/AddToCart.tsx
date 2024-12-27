@@ -39,6 +39,7 @@ const AddToCart = ({
         user_id: user.data.user?.id,
         stripe_product_id: stripeProduct.id,
         stripe_price_id: stripePrice.id,
+        quantity: 1,
       })
       .single();
 

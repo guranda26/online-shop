@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 
 interface CartItem {
     id: number;
-    created_at: string;
+    created_at: number;
     product_id: number;
     user_id: string;
     stripe_product_id: string;

@@ -12,10 +12,12 @@ const Page = () => {
       setCart(cart.filter((item) => item.product_id !== productId));
     }
     const supabase = createClient();
-    const { data } = await supabase
+    const { data, error } = await supabase
       .from("cart")
       .delete()
       .eq("product_id", productId);
+  
+   
   };
 
   const onUpdate = async (productId: number, newQuantity: number) => {
@@ -96,12 +98,12 @@ const Page = () => {
                     {item.products.price}
                   </td>
                   <td className='px-6 py-4 text-gray-700 font-semibold whitespace-nowrap'>
-                    {item.products.price}
+                    {item.products.price * item.quantity}
                   </td>
                   <td className="px-6 py-4">
                     <button
                       className="btn btn-error"
-                      onClick={() => onDelete(item.id)}
+                      onClick={() => onDelete(item.product_id)}
                     >
                       Delete
                     </button>
