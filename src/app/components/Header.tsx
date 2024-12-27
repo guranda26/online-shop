@@ -41,13 +41,14 @@ const Header = () => {
 
   return (
     <header className="bg-[#5d5d8f] max-h-[10vh] w-full">
-        <button
-          className="text-white text-3xl md:hidden"
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-          aria-label="Toggle Menu"
-        >
-          {isMenuOpen ? <HiX /> : <HiMenu />}
-        </button>
+      <button
+        className="text-white text-3xl md:hidden"
+        onClick={() => setIsMenuOpen(!isMenuOpen)}
+        aria-label="Toggle Menu"
+      >
+        {isMenuOpen ? <HiX /> : <HiMenu />}
+      </button>
+      <nav>
         <ul
           className={`${
             isMenuOpen ? "block" : "hidden"
