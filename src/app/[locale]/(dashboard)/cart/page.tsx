@@ -4,7 +4,7 @@ import { useCart } from "@/src/app/hooks/useCart";
 import { createClient } from "@/src/utils/supabase/client";
 import { MdDelete } from "react-icons/md";
 import RedirectToProductBtn from "../../../components/RedirectToProductPage";
-import CheckoutButton from "../../../components/checkoutButton";
+import CheckoutButton from "../../../components/CheckoutButton";
 import Link from "next/link";
 
 const Page = () => {

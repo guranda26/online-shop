@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 
 import React from "react";
 
-const RediretToProductBtn = () => {
+const RedirectToProductBtn = () => {
   const router = useRouter();
   function returnToTheProductPage() {
     router.push("/products");
@@ -20,4 +20,4 @@ const RediretToProductBtn = () => {
   );
 };
 
-export default RediretToProductBtn;
+export default RedirectToProductBtn;
