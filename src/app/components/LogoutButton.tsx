@@ -8,7 +8,7 @@ export default function LogoutButton() {
     <div className="logout-btn">
       <form action={signOutAction}>
         <button type="submit" className="h-[100%]">
-          <IoLogOutOutline className="w-7 h-7" />
+          <IoLogOutOutline className="w-7 h-7 hover:text-[#dfc7e7]" />
         </button>
       </form>
     </div>

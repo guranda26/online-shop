@@ -44,9 +44,9 @@ const Header = () => {
   return (
     <header className="bg-[#5d5d8f] max-h-[10vh] w-full">
       <nav className="flex items-center justify-between px-4 py-2">
-        <Link href="/profile">
+        {/* <Link href="/profile">
           <CgProfile className="w-6 h-6 text-white mx-auto md:mx-0" />
-        </Link>
+        </Link> */}
         <button
           className="text-white text-3xl md:hidden"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -115,9 +115,28 @@ const Header = () => {
               href="/store"
               className="text-white text-lg px-2 py-2 flex justify-center hover:text-[#dfc7e7]"
             >
-              <IoStorefront className="w-6 h-6 text-white" />
+              <IoStorefront className="w-6 h-6 text-white hover:text-[#dfc7e7]" />
             </Link>
           </li>
+          <div className="relative group">
+            <div className="flex items-center cursor-pointer">
+              <CgProfile className="w-6 h-6 text-white mx-auto md:mx-0 hover:text-[#dfc7e7]" />
+            </div>
+            <div className="absolute left-1/2 -translate-x-1/2 pt-2 hidden w-48 bg-white shadow-lg rounded-md py-2 z-50 group-hover:block">
+              <Link
+                href="/profile"
+                className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
+              >
+                Profile
+              </Link>
+              <Link
+                href="/orders"
+                className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
+              >
+                Orders
+              </Link>
+            </div>
+          </div>
           <li className="text-center flex justify-center md:flex-col text-white">
             <LogoutButton />
           </li>
