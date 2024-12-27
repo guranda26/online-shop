@@ -1,6 +1,7 @@
 import RedirectToProductBtn from "../../../components/RedirectToProductPage";
 import { MdDelete } from "react-icons/md";
 import { FaRegEdit } from "react-icons/fa";
+import CheckoutButton from "@/src/app/components/CheckoutButton";
 
 interface CartItem {
   id: number;
@@ -10,6 +11,7 @@ interface CartItem {
   stripe_product_id: string;
   stripe_price_id: string;
   products: Product;
+  quantity: number;
 }
 
 interface Product {
@@ -24,34 +26,8 @@ const Page = async () => {
   });
   const cart: CartItem[] = await response.json();
 
-  const handleCheckout = async () => {
-    const lineItems = cart.map((item) => ({
-      price: item.stripe_price_id,
-      quantity: 1,
-    }));
-  };
-
-  try {
-    const res = await fetch("/api/checkout-session", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ lineItems }),
-    });
-
-    if (!res.ok) {
-      throw new Error("Failed to create checkout session");
-    }
-
-    const { url } = await res.json();
-    window.location.href = url; 
-  } catch (error) {
-    console.error("Error during checkout:", error);
-  }
-};
-
-
   return (
-    <div className="w-full md:w-[75vw] p-3 md:p-6 mx-auto">
+    <div className="w-full min-h-screen md:w-[75vw] p-3 md:p-6 mx-auto">
       <h1 className="text-xl md:text-2xl font-bold text-gray-800 mb-3 md:mb-6">
         My Cart
       </h1>
@@ -166,9 +142,7 @@ const Page = async () => {
         <h2 className="md:text-2xl font-semibold">Total Amount: $2200</h2>
         <div className="flex gap-1 md:gap-2 flex-wrap">
           <RedirectToProductBtn />
-          <button className="p-3 md:p-4 bg-lime-600 rounded-lg hover:bg-lime-400 transition-colors text-white">
-            Checkout
-          </button>
+          <CheckoutButton cart={cart} />
         </div>
       </div>
     </div>

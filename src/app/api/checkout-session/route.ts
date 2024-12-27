@@ -1,5 +1,5 @@
-import { NextRequest, NextResponse } from 'next/server';
-import { stripe } from '../../../lib/stripe';
+import { NextRequest, NextResponse } from "next/server";
+import { stripe } from "../../../lib/stripe";
 
 export async function POST(request: NextRequest) {
   try {
@@ -15,7 +15,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json(
         {
           error:
-            'Missing required fields: productId, productName, productPrice',
+            "Missing required fields: productId, productName, productPrice",
         },
         { status: 400 }
       );
@@ -25,17 +25,17 @@ export async function POST(request: NextRequest) {
       line_items: [
         {
           price_data: {
-            currency: 'usd',
+            currency: "usd",
             product_data: {
               name: productName,
-              description: productDescription || 'No description available',
+              description: productDescription || "No description available",
             },
             unit_amount: Math.round(productPrice * 100),
           },
           quantity: 1,
         },
       ],
-      mode: 'payment',
+      mode: "payment",
       success_url: `${
         process.env.NEXT_PUBLIC_BASE_URL
       }/order-success?session_id={CHECKOUT_SESSION_ID}&product_name=${encodeURIComponent(
@@ -46,9 +46,9 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({ url: session.url });
   } catch (error) {
-    console.error('Error creating Stripe Checkout session:', error);
+    console.error("Error creating Stripe Checkout session:", error);
     return NextResponse.json(
-      { error: 'Internal Server Error' },
+      { error: "Internal Server Error" },
       { status: 500 }
     );
   }

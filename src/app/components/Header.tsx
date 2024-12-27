@@ -32,7 +32,7 @@ const Header = () => {
       const cart: CartItem[] = await response.json();
 
       setCartLength(cart.length);
-      console.log("this", cart, "sa");
+      console.log("this", cart);
     };
 
     getCartLength();
