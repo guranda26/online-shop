@@ -1,43 +1,49 @@
 "use client";
-import LoadingSpinner from "../components/Loader";
 import "../../index.css";
-import { useUser } from "@auth0/nextjs-auth0/client";
 import { useTranslation } from "react-i18next";
 import { createClient } from "../../utils/supabase/client";
-
+import { useState } from "react";
+import { User } from "@supabase/supabase-js";
 const Homepage = () => {
-  const { user, isLoading } = useUser();
   const { t } = useTranslation();
 
-  if (isLoading) {
-    return <LoadingSpinner />;
-  }
+  const [user, setUser] = useState<User | null>(null);
 
-  console.log(createClient());
+  const { auth } = createClient();
+
+  auth.onAuthStateChange((event, session) => {
+    setUser(session?.user ?? null);
+  });
 
   return (
     <section id="home">
-      <div className="min-h-[85vh] bg-background text-textColor flex items-center justify-center overflow-hidden w-screen">
-        <div className="font-semibold">
-          <h1 className="font-poppins mb-5 text-5xl text-textColor">
+      <div className="min-h-screen md:min-h-[85vh] bg-background text-textColor flex items-center justify-center overflow-hidden w-screen px-4 sm:px-8">
+        <div className="font-semibold text-center">
+          <h1 className="font-poppins mb-5 text-3xl sm:text-4xl lg:text-5xl text-textColor leading-snug">
             {t("welcomeHeader")}
           </h1>
           {user ? (
             <>
-              <p className="home-txt text-2xl text-textColor">
-                {t("welcome")}
+              <p className="text-lg sm:text-xl lg:text-2xl text-textColor leading-relaxed">
+                {t("welcome")}{" "}
                 <strong className="highlight">
-                  {typeof user.given_name === "string"
-                    ? user.given_name?.toUpperCase()
+                  {typeof user.email === "string"
+                    ? user.email
+                        ?.toUpperCase()
+                        .slice(0, user.email.indexOf("@"))
                     : ""}
                 </strong>
                 ! {t("welcomeSubHeader")}
               </p>
             </>
           ) : (
-            <p className="text-2xl text-textColor">You are not logged in.</p>
+            <p className="text-lg sm:text-xl lg:text-2xl text-textColor leading-relaxed">
+              You are not logged in.
+            </p>
           )}
-          <p className="mt-2 text-2xl text-textColor">{t("welcomeService")}</p>
+          <p className="mt-2 text-lg sm:text-xl lg:text-2xl text-textColor leading-relaxed">
+            {t("welcomeService")}
+          </p>
         </div>
       </div>
     </section>

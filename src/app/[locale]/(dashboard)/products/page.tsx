@@ -1,42 +1,58 @@
-import Link from "next/link";
-import "./index.css";
-import AddToCart from "@/src/app/components/AddToCart";
-import useProducts from "@/src/app/hooks/useProducts";
+import Link from 'next/link';
+import './index.css';
+import AddToCart from '@/src/app/components/AddToCart';
+import useProducts from '@/src/app/hooks/useProducts';
+import BuyProductButton from '@/src/app/components/BuyProductButton';
 
-const placeholderImage = "/assets/product-placeholder.webp";
+const placeholderImage = '/assets/product-placeholder.webp';
 
 const ProductPage = async () => {
   const products = await useProducts();
 
   return (
-    <section className="products-section bg-background text-textColor">
+    <section className='products-section bg-background text-textColor'>
       <h1>All Products</h1>
 
-      <div className="product-list_wrapper">
+      <div className='product-list_wrapper'>
         {products.map(
           ({ id, image_link, name, description, price, category }) => (
-            <div key={id} className="products product-list">
-              <Link href={`products/${id}`}>
-                <div className="product-info">
-                  <h2 className="text-blue-800 text-center font-bold text-2xl mt-3">
-                    {name}
-                  </h2>
-                  <div className="image-container">
-                    <img
-                      src={image_link || placeholderImage}
-                      alt={name}
-                      className="product-img"
-                    />
+            <div key={id} className='products'>
+              <div className='product-list'>
+                <Link href={`products/${id}`}>
+                  <div className='product-info flex flex-col items-center'>
+                    <h2 className='text-blue-800 text-center font-bold text-xl md:text-2xl mt-3'>
+                      {name}
+                    </h2>
+                    <div className='image-container'>
+                      <img
+                        src={image_link || placeholderImage}
+                        alt={name}
+                        className='product-img max-w-150px sm:max-w-300px'
+                      />
+                    </div>
+                    <p>{description}</p>
+                    <p className="text-['#7e1d1d'] font-semibold italic">
+                      Category: {category}
+                    </p>
+                    <p className='price'>Price: ${price}</p>
                   </div>
-                  <p>{description}</p>
-                  <p className="text-['#7e1d1d'] font-semibold italic">
-                    Category: {category}
-                  </p>
-                  <p className="price">Price: ${price}</p>
+                </Link>
+                <div className='flex sm:flex-col gap-3'>
+                  <AddToCart
+                    productId={id}
+                    productName={name}
+                    productPrice={price}
+                  />
+                  <BuyProductButton
+                    productId={id}
+                    productName={name}
+                    productDescription={description}
+                    productPrice={price}
+                  />
                 </div>
-              </Link>
-              <AddToCart productId={id} productName={name} productPrice={price}/>
-              <div className="flex gap-2 text-center justify-center font-semibold mt-4"></div>
+
+                <div className='flex gap-2 text-center justify-center font-semibold mt-4'></div>
+              </div>
             </div>
           )
         )}

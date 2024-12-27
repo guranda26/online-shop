@@ -1,37 +1,42 @@
-import getStripe from "../../../utils/get-stripe";
-import type { Stripe } from "stripe";
+import { NextApiRequest, NextApiResponse } from "next";
 import { stripe } from "../../../lib/stripe";
 
-export const createCheckoutSession = async (
-  data: FormData,
-  subscriptionId?: string
-) => {
-  const amount = Number(data.get("customDonation"));
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
+  if (req.method !== "POST") {
+    res.setHeader("Allow", "POST");
+    return res.status(405).end("Method Not Allowed");
+  }
 
-  const session = await stripe.checkout.sessions.create({
-    line_items: subscriptionId
-      ? [
-          {
-            price: subscriptionId,
-            quantity: 1,
-          },
-        ]
-      : [
-          {
-            price_data: {
-              currency: "usd",
-              product_data: {
-                name: "Subscription Plan",
-              },
-              unit_amount: amount * 100,
+  try {
+    const { productName, productPrice, productDescription, productImage } =
+      req.body;
+
+    const session = await stripe.checkout.sessions.create({
+      line_items: [
+        {
+          price_data: {
+            currency: "usd",
+            product_data: {
+              name: productName,
+              description: productDescription,
+              images: productImage,
             },
-            quantity: 1,
+            unit_amount: Math.round(productPrice * 100),
           },
-        ],
-    mode: subscriptionId ? "subscription" : "payment",
-    success_url: `${process.env.NEXT_PUBLIC_BASE_URL}/success`,
-    cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL}/pricing`,
-  });
+          quantity: 1,
+        },
+      ],
+      mode: "payment",
+      success_url: `${process.env.NEXT_PUBLIC_BASE_URL}/order-success?session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL}/checkout-cancel`,
+    });
 
-  return { client_secret: session?.client_secret, url: session?.url };
-};
+    return res.status(200).json({ url: session.url });
+  } catch (error) {
+    console.error("Error creating Stripe Checkout Session:", error);
+    return res.status(500).json({ error: "Internal Server Error" });
+  }
+}
