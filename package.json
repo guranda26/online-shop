@@ -4,6 +4,10 @@
   "private": true,
   "dependencies": {
     "@clerk/nextjs": "^6.9.6",
+    "@radix-ui/react-checkbox": "^1.1.1",
+    "@radix-ui/react-dropdown-menu": "^2.1.1",
+    "@radix-ui/react-label": "^2.1.0",
+    "@radix-ui/react-slot": "^1.1.0",
     "@stripe/react-stripe-js": "^3.1.1",
     "@stripe/stripe-js": "^5.4.0",
     "@supabase/ssr": "^0.5.2",
@@ -11,9 +15,13 @@
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "autoprefixer": "10.4.20",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.1",
     "i18next": "^23.16.4",
     "i18next-resources-to-backend": "^1.2.1",
     "lodash.debounce": "^4.0.8",
+    "lucide-react": "^0.468.0",
     "next": "^14.2.14",
     "next-i18n-router": "^5.5.1",
     "next-i18next": "^15.3.1",
@@ -27,22 +35,14 @@
     "sonner": "^1.7.1",
     "stripe": "^17.5.0",
     "web-vitals": "^2.1.4",
-    "zod": "^3.24.1",
-    "@radix-ui/react-checkbox": "^1.1.1",
-    "@radix-ui/react-dropdown-menu": "^2.1.1",
-    "@radix-ui/react-label": "^2.1.0",
-    "@radix-ui/react-slot": "^1.1.0",
-    "autoprefixer": "10.4.20",
-    "class-variance-authority": "^0.7.0",
-    "clsx": "^2.1.1",
-    "lucide-react": "^0.468.0"
+    "zod": "^3.24.1"
   },
   "scripts": {
     "dev": "i18nexus pull && next dev",
     "build": "i18nexus pull && next build",
     "start": "i18nexus pull && npx serve@latest ./build",
     "lint": "eslint .",
-    "test": "react-scripts test",
+    "test:e2e": "cypress open",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -67,11 +67,12 @@
     "@types/node": "^22.9.3",
     "@types/react": "^18.3.12",
     "autoprefixer": "^10.4.20",
+    "cypress": "^13.17.0",
     "i18nexus-cli": "^3.5.0",
     "postcss": "^8.4.47",
-    "tailwindcss": "^3.4.14",
-    "typescript": "^5.7.2",
     "tailwind-merge": "^2.5.2",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss": "^3.4.14",
+    "tailwindcss-animate": "^1.0.7",
+    "typescript": "^5.7.2"
   }
 }
