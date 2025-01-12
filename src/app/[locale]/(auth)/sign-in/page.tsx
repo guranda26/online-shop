@@ -30,6 +30,7 @@ export default async function Login(props: { searchParams: Promise<Message> }) {
             <Input
               name="email"
               id="email"
+              data-cy="email-input"
               placeholder="you@example.com"
               required
               className={`sm:w-full w-[80%] mx-auto max-w-[100%] bg-[#35355c] p-3 border rounded border-gray-500 focus:ring-2 focus:ring-blue-500 sm:text-sm md:text-base`}
@@ -43,6 +44,7 @@ export default async function Login(props: { searchParams: Promise<Message> }) {
               name="password"
               id="password"
               placeholder="Your password"
+              data-cy="password-input"
               required
               className={`sm:w-full w-[80%] mx-auto max-w-[100%] bg-[#35355c] p-3 border rounded border-gray-500 focus:ring-2 focus:ring-blue-500 sm:text-sm md:text-base`}
             />
@@ -50,6 +52,7 @@ export default async function Login(props: { searchParams: Promise<Message> }) {
               className="mt-6 px-8 py-2 self-center bg-blue-500 text-white  rounded focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
               pendingText="Signing In..."
               formAction={signInAction}
+              data-cy="sign-in-btn"
             >
               Sign in
             </SubmitButton>

@@ -29,7 +29,7 @@ export default async function Signup(props: {
               className="text-foreground font-medium underline"
               href="/sign-in"
             >
-              <span>Sign in</span>
+              <span data-cy="sign-in">Sign in</span>
             </Link>
           </p>
           <div className="flex flex-col gap-2 [&>input]:mb-3 mt-8">

@@ -43,6 +43,7 @@
     "start": "i18nexus pull && npx serve@latest ./build",
     "lint": "eslint .",
     "test:e2e": "cypress open",
+    "test:e2e:ci": "cypress run",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
