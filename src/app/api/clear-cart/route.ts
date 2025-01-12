@@ -34,5 +34,5 @@ export async function POST() {
 }
 
 export const config = {
-  runtime: "edge", // Optional: Use Edge Runtime for faster performance
+  runtime: "edge",
 };

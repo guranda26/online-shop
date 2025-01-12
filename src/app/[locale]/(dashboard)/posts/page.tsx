@@ -27,6 +27,8 @@ const PostsPage: React.FC<PostsAndProductPageType> = () => {
     body: "",
   });
 
+  const path = usePathname();
+
   useEffect(() => {
     const loadPosts = async () => {
       try {
@@ -63,7 +65,6 @@ const PostsPage: React.FC<PostsAndProductPageType> = () => {
     setNewPost({ title: "", body: "" });
   };
 
-  const path = usePathname();
   const locale = path.includes("/ka")
     ? "ka"
     : path.includes("/es")
