@@ -1,10 +1,23 @@
 {
   "globals": {
-    "process": "readonly"
+    "process": "readonly",
+    "window": "readonly",
+    "self": "readonly",
+    "document": "readonly",
+    "__webpack_require__": "readonly",
+    "__unused_webpack_module": "readonly",
+    "__unused_webpack_exports": "readonly"
   },
   "env": {
+    "browser": true,
     "node": true,
-    "commonjs": true
+    "es6": true
   },
-  "extends": ["next/core-web-vitals", "next/typescript"]
+  "extends": ["next/core-web-vitals", "plugin:@typescript-eslint/recommended"],
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint"],
+  "rules": {
+    "@typescript-eslint/no-empty-interface": "off"
+  },
+  "ignorePatterns": ["build/**/*"]
 }

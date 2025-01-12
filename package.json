@@ -43,7 +43,23 @@
     "start": "i18nexus pull && npx serve@latest ./build",
     "lint": "eslint .",
     "test:e2e": "cypress open",
-    "test:e2e:ci": "cypress run"
+    "test:e2e:ci": "cypress run",
+    "prepare": "husky"
+  },
+  "eslintIgnore": [
+    "build/"
+  ],
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "!build/**/*": []
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   },
   "browserslist": {
     "production": [
@@ -69,6 +85,7 @@
     "eslint-plugin-next": "^0.0.0",
     "eslint-plugin-react": "^7.37.3",
     "globals": "^15.14.0",
+    "husky": "^9.1.7",
     "i18nexus-cli": "^3.5.0",
     "postcss": "^8.4.47",
     "tailwind-merge": "^2.5.2",

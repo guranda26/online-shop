@@ -12,10 +12,14 @@ export default [
         version: "detect",
       },
     },
+    ignores: ["./build/"],
   },
   {
     languageOptions: {
-      globals: globals.browser,
+      globals: {
+        ...globals.node,
+        ...globals.amd,
+      },
     },
   },
   pluginJs.configs.recommended,
