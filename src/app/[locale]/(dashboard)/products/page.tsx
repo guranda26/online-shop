@@ -1,8 +1,9 @@
+import React from "react";
 import Link from "next/link";
-import "./index.css";
 import AddToCart from "@/src/app/components/AddToCart";
 import useProducts from "@/src/app/hooks/useProducts";
 import BuyProductButton from "@/src/app/components/BuyProductButton";
+import "./index.css";
 
 const placeholderImage = "/assets/product-placeholder.webp";
 

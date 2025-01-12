@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import LoadingSpinner from "../../../components/Loader";
 
@@ -9,7 +9,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 export default function OrderSuccess() {
   const [status, setStatus] = useState("loading");
-  const [customerEmail, setCustomerEmail] = useState("");
+  const [, setCustomerEmail] = useState("");
   const searchParams = useSearchParams();
   const sessionId = searchParams.get("session_id");
   const productName = decodeURIComponent(

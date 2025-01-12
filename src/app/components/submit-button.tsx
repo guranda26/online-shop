@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "./ui/button";
-import { type ComponentProps } from "react";
+import React, { type ComponentProps } from "react";
 import { useFormStatus } from "react-dom";
 
 type Props = ComponentProps<typeof Button> & {

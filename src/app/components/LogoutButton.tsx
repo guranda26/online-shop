@@ -1,7 +1,8 @@
 "use client";
-import "../../styles/LogoutButton.css";
+import React from "react";
 import { signOutAction } from "../actions";
 import { IoLogOutOutline } from "react-icons/io5";
+import "../../styles/LogoutButton.css";
 
 export default function LogoutButton() {
   return (

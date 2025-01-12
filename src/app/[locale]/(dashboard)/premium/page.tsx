@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 interface Content {
   title: string;
@@ -37,8 +37,12 @@ export default function PremiumFeaturePage() {
         } else {
           setError(data.error || "You do not have access to this content.");
         }
-      } catch (err) {
-        setError("Failed to check access. Please try again.");
+      } catch (error: unknown) {
+        if (error instanceof Error) {
+          setError(`Failed to check access: ${error.message} Please try again`);
+        } else {
+          throw new Error("An unknown error occurred. Please try again");
+        }
       } finally {
         setLoading(false);
       }
@@ -80,5 +84,5 @@ export default function PremiumFeaturePage() {
     );
   }
 
-  return null; // fallback if neither loading, error, nor access
+  return null;
 }

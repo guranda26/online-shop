@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import { useState, useMemo, ChangeEvent } from "react";
 import { useRouter } from "next/navigation";
 import debounce from "lodash.debounce";

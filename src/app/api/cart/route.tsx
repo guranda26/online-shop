@@ -1,15 +1,14 @@
-import { NextRequest } from 'next/server';
-import { createClient } from '@/src/utils/supabase/server';
+import { createClient } from "@/src/utils/supabase/server";
 
-export const GET = async (req: NextRequest) => {
+export const GET = async () => {
   const supabase = await createClient();
 
   const { data, error } = await supabase
-    .from('cart')
-    .select('*,products(name, image_link, price)');
+    .from("cart")
+    .select("*,products(name, image_link, price)");
 
   if (error) {
-    console.error('Error fetching cartData', error);
+    console.error("Error fetching cartData", error);
   }
 
   return Response.json(data);

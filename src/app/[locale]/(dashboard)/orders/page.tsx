@@ -4,7 +4,7 @@ import { createClient } from "@/src/utils/supabase/server";
 const OrdersList: React.FC = async () => {
   const supabase = await createClient();
 
-  const { data, error } = await supabase.from("orders").select();
+  const { data } = await supabase.from("orders").select();
 
   if (!data) return;
 

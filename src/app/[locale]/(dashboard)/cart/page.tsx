@@ -1,11 +1,10 @@
 "use client";
 
+import React from "react";
 import { useCart } from "@/src/app/hooks/useCart";
-import { createClient } from "@/src/utils/supabase/client";
 import { MdDelete } from "react-icons/md";
 import RedirectToProductBtn from "../../../components/RedirectToProductPage";
-import CheckoutButton from "../../../components/CheckoutButton";
-import Link from "next/link";
+import CheckoutButton from "../../../components/checkoutButton";
 
 const Page = () => {
   const { cart, setCart } = useCart();
@@ -14,11 +13,6 @@ const Page = () => {
     if (cart) {
       setCart(cart.filter((item) => item.product_id !== productId));
     }
-    const supabase = createClient();
-    const { data, error } = await supabase
-      .from("cart")
-      .delete()
-      .eq("product_id", productId);
   };
 
   const onUpdate = async (productId: number, newQuantity: number) => {
@@ -30,11 +24,6 @@ const Page = () => {
       );
       setCart(updatedCart);
     }
-    const supabase = createClient();
-    const { data } = await supabase
-      .from("cart")
-      .update({ quantity: newQuantity })
-      .eq("product_id", productId);
   };
 
   const totalAmount = cart

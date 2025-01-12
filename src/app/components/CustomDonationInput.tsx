@@ -1,3 +1,4 @@
+import React from "react";
 import { formatAmountForDisplay } from "../../utils/stripe-helpers";
 
 export default function CustomDonationInput({

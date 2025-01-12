@@ -1,8 +1,7 @@
-import { NextRequest } from "next/server";
 import { cookies } from "next/headers";
 import { createServerClient } from "@supabase/ssr";
 
-export const GET = async (req: NextRequest) => {
+export const GET = async () => {
   const cookieStore = cookies();
 
   if (!cookieStore) {

@@ -34,14 +34,13 @@ const BuyProductButton = ({
         }),
       });
 
-      // add item to supabase orders list
       const supabase = createClient();
 
       const {
         data: { user },
       } = await supabase.auth.getUser();
 
-      const { data, error } = await supabase
+      const { data } = await supabase
         .from("orders")
         .insert({
           product_id: productId,
@@ -68,8 +67,14 @@ const BuyProductButton = ({
       if (data) {
         console.log(data);
       }
-    } catch (error) {
-      throw new Error("Error processing checkout:");
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        throw new Error(`Error processing checkout: ${error.message}`);
+      } else {
+        throw new Error(
+          "Error processing checkout: An unknown error occurred."
+        );
+      }
     }
   }
 

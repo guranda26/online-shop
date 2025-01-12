@@ -1,3 +1,4 @@
+import React from "react";
 import { signinWithGithub } from "../actions";
 
 export default function GithubAuth() {

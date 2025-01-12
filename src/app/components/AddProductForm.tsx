@@ -3,6 +3,7 @@
 import { useState } from "react";
 import "../../styles/AddProduct.css";
 import { z } from "zod";
+import React from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -29,7 +30,7 @@ export default function AddProductForm() {
   const [errors, setErrors] = useState<Partial<Record<keyof FormData, string>>>(
     {}
   );
-  const [status, setStatus] = useState<string>("");
+  const [, setStatus] = useState<string>("");
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -77,7 +78,7 @@ export default function AddProductForm() {
         throw new Error("Failed to create product");
       }
 
-      const result = await response.json();
+      await response.json();
       toast.success("Product created successfully!", {
         position: "top-center",
       });

@@ -1,9 +1,10 @@
 "use client";
-import "../../index.css";
+import React from "react";
 import { useTranslation } from "react-i18next";
 import { createClient } from "../../utils/supabase/client";
 import { useState } from "react";
 import { User } from "@supabase/supabase-js";
+import "../../index.css";
 const Homepage = () => {
   const { t } = useTranslation();
 

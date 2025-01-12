@@ -8,7 +8,7 @@ const Contact = () => {
       className="section contact bg-contactBackground p-5 text-formText"
     >
       <h2 className="text-3xl font-semibold">Contact Us</h2>
-      <p className="text-xl">We'd love to hear from you!</p>
+      <p className="text-xl">We&aposd love to hear from you!</p>
       <form action="#" className="form bg-formBackground">
         <label htmlFor="name">Name:</label>
         <input id="name" type="text" />

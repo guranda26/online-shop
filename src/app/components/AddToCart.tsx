@@ -2,11 +2,12 @@
 
 import { createClient } from "@/src/utils/supabase/server";
 import Stripe from "stripe";
+import React from "react";
 
 interface AddToCartProps {
   productId: number;
   productName: string;
-  productPrice: any;
+  productPrice: string | number;
 }
 
 const AddToCart = ({
@@ -14,7 +15,7 @@ const AddToCart = ({
   productName,
   productPrice,
 }: AddToCartProps) => {
-  async function AddProduct(formData: FormData) {
+  async function AddProduct() {
     "use server";
 
     const supabase = await createClient();
@@ -28,7 +29,7 @@ const AddToCart = ({
 
     const stripePrice = await stripe.prices.create({
       product: stripeProduct.id,
-      unit_amount: Math.round(productPrice * 100),
+      unit_amount: Math.round((productPrice as number) * 100),
       currency: "usd",
     });
 

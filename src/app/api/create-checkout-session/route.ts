@@ -1,14 +1,13 @@
-import { NextRequest, NextResponse } from 'next/server';
-import Stripe from 'stripe';
-import { stripe } from '../../../lib/stripe';
+import { NextRequest, NextResponse } from "next/server";
+import { stripe } from "../../../lib/stripe";
 
 export async function POST(request: NextRequest) {
-  const { priceId, planName, planPrice } = await request.json();
+  const { priceId, planName } = await request.json();
 
   try {
     const session = await stripe.checkout.sessions.create({
-      mode: 'subscription',
-      payment_method_types: ['card'],
+      mode: "subscription",
+      payment_method_types: ["card"],
       line_items: [
         {
           price: priceId,
@@ -16,12 +15,12 @@ export async function POST(request: NextRequest) {
         },
       ],
       success_url: `${request.headers.get(
-        'origin'
+        "origin"
       )}/success?session_id={CHECKOUT_SESSION_ID}&plan_name=${encodeURIComponent(
         planName
       )}`,
       cancel_url: `${request.headers.get(
-        'origin'
+        "origin"
       )}/subscriptions-cancel?session_id={CHECKOUT_SESSION_ID}&plan_name=${encodeURIComponent(
         planName
       )}`,
@@ -31,7 +30,7 @@ export async function POST(request: NextRequest) {
   } catch (error) {
     console.error(error);
     return NextResponse.json(
-      { error: 'Error creating checkout session' },
+      { error: "Error creating checkout session" },
       { status: 500 }
     );
   }

@@ -26,7 +26,7 @@ export async function POST(req: Request) {
       product: product.id,
     });
 
-    const { data, error } = await supabase.from("products_store").insert([
+    const { error } = await supabase.from("products_store").insert([
       {
         name,
         description,

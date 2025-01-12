@@ -11,7 +11,7 @@ type UserType = {
 };
 
 const Profile = () => {
-  let user = {};
+  const user = {};
 
   const { name, picture, email } = {
     name: "Guranda",

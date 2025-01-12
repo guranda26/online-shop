@@ -1,0 +1,10 @@
+{
+  "globals": {
+    "process": "readonly"
+  },
+  "env": {
+    "node": true,
+    "commonjs": true
+  },
+  "extends": ["next/core-web-vitals", "next/typescript"]
+}

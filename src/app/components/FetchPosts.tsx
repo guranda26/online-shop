@@ -1,3 +1,4 @@
+import React from "react";
 import NotFoundPage from "../[locale]/not-found";
 
 export async function fetchPosts(search = "", sortBy = "title", order = "asc") {
