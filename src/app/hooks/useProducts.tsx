@@ -1,6 +1,3 @@
-
-
-
 interface Products {
   id: number;
   name: string;
@@ -11,15 +8,11 @@ interface Products {
   category?: string;
 }
 
-
 const useProducts = async (): Promise<Products[]> => {
-  
-  const data = await fetch('http://localhost:3000/api/products')
-  const products: Products[] = await data.json()
+  const data = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/products`);
+  const products: Products[] = await data.json();
 
-
-  return products
+  return products;
 };
-
 
 export default useProducts;

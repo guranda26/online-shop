@@ -11,7 +11,9 @@ import "../index.css";
 const PostsPage = async ({ params }: { params: Params }) => {
   const { id } = params;
 
-  const response = await fetch(`http://localhost:3000/api/posts/${id}`);
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_BASE_URL}/api/posts/${id}`
+  );
 
   if (!response.ok) {
     return <NotFoundPage />;

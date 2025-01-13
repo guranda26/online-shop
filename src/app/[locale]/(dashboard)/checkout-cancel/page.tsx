@@ -4,7 +4,7 @@ import React, { useEffect } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 
 import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dπist/ReactToastify.css";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function OrderSuccess() {
   const searchParams = useSearchParams();

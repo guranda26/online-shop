@@ -2,7 +2,7 @@ import React from "react";
 import NotFoundPage from "../[locale]/not-found";
 
 export async function fetchPosts(search = "", sortBy = "title", order = "asc") {
-  const localUrl = "http://localhost:3000/api/posts";
+  const localUrl = `${process.env.NEXT_PUBLIC_BASE_URL}/api/posts`;
   const dummyUrl = `https://dummyjson.com/posts/search?q=${search || ""}${sortBy ? `&sortBy=${sortBy}` : ""}${order ? `&order=${order}` : ""}`;
 
   try {

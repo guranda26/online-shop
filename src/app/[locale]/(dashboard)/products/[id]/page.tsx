@@ -10,7 +10,9 @@ import BuyProductButton from "@/src/app/components/BuyProductButton";
 const ProductPage = async ({ params }: { params: Params }) => {
   const { id } = params;
 
-  const response = await fetch(`http://localhost:3000/api/products/${id}`);
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_BASE_URL}/api/products/${id}`
+  );
 
   if (!response.ok) {
     return <NotFoundPage />;

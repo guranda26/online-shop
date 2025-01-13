@@ -24,9 +24,12 @@ const Header = () => {
   const [cartLength, setCartLength] = useState(0);
   useEffect(() => {
     const getCartLength = async () => {
-      const response = await fetch("http://localhost:3000/api/cart", {
-        cache: "no-store",
-      });
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/api/cart`,
+        {
+          cache: "no-store",
+        }
+      );
       const cart: CartItem[] = await response.json();
 
       setCartLength(cart.length);

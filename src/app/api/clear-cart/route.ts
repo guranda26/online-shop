@@ -3,9 +3,9 @@ import { NextResponse } from "next/server";
 
 export async function POST() {
   const supabase = await createClient();
-  const { data: user } = await supabase.auth.getUser();
+  const { data } = await supabase.auth.getUser();
 
-  if (!user?.id) {
+  if (!data?.user?.id) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
@@ -13,7 +13,7 @@ export async function POST() {
     const { error } = await supabase
       .from("cart")
       .delete()
-      .eq("user_id", user.id);
+      .eq("user_id", data?.user.id);
 
     if (error) {
       console.error("Error clearing cart:", error);
@@ -33,6 +33,4 @@ export async function POST() {
   }
 }
 
-export const config = {
-  runtime: "edge",
-};
+export const runtime = "edge";
