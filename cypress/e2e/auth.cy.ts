@@ -3,9 +3,9 @@ describe("Auth", () => {
     cy.visit("/");
   });
   it("Logs in successfully", () => {
-    cy.get("[data-cy='sign-in']").click();
+    // cy.get("[data-cy='sign-in']").click();
 
-    cy.get("[data-cy='email-input']").type("guralemo@mail.com");
+    cy.get("[data-cy='email-input']").type("g_lemonjava@cu.edu.ge");
     cy.get("[data-cy='password-input']").type("Hello123.");
 
     cy.get("[data-cy='sign-in-btn']").click();
@@ -14,16 +14,16 @@ describe("Auth", () => {
   });
 
   it("Logs out users", () => {
-    cy.get("[data-cy='sign-in']").click();
+    // cy.get("[data-cy='sign-in-btn']").click();
 
-    cy.get("[data-cy='email-input']").type("guralemo@mail.com");
+    cy.get("[data-cy='email-input']").type("g_lemonjava@cu.edu.ge");
     cy.get("[data-cy='password-input']").type("Hello123.");
 
     cy.get("[data-cy='sign-in-btn']").click();
 
-    cy.url().should("include", "/");
+    cy.url().should("include", "/protected");
 
-    cy.get("[data-cy='sign-out']").click();
+    cy.get("[data-cy='log-out']").click();
 
     cy.url().should("include", "/sign-in");
   });
