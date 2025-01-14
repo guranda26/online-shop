@@ -41,6 +41,7 @@ export default async function Signup(props: {
               name="email"
               placeholder="you@example.com"
               required
+              data-cy="register-email-input"
               className={`sm:w-full w-[80%] mx-auto max-w-[100%] bg-[#35355c] p-2 border rounded border-transparent  focus:ring-gray-300 `}
             />
             <Label htmlFor="password" className="text-white">
@@ -53,11 +54,13 @@ export default async function Signup(props: {
               minLength={6}
               required
               className={`sm:w-full w-[80%] mx-auto max-w-[100%] bg-[#35355c] p-2 border rounded border-transparent  focus:ring-gray-300 `}
+              data-cy="register-password-input"
             />
             <SubmitButton
               formAction={signUpAction}
               pendingText="Signing up..."
               className=" px-8 py-2 self-center bg-blue-500 text-white  rounded focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+              data-cy="sign-up-btn"
             >
               Sign up
             </SubmitButton>

@@ -19,6 +19,7 @@ export default async function Login(props: { searchParams: Promise<Message> }) {
             <Link
               className="text-foreground font-medium underline"
               href="/sign-up"
+              data-cy="sign-up"
             >
               <span>Sign up</span>
             </Link>

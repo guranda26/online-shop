@@ -3,8 +3,6 @@ describe("Auth", () => {
     cy.visit("/");
   });
   it("Logs in successfully", () => {
-    // cy.get("[data-cy='sign-in']").click();
-
     cy.get("[data-cy='email-input']").type("g_lemonjava@cu.edu.ge");
     cy.get("[data-cy='password-input']").type("Hello123.");
 
@@ -14,8 +12,6 @@ describe("Auth", () => {
   });
 
   it("Logs out users", () => {
-    // cy.get("[data-cy='sign-in-btn']").click();
-
     cy.get("[data-cy='email-input']").type("g_lemonjava@cu.edu.ge");
     cy.get("[data-cy='password-input']").type("Hello123.");
 
@@ -28,16 +24,16 @@ describe("Auth", () => {
     cy.url().should("include", "/sign-in");
   });
 
-  // it("Fails to log in successfully", () => {
-  //   cy.visit("http://localhost:3000");
+  it("Registers successfully", () => {
+    cy.get("[data-cy='sign-up']").click();
 
-  //   cy.get("button").contains("Sign in").click();
+    cy.url().should("include", "/sign-up");
 
-  //   cy.get("input[name=email]").type("guralemo@mail.com");
-  //   cy.get("input[name=password]").type("hhhhhh.");
+    cy.get("[data-cy='register-email-input']").type("testuser123@mail.com");
+    cy.get("[data-cy='register-password-input']").type("Test123.");
 
-  //   cy.get("button").contains("Sign in").click();
+    cy.get("[data-cy='sign-up-btn']").click();
 
-  //   cy.url().should("include", "/login");
-  // });
+    cy.url().should("include", "/");
+  });
 });
