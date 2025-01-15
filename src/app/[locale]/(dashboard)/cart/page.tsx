@@ -10,8 +10,30 @@ const Page = () => {
   const { cart, setCart } = useCart();
 
   const onDelete = async (productId: number) => {
-    if (cart) {
-      setCart(cart.filter((item) => item.product_id !== productId));
+    if (!confirm("Are you sure you want to delete this item?")) return;
+
+    try {
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/api/delete-from-cart`,
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ productId }),
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Failed to delete the item from the cart");
+      }
+
+      if (cart) {
+        setCart(cart.filter((item) => item.product_id !== productId));
+      }
+    } catch (error) {
+      console.error("Error deleting item:", error);
+      alert("There was an error deleting the item. Please try again.");
     }
   };
 
@@ -98,8 +120,13 @@ const Page = () => {
                 </tr>
               </thead>
               <tbody>
-                {cart.map((item) => (
-                  <tr key={item.id} className="border-t">
+                {cart.map((item, index) => (
+                  <tr
+                    key={item.id}
+                    id={`${item.id}`}
+                    className={`border-t ${item.id}`}
+                    data-cy={`cart-item-${index}`}
+                  >
                     <td className="px-3 py-4">
                       <img
                         src={item.products.image_link}
@@ -134,6 +161,7 @@ const Page = () => {
                       <button
                         className="text-red-600"
                         onClick={() => onDelete(item.product_id)}
+                        data-cy={`delete-btn-${index}`}
                       >
                         <MdDelete size={20} />
                       </button>

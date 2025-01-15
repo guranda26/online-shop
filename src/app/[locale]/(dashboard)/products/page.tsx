@@ -18,7 +18,7 @@ const ProductPage = async () => {
         {products.map(
           ({ id, image_link, name, description, price, category }) => (
             <div key={id} className="products">
-              <div className="product-list">
+              <div className="product-list" data-cy="product-item">
                 <Link href={`products/${id}`}>
                   <div className="product-info flex flex-col items-center">
                     <h2 className="text-blue-800 text-center font-bold text-xl md:text-2xl mt-3">

@@ -74,6 +74,7 @@ const AddToCart = ({
       <button
         className="py-2 px-3 bg-teal-600 hover:bg-teal-800 transition-colors hover:scale-105 rounded-md text-white w-[110px]"
         type="submit"
+        data-cy="add-to-cart-btn"
       >
         Add to Cart
       </button>

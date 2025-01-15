@@ -22,7 +22,7 @@ export const useCart = () => {
   const [cart, setCart] = useState<CartItem[]>();
 
   useEffect(() => {
-    fetch(`${process.env.NEXT_PUBLIC_BASE_URL}api/cart`)
+    fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/cart`)
       .then((response) => response.json())
       .then((data) => setCart(data))
       .catch((error) => console.error("Error fetching cart:", error));

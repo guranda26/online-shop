@@ -105,10 +105,11 @@ const PostsPage: React.FC<PostsAndProductPageType> = () => {
         </div>
 
         <div className="post-list_wrapper">
-          {posts.map((post) => (
+          {posts.map((post, index) => (
             <div
               key={post.id}
               className="posts bg-postFormBg w-auto max-w-[100%] md:m-[20px]"
+              data-cy={`post-item-${index}`}
             >
               <Link href={`posts/${post.id}`} className="post-list">
                 <h2>{post[titleKey]}</h2>
@@ -118,6 +119,7 @@ const PostsPage: React.FC<PostsAndProductPageType> = () => {
                 <button
                   className="search-btn delete"
                   onClick={() => onDelete(post.id)}
+                  data-cy="delete-post-btn"
                 >
                   Delete
                 </button>

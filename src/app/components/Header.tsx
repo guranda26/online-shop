@@ -77,6 +77,7 @@ const Header = () => {
             <Link
               href="/products"
               className="text-white text-lg font-bold px-2 block hover:text-[#dfc7e7]"
+              data-cy="product-url"
             >
               {t("header:products")}
             </Link>
@@ -85,6 +86,7 @@ const Header = () => {
             <Link
               href="/posts"
               className="text-white text-lg font-bold px-2 block hover:text-[#dfc7e7]"
+              data-cy="post-url"
             >
               {t("header:posts")}
             </Link>
@@ -101,6 +103,7 @@ const Header = () => {
             <Link
               href="/cart"
               className="text-white text-lg flex justify-center font-bold px-2 items-end hover:text-[#dfc7e7]"
+              data-cy="cart-url"
             >
               <MdOutlineLocalGroceryStore className="w-6 h-6 text-white" />
               <span className="text-center flex items-center justify-center text-[12px] font-medium ml-2 w-[18px] h-[18px] bg-red-500 rounded-full">
