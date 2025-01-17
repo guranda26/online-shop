@@ -11,7 +11,7 @@ export async function GET() {
     const { data, error } = await supabase.from("products").select("*");
 
     if (error) {
-      throw new Error(error.message);
+      throw new Error(`Supabase error: ${error.message}`);
     }
 
     return NextResponse.json({
