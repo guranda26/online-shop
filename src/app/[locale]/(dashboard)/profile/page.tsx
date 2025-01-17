@@ -3,6 +3,8 @@ import React from "react";
 
 import "../../../../styles/ProfilePage.css";
 
+const personImg = "/assets/person.svg";
+
 type UserType = {
   given_name?: string;
   name?: string;
@@ -15,7 +17,7 @@ const Profile = () => {
 
   const { name, picture, email } = {
     name: "Guranda",
-    picture: "picture",
+    picture: "",
     email: "gurandalemonjava@gmail.com",
   } as UserType;
 
@@ -26,7 +28,7 @@ const Profile = () => {
         <div className="profile-card">
           <div className="profile-image-container mx-auto">
             <img
-              src={picture || "../../assets/person.svg"}
+              src={picture ? picture : personImg}
               alt={name || "User"}
               className="profile-image translate-x-[50%]"
             />
