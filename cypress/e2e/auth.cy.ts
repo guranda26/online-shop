@@ -9,6 +9,7 @@ describe("Auth", () => {
     cy.get("[data-cy='sign-in-btn']").click();
 
     cy.url().should("include", "/");
+    cy.wait(1000);
   });
 
   it("Logs out users", () => {
