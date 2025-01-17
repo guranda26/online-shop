@@ -19,7 +19,6 @@ describe("Product purchase", () => {
     cy.get("[data-cy='email-input']").type("g_lemonjava@cu.edu.ge");
     cy.get("[data-cy='password-input']").type("Hello123.");
     cy.get("[data-cy='sign-in-btn']").click();
-    cy.url().should("include", "/");
 
     cy.get("[data-cy='product-url']").click();
     cy.url().should("include", "/products");
