@@ -35,6 +35,7 @@ const useProducts = async (): Promise<Products[]> => {
 
     // const products: Products[] = await productDataResponse.json();
     const storeProducts: ProductData = await storeDataResponse.json();
+    console.log("Fetched store products:", storeProducts);
 
     return storeProducts.products;
   } catch (error) {
