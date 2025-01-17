@@ -7,7 +7,7 @@ import "./index.css";
 
 const placeholderImage = "/assets/product-placeholder.webp";
 
-const ProductPage = async () => {
+const ProductPage: React.FC = async () => {
   const products = await useProducts();
 
   return (
@@ -21,7 +21,10 @@ const ProductPage = async () => {
               <div className="product-list" data-cy="product-item">
                 <Link href={`products/${id}`}>
                   <div className="product-info flex flex-col items-center">
-                    <h2 className="text-blue-800 text-center font-bold text-xl md:text-2xl mt-3">
+                    <h2
+                      className="text-blue-800 text-center font-bold text-xl md:text-2xl mt-3"
+                      data-cy="new-product-name"
+                    >
                       {name}
                     </h2>
                     <div className="image-container">

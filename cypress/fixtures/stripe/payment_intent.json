@@ -1,0 +1,7 @@
+{
+  "id": "pi_123456789",
+  "object": "payment_intent",
+  "status": "succeeded",
+  "amount_received": 2000,
+  "currency": "usd"
+}

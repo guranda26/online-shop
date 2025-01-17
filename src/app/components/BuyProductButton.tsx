@@ -82,6 +82,7 @@ const BuyProductButton = ({
     <button
       className="py-2 px-3 bg-[#e24a4a] hover:bg-[#b43e3e]  transition-all-color hover:scale-105 rounded-md text-white w-[110px]"
       onClick={handleBuyProduct}
+      data-cy="buy-product"
     >
       Buy Now
     </button>

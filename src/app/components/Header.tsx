@@ -115,15 +115,19 @@ const Header = () => {
             <Link
               href="/store"
               className="text-white text-lg px-2 flex justify-center hover:text-[#dfc7e7]"
+              data-cy="store-url"
             >
               <IoStorefront className="w-6 h-6 text-white hover:text-[#dfc7e7]" />
             </Link>
           </li>
-          <div className="relative group">
+          <div className="relative group" data-cy="profile-icon">
             <div className="flex items-center cursor-pointer">
               <CgProfile className="w-6 h-6 text-white mx-auto md:mx-0 hover:text-[#dfc7e7]" />
             </div>
-            <div className="absolute left-1/2 -translate-x-1/2 pt-2 hidden w-48 bg-white shadow-lg rounded-md py-2 z-50 group-hover:block">
+            <div
+              className="absolute left-1/2 -translate-x-1/2 pt-2 hidden w-48 bg-white shadow-lg rounded-md py-2 z-50 group-hover:block"
+              data-cy="profile-block"
+            >
               <Link
                 href="/profile"
                 className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
@@ -133,6 +137,7 @@ const Header = () => {
               <Link
                 href="/orders"
                 className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
+                data-cy="order-checkout-url"
               >
                 Orders
               </Link>

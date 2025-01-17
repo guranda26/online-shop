@@ -14,6 +14,11 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "incremental": true,
+    "types": [
+      "cypress",
+      "cypress-plugin-stripe-elements",
+      "@testing-library/cypress"
+    ],
     "plugins": [
       {
         "name": "next"

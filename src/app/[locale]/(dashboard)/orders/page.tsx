@@ -21,6 +21,7 @@ const OrdersList: React.FC = async () => {
             <div
               key={order.id}
               className="relative border border-gray-200 rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow bg-white group hover:bg-blue-50"
+              data-cy="order-product"
             >
               <img
                 src={order.product_photo}

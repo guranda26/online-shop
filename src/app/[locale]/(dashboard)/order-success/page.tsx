@@ -57,7 +57,7 @@ export default function OrderSuccess() {
           session.customer_details?.email || "No email provided"
         );
         if (session.payment_status === "paid") {
-          toast.success("Payment Successful !", {
+          toast.success("Payment Successful!", {
             position: "bottom-right",
           });
           setTimeout(() => {
@@ -112,7 +112,10 @@ export default function OrderSuccess() {
           {productName && (
             <p className="mt-4 text-gray-700">
               Your purchased product:
-              <span className="font-semibold text-blue-600 hover:underline">
+              <span
+                className="font-semibold text-blue-600 hover:underline"
+                data-cy="purchased-product"
+              >
                 {productName}
               </span>{" "}
             </p>
@@ -130,6 +133,7 @@ export default function OrderSuccess() {
             type="button"
             className=" mt-4 bg-cyan-500 text-white  px-4 py-3 rounded-lg  font-medium hover:bg-blue-700 transition-colors"
             onClick={() => PushRoute()}
+            data-cy="return-btn"
           >
             Go Back
           </button>

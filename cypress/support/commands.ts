@@ -1,4 +1,26 @@
 /// <reference types="cypress" />
+/// <reference types="@testing-library/cypress" />
+
+import "@testing-library/cypress/add-commands";
+import "cypress-plugin-stripe-elements";
+
+// Cypress.Commands.add("getStripeElement", (fieldName) => {
+//   if (Cypress.config("chromeWebSecurity")) {
+//     throw new Error(
+//       "To get stripe element `chromeWebSecurity` must be disabled"
+//     );
+//   }
+
+//   const selector = `input[data-elements-stable-field-name="${fieldName}"]`;
+
+//   return cy
+//     .get("iframe")
+//     .its("0.contentDocument.body")
+//     .should("not.be.empty")
+//     .then(cy.wrap)
+//     .find(selector);
+// });
+
 // ***********************************************
 // This example commands.ts shows you how to
 // create various custom commands and overwrite

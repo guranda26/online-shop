@@ -29,7 +29,7 @@ export const GET = async () => {
     }
   );
 
-  const { data, error } = await supabase.from("products").select();
+  const { data, error } = await supabase.from("products").select("*");
 
   if (error) {
     console.error("Error fetching data:", error);

@@ -8,23 +8,27 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const formSchema = z.object({
+  id: z.number().optional(),
   name: z
     .string()
     .min(3, "Name must be at least 3 characters")
     .regex(/^[a-zA-Z\s]+$/, "Name must only contain alphabetic characters"),
   description: z.string().min(5, "Description must be at least 5 characters"),
+  category: z.string().min(3, "category must be at least 3 characters"),
   price: z.string().regex(/^\d+(\.\d{1,2})?$/, "Price must be a valid number"),
-  photo: z.string().url("Photo must be a valid URL"),
+  image_link: z.string().url("Photo must be a valid URL"),
 });
 
 type FormData = z.infer<typeof formSchema>;
 
 export default function AddProductForm() {
   const [formData, setFormData] = useState<FormData>({
+    id: undefined,
     name: "",
+    image_link: "",
     description: "",
     price: "",
-    photo: "",
+    category: "",
   });
 
   const [errors, setErrors] = useState<Partial<Record<keyof FormData, string>>>(
@@ -69,8 +73,9 @@ export default function AddProductForm() {
         body: JSON.stringify({
           name: formData.name,
           description: formData.description,
+          category: formData.category,
           price: parseFloat(formData.price),
-          photo: formData.photo,
+          image_link: formData.image_link,
         }),
       });
 
@@ -82,7 +87,14 @@ export default function AddProductForm() {
       toast.success("Product created successfully!", {
         position: "top-center",
       });
-      setFormData({ name: "", description: "", price: "", photo: "" });
+      setFormData({
+        id: undefined,
+        name: "",
+        description: "",
+        category: "",
+        price: "",
+        image_link: "",
+      });
     } catch (error) {
       console.error("Error creating product:", error);
       toast.error("Product failed to create, please try again !", {
@@ -111,6 +123,7 @@ export default function AddProductForm() {
                     ? "border-red-500 focus:ring-red-500"
                     : "border-gray-300 focus:ring-blue-500"
                 }`}
+                data-cy="product-name-input"
               />
               {errors.name && (
                 <p className="text-red-500 text-sm mt-1">{errors.name}</p>
@@ -130,6 +143,7 @@ export default function AddProductForm() {
                     ? "border-red-500 focus:ring-red-500"
                     : "border-gray-300 focus:ring-blue-500"
                 }`}
+                data-cy="product-price-input"
               />
               {errors.price && (
                 <p className="text-red-500 text-sm mt-1">{errors.price}</p>
@@ -149,34 +163,56 @@ export default function AddProductForm() {
                   ? "border-red-500 focus:ring-red-500"
                   : "border-gray-300 focus:ring-blue-500"
               }`}
+              data-cy="product-description-input"
             ></textarea>
             {errors.description && (
               <p className="text-red-500 text-sm mt-1">{errors.description}</p>
+            )}
+          </div>
+          <div>
+            <input
+              type="text"
+              name="category"
+              placeholder="category"
+              value={formData.category}
+              onChange={handleChange}
+              required
+              className={`w-full p-2 border rounded ${
+                errors.category
+                  ? "border-red-500 focus:ring-red-500"
+                  : "border-gray-300 focus:ring-blue-500"
+              }`}
+              data-cy="product-category-input"
+            />
+            {errors.category && (
+              <p className="text-red-500 text-sm mt-1">{errors.category}</p>
             )}
           </div>
 
           <div className="mt-4 mb-2">
             <input
               type="text"
-              name="photo"
+              name="image_link"
               placeholder="Photo URL"
-              value={formData.photo}
+              value={formData.image_link}
               onChange={handleChange}
               required
               className={`w-full p-2 border rounded ${
-                errors.photo
+                errors.image_link
                   ? "border-red-500 focus:ring-red-500"
                   : "border-gray-300 focus:ring-blue-500"
               }`}
+              data-cy="product-imageUrl-input"
             />
-            {errors.photo && (
-              <p className="text-red-500 text-sm mt-1">{errors.photo}</p>
+            {errors.image_link && (
+              <p className="text-red-500 text-sm mt-1">{errors.image_link}</p>
             )}
           </div>
 
           <button
             type="submit"
             className="mt-6 w-full bg-blue-500 text-white py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+            data-cy="add-product-btn"
           >
             Add Product
           </button>
